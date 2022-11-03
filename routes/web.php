@@ -38,3 +38,7 @@ Route::prefix('admin')->group(function () {
         return view ('admin_dashboard.member_management.member_management');
     })->name('member-management');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
