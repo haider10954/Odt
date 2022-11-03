@@ -9,7 +9,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/index.png') }}">
 
     @include('admin_dashboard.includes.style')
     @yield('custom-style')
@@ -23,9 +23,8 @@
         @include('admin_dashboard.includes.sidebar')
         <!-- Left Sidebar End -->
         <div class="main-content">
-
             <div class="page-content">
-                <div class="container-fluid">
+                <div class="container-fluid" style="background: #FAFAFA;">
                     @yield('content')
                 </div>
             </div>
@@ -35,6 +34,7 @@
     </div>
 
     @include('admin_dashboard.includes.script')
+    @yield('custom-script')
 </body>
 
 </html>
