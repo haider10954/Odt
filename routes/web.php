@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\TicketController;
+use App\Http\Controllers\user\TicketController as UserTicketController;
 use App\Http\Controllers\user\AuthController as UserAuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,7 +68,7 @@ Route::prefix('web')->group(function(){
     Route::middleware('auth')->group(function () {
         Route::get('/logout' ,[UserAuthController::class, 'logout'])->name('web_auth_logout');
 
-        Route::view('/tickets','web.tickets')->name('web_tickets');
+        Route::get('/tickets',[UserTicketController::class,'tickets'])->name('web_tickets');
         Route::view('/reservations','web.reservations')->name('web_reservations');
         Route::view('/drawing','web.drawing')->name('web_drawing');
         Route::view('/library','web.library')->name('web_library');
