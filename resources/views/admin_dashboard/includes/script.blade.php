@@ -5,6 +5,9 @@
 <script src="{{ asset( 'assets/libs/simplebar/simplebar.min.js') }}"></script>
 <script src="{{ asset( 'assets/libs/node-waves/waves.min.js') }}"></script>
 
+<!-- Tag ify -->
+<script src="{{ asset('assets/js/jQuery.tagify.min.js')}}"></script>
+
 <!-- apexcharts -->
 <script src="{{ asset( 'assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
