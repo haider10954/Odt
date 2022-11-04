@@ -21,6 +21,14 @@
         background: #fff;
         border-radius: 50%;
     }
+
+    .preview-img {
+        height: 300px;
+        background-color: #f2f2f2;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #bdbdbd;
+    }
 </style>
 @endsection
 @section('content')
@@ -33,8 +41,10 @@
 </div>
 <div class="prompt p-3"></div>
 <div class="row">
-    <div class="col-lg-4">
-        <div id="main_image_view"></div>
+    <div class="col-lg-4 preview-img">
+        <div id="main_image_view" class="h-100">
+            <p class="d-flex align-items-center h-100 justify-content-center fw-bold fs-4">Preview Image</p>
+        </div>
     </div>
     <div class="col-lg-8">
         <form enctype="multipart/form-data" id="bookForm">
@@ -116,7 +126,7 @@
         let reader = new FileReader();
         reader.onload = function(e) {
 
-            $("#main_image_view").html(`<img style="height: 300px; object-fit: contain;"  id="main_image_preview"  src="${e.target.result}" class="main_image_preview img-block- img-fluid w-100">`);
+            $("#main_image_view").html(`<img style="height: 100%; object-fit: contain;"  id="main_image_preview"  src="${e.target.result}" class="main_image_preview img-block- img-fluid w-100">`);
         }
         reader.readAsDataURL(f);
 

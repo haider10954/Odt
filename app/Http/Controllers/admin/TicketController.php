@@ -16,7 +16,6 @@ class TicketController extends Controller
     }
     public function ticket_listings()
     {
-
         $ticket = Ticket::get();
         return view('admin_dashboard.Ticket_management.ticket_management', compact('ticket'));
     }
@@ -31,8 +30,6 @@ class TicketController extends Controller
 
     public function add_ticket(Request $request)
     {
-
-
         $this->validate($request, [
             'club_name' => 'required',
             'total_number' => 'required',
@@ -48,6 +45,8 @@ class TicketController extends Controller
             'image' => 'required|mimes:jpeg,png,jpg',
         ]);
         $file = $this->upload_files($request['image']);
+        $tag1 = collect(json_decode($request->tag_1))->pluck('value');
+        $tag2 = collect(json_decode($request->tag_2))->pluck('value');
         $ticket = Ticket::create([
             'club_name' => $request['club_name'],
             'number' => $request['total_number'],
@@ -56,8 +55,8 @@ class TicketController extends Controller
             'date_last_meeting' => $request['last_date'],
             'gatherings' => $request['number_of_gathering'],
             'meetups' => $request['meet_now'],
-            'tag_1' => $request['tag_1'],
-            'tag_2' => $request['tag_2'],
+            'tag_1' => $tag1,
+            'tag_2' => $tag2,
             'description' => $request['description'],
             'sub_description' => $request['sub_description'],
             'image' =>  $file,

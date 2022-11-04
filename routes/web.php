@@ -44,6 +44,7 @@ Route::prefix('admin')->group(function () {
         Route::get('edit-book/{id}', [BookController::class, 'edit_book_form'])->name('edit-book');
         Route::post('edit-books', [BookController::class, 'update_book'])->name('edit-books');
         Route::post('delete-book-page-images', [BookController::class, 'delete_book_page_images'])->name('delete_book_page_images');
+        Route::post('delete-book-cover-image', [BookController::class, 'delete_book_cover_image'])->name('delete_book_cover_image');
 
         Route::get('/member-management', function () {
             return view('admin_dashboard.member_management.member_management');

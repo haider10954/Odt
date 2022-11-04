@@ -38,7 +38,7 @@ class BookController extends Controller
         $this->validate($request, [
             'book_title' => 'required',
             'book_description' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg',
+            'image.*' => 'required|mimes:jpeg,png,jpg',
             'book_pages.*' => 'required|mimes:jpeg,png,jpg'
         ]);
         $book_cover = $this->upload_files($request['image']);
@@ -110,12 +110,12 @@ class BookController extends Controller
 
         $picture = explode('/', $request->photo);
 
-        $image_name = $picture[5];
+        $image_name = $picture[count($picture) - 1];
         $photos = Book::where('id', $request['id'])->first();
-        $photos = $photos['book_pages'];
+        $photos = $photos->book_pages;
         $index = array_search($image_name, $photos);
         unset($photos[$index]);
-
+        array_values($photos);
         $data['book_pages'] = $photos;
         $book = Book::where('id', $request->id)->update($data);
 
@@ -128,6 +128,35 @@ class BookController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Book page image deleted Successfully'
+            ]);
+        } else {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong, Please try again'
+            ]);
+        }
+    }
+
+    public function delete_book_cover_image(Request $request)
+    {
+
+
+        $picture = explode('/', $request->image);
+
+        $image_name = $picture[count($picture) - 1];
+        $data['image'] = $request->image;
+        $book = Book::where('id', $request->id)->update($data);
+
+        $filePath = storage_path('app/public/books/cover/' . $image_name);
+        if (file_exists($filePath)) {
+            @unlink($filePath);
+        }
+
+        if ($book) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Book cover image deleted Successfully'
             ]);
         } else {
 

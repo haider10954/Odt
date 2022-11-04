@@ -11,7 +11,9 @@ class Ticket extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'meet_up_date' => 'datetime'
+        'meet_up_date' => 'datetime',
+        'tag_1' => 'array',
+        'tag_2' => 'array'
     ];
     public function ticketImage()
     {

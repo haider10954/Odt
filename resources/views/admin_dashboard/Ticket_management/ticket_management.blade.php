@@ -158,7 +158,10 @@
     @endif
 </div>
 <div class="row">
+
     @foreach ($ticket as $tickets)
+
+
     <div class="col-lg-4">
         <div class="card">
             <div class="d-flex align-items-start">
@@ -173,8 +176,8 @@
                     <span>Date of last meeting : {{ $tickets->date_last_meeting}}</span> <br>
                     <span>Number of gatherings : {{ $tickets->gatherings }}</span> <br>
                     <span>Meet up til now: {{ $tickets->meetups }} (회)</span> <br>
-                    <span class="bold-text">Tag 1 : {{ $tickets->tag_1 }} </span> <br>
-                    <span>Tag 2 : {{ $tickets->tag_2 }}</span> <br>
+                    <span class="bold-text">Tag 1 : {{ implode(' , ',$tickets->tag_1) }}</span> <br>
+                    <span>Tag 2 : {{ implode(' , ',$tickets->tag_2) }} </span> <br>
                     <span>Description : {{ $tickets->description }}</span> <br>
                     <span class="bold-text">Sub Description : {{ $tickets->sub_description }}</span>
                     <div class="mb-2 mt-3 d-flex justify-content-center">
@@ -275,7 +278,7 @@
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
                                 <label class="form-label">Tag 1</label>
-                                <input type="text" class="form-control" name="tag_1">
+                                <input type="text" class="form-control" id="tags" data-role="tagsinput" name="tag_1">
                                 @error('tag_1')
                                 <p style="color:#d02525;">{{$message}}</p>
                                 @enderror
@@ -285,7 +288,7 @@
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
                                 <label class="form-label">Tag 2</label>
-                                <input type="text" class="form-control" name="tag_2">
+                                <input type="text" class="form-control" id="tags2" data-role="tagsinput" name="tag_2">
                                 @error('tag_2')
                                 <p style="color:#d02525;">{{$message}}</p>
                                 @enderror
@@ -433,5 +436,12 @@
 
         });
     });
+</script>
+
+<script>
+    var input = document.querySelector('#tags');
+    var input2 = document.querySelector('#tags2');
+    new Tagify(input);
+    new Tagify(input2);
 </script>
 @endsection

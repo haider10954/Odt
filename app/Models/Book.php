@@ -12,7 +12,7 @@ class Book extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'book_pages' => 'array'
+        'book_pages' => 'array',
     ];
     public function bookImage()
     {

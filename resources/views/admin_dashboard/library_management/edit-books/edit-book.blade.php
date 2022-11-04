@@ -21,6 +21,29 @@
         background: #fff;
         border-radius: 50%;
     }
+
+    .del-icon-cover {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        font-size: 14px;
+        color: #f00 !important;
+        padding: 2px 7px 0px 7px;
+        background: #fff;
+        border-radius: 50%;
+    }
+
+    .preview-img {
+        height: 250px;
+        background-color: #f2f2f2;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #bdbdbd;
+    }
+    #toHide1
+    {
+        display: flex;
+    }
 </style>
 @endsection
 @section('content')
@@ -34,6 +57,14 @@
 <div class="prompt p-3"></div>
 <div class="row">
     <div class="col-lg-4">
+        <div id="toHide1" class="mb-2 justify-content-center align-items-center preview-img">
+            <div class="display-img h-100" id='toHide'>
+                <img class="img-fluid img-block-" src="{{ $book->bookImage() }}" data-original-src="{{ $book->bookImage() }}" id="multi_index_${index}" data-index="${index}">
+                <a type="button" class="text-danger del-icon-cover" onclick="delete_book_cover('{{ $book->bookImage() }}')">
+                    <i class="fa fa-times font-18 "></i>
+                </a>
+            </div>
+        </div>
         <div id="main_image_view"></div>
     </div>
     <div class="col-lg-8">
@@ -122,6 +153,35 @@
     </div>
 </div>
 
+
+<!-- Delete Book Cover Image -->
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="prompt"></div>
+                        <p>Are you sure to delete ? </p>
+                        <input id="del_id1" type="hidden" name="id">
+                        <input type="hidden" id="delImg1" name="del_photo">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger remove-image-preview" onclick="deleteCoverImage()">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('custom-script')
@@ -136,8 +196,6 @@
             $("#main_image_view").html(`<img style="height: 300px; object-fit: contain;"  id="main_image_preview"  src="${e.target.result}" class="main_image_preview img-block- img-fluid w-100">`);
         }
         reader.readAsDataURL(f);
-
-
     })
 
     var delModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {});
@@ -166,6 +224,46 @@
                     $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
                     setTimeout(function() {
                         delModal.hide();
+                    }, 2000);
+                } else {
+                    $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
+                }
+
+            },
+            error: function(e) {}
+        });
+
+    }
+
+
+    var delModalCover = new bootstrap.Modal(document.getElementById("staticBackdrop1"), {});
+
+    function delete_book_cover(file) {
+        $('#delImg1').val(file);
+        $('#del_id1').val(id);
+        $("#staticBackdrop1 .remove-image-preview").attr("data-file", file);
+        delModalCover.show();
+    }
+
+    function deleteCoverImage(photo) {
+        $.ajax({
+            type: "POST",
+            url: "{{ route('delete_book_cover_image') }}",
+            dataType: 'json',
+            data: {
+                id: $('#id').val(),
+                photo: $('#delImg1').val(),
+                _token: '{{ csrf_token() }}'
+            },
+
+            beforeSend: function() {},
+            success: function(res) {
+                if (res.success == true) {
+                    $('#toHide').hide();
+                    $('#toHide1').hide();
+                    $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
+                    setTimeout(function() {
+                        delModalCover.hide();
                     }, 2000);
                 } else {
                     $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
