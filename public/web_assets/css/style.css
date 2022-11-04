@@ -752,7 +752,7 @@ footer{
 	font-size: 12px;
 }
 .font-weight-600{
-	font-weight: 600;
+	font-weight: 600 !important;
 }
 .book-page{
 	border: 2px solid #b3b3b3;
@@ -942,5 +942,23 @@ footer{
 .sidemenu-header p{
 	font-size: 22px !important;
 	font-weight: 600;
+}
+.auth-form-container{
+	width: 30%;
+}
+@media only screen and (max-width:767px){
+	.auth-form-container{
+		width: 90%;
+	}
+}
+.text-left{
+	text-align: left;
+}
+.form-group small{
+	font-size: 11px;
+}
+.alert{
+	padding: 5px !important;
+	font-size: 13px !important;
 }
 
