@@ -794,7 +794,7 @@ footer{
 .ticket-detail-content{
 	background-color: #222222;
     border-radius: 9px;
-    min-height: 230px;
+    min-height: 310px;
     overflow: hidden;
     position: relative;
 }

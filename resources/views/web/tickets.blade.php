@@ -34,420 +34,85 @@
 
     <div class="tickets_stack mb-4">
 
-        <!-- ticket group -->
-        <div class="ticket" style="background-image: url('{{ asset('web_assets/img/book-img-2.png') }}');">
-            <div class="top-bar-style"></div>
-            <div class="ticket_content">
-                <h4 class="mb-2">글과 파도</h4>
-                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                <div class="seperator"></div>
-                <p class="mb-0">참여중/SF,참여<br>참여중/SF,참여중인</p>
-                <h4 class="mb-2">25중</h4>
-            </div>
-        </div>
-        <div class="ticket_item ticket_detail" style="display: none;">
-            <div class="ticket-detail-content">
+        @foreach ($tickets as $item)
+            <!-- ticket group -->
+            <div class="ticket" style="background-image: url('{{ asset('storage/ticket/'.$item->image) }}');">
                 <div class="top-bar-style"></div>
-                <div class="ticket_item_content">
-                    <div class="d-flex">
-                        <div class="left-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2001:<br>Odyssey</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket_tags">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                    <span class="ticket_tag">30대</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
+                <div class="ticket_content">
+                    <h4 class="mb-2">{{ $item->club_name }}</h4>
+                    <p class="mb-0">{{ $item->subject }}</p>
+                    <div class="seperator"></div>
+                    <p class="mb-0">{{ $item->sub_description }}</p>
+                    <h4 class="mb-2">{{ $item->number }}중</h4>
+                </div>
+            </div>
+            <div class="ticket_item ticket_detail" style="display: none;">
+                <div class="ticket-detail-content">
+                    <div class="top-bar-style"></div>
+                    <div class="ticket_item_content">
+                        <div class="d-flex">
+                            <div class="left-content mx-2">
+                                <div class="ticket_item_content_header">
+                                    <h4 class="mb-2">{{ $item->club_name }}</h4>
+                                    <p class="mb-0">{{ $item->subject }}</p>
                                 </div>
-                                <div class="ticket_tags my-2">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
+                                <div class="ticket_item_content_body">
+                                    <div class="ticket_tags">
+                                        @foreach ($item->tag_1 as $tag)
+                                            <span class="ticket_tag">{{ $tag }}</span>
+                                        @endforeach  
+                                    </div>
+                                    <div class="ticket_tags my-2">
+                                        @foreach ($item->tag_2 as $tag2)
+                                            <span class="ticket_tag">{{ $tag2 }}</span>
+                                        @endforeach  
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-0 font-size-12">신림드로잉 클럽<br>글과 파도</p>
-                                    <h4 class="mb-0">19도</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2020.<br>03.12~</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket-item-detail mt-2">
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">9도I</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">2021로</h4>
-                                        <p class="mb-0">티켓</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">12도</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">80%</h4>
-                                        <p class="mb-0">글과 파도</p>
+                                <div class="ticket_item_content-footer">
+                                    <div class="my-1">
+                                        <p class="mb-0 font-size-12">{{ $item->sub_description }}</p>
+                                        <h4 class="mb-0">{{ $item->gatherings }}</h4>
                                     </div>
                                 </div>
                             </div>
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-2 font-size-12">공상 과학 소설, 영화 그리고 커피를 좋아하는 사람들</p>
-                                    <a href="javascript:void(0)" class="btn btn-warning btn-theme-sm w-100">직장인</a>
+                            <div class="right-content mx-2">
+                                <div class="ticket_item_content_header">
+                                    <h4 class="mb-2">{{\Carbon\Carbon::parse($item->meet_up_date)->format('d M, Y')}}</h4>
+                                </div>
+                                <div class="ticket_item_content_body">
+                                    <div class="ticket-item-detail mt-2">
+                                        <div class="w-50 mb-2">
+                                            <h4 class="mb-0">{{ $item->meetups }} 도I</h4>
+                                            <p class="mb-0">신림드로잉</p>
+                                        </div>
+                                        <div class="w-50 mb-2">
+                                            <h4 class="mb-0">{{\Carbon\Carbon::parse($item->date_last_meeting)->format('d M, Y')}}</h4>
+                                            <p class="mb-0">티켓</p>
+                                        </div>
+                                        <div class="w-50 mb-2">
+                                            <h4 class="mb-0">12도</h4>
+                                            <p class="mb-0">신림드로잉</p>
+                                        </div>
+                                        <div class="w-50 mb-2">
+                                            <h4 class="mb-0">80%</h4>
+                                            <p class="mb-0">글과 파도</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ticket_item_content-footer">
+                                    <div class="my-1">
+                                        <p class="mb-2 font-size-12">{{ $item->description }}</p>
+                                        <a href="javascript:void(0)" class="btn btn-warning btn-theme-sm w-100">직장인</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- ticket group end -->
-
-        <!-- ticket group -->
-        <div class="ticket" style="background-image: url('{{ asset('web_assets/img/book-img-1.png') }}');">
-            <div class="top-bar-style"></div>
-            <div class="ticket_content">
-                <h4 class="mb-2">글과 파도</h4>
-                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                <div class="seperator"></div>
-                <p class="mb-0">참여중/SF,참여<br>참여중/SF,참여중인</p>
-                <h4 class="mb-2">25중</h4>
-            </div>
-        </div>
-        <div class="ticket_item ticket_detail" style="display: none;">
-            <div class="ticket-detail-content">
-                <div class="top-bar-style"></div>
-                <div class="ticket_item_content">
-                    <div class="d-flex">
-                        <div class="left-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2001:<br>Odyssey</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket_tags">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                    <span class="ticket_tag">30대</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                </div>
-                                <div class="ticket_tags my-2">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                </div>
-                            </div>
-
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-0 font-size-12">신림드로잉 클럽<br>글과 파도</p>
-                                    <h4 class="mb-0">19도</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2020.<br>03.12~</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket-item-detail mt-2">
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">9도I</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">2021로</h4>
-                                        <p class="mb-0">티켓</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">12도</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">80%</h4>
-                                        <p class="mb-0">글과 파도</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-2 font-size-12">공상 과학 소설, 영화 그리고 커피를 좋아하는 사람들</p>
-                                    <a href="javascript:void(0)" class="btn btn-warning btn-theme-sm w-100">직장인</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ticket group end -->
-
-        <!-- ticket group -->
-        <div class="ticket" style="background-image: url('{{ asset('web_assets/img/book-img-3.png') }}');">
-            <div class="top-bar-style"></div>
-            <div class="ticket_content">
-                <h4 class="mb-2">글과 파도</h4>
-                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                <div class="seperator"></div>
-                <p class="mb-0">참여중/SF,참여<br>참여중/SF,참여중인</p>
-                <h4 class="mb-2">25중</h4>
-            </div>
-        </div>
-        <div class="ticket_item ticket_detail" style="display: none;">
-            <div class="ticket-detail-content">
-                <div class="top-bar-style"></div>
-                <div class="ticket_item_content">
-                    <div class="d-flex">
-                        <div class="left-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2001:<br>Odyssey</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket_tags">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                    <span class="ticket_tag">30대</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                </div>
-                                <div class="ticket_tags my-2">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                </div>
-                            </div>
-
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-0 font-size-12">신림드로잉 클럽<br>글과 파도</p>
-                                    <h4 class="mb-0">19도</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2020.<br>03.12~</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket-item-detail mt-2">
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">9도I</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">2021로</h4>
-                                        <p class="mb-0">티켓</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">12도</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">80%</h4>
-                                        <p class="mb-0">글과 파도</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-2 font-size-12">공상 과학 소설, 영화 그리고 커피를 좋아하는 사람들</p>
-                                    <a href="javascript:void(0)" class="btn btn-warning btn-theme-sm w-100">직장인</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ticket group end -->
-
-        <!-- ticket group -->
-        <div class="ticket" style="background-image: url('{{ asset('web_assets/img/book-img-4.png') }}');">
-            <div class="top-bar-style"></div>
-            <div class="ticket_content">
-                <h4 class="mb-2">글과 파도</h4>
-                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                <div class="seperator"></div>
-                <p class="mb-0">참여중/SF,참여<br>참여중/SF,참여중인</p>
-                <h4 class="mb-2">25중</h4>
-            </div>
-        </div>
-        <div class="ticket_item ticket_detail" style="display: none;">
-            <div class="ticket-detail-content">
-                <div class="top-bar-style"></div>
-                <div class="ticket_item_content">
-                    <div class="d-flex">
-                        <div class="left-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2001:<br>Odyssey</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket_tags">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                    <span class="ticket_tag">30대</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                </div>
-                                <div class="ticket_tags my-2">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                </div>
-                            </div>
-
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-0 font-size-12">신림드로잉 클럽<br>글과 파도</p>
-                                    <h4 class="mb-0">19도</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2020.<br>03.12~</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket-item-detail mt-2">
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">9도I</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">2021로</h4>
-                                        <p class="mb-0">티켓</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">12도</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">80%</h4>
-                                        <p class="mb-0">글과 파도</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-2 font-size-12">공상 과학 소설, 영화 그리고 커피를 좋아하는 사람들</p>
-                                    <a href="javascript:void(0)" class="btn btn-warning btn-theme-sm w-100">직장인</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ticket group end -->
-
-        <!-- ticket group -->
-        <div class="ticket" style="background-image: url('{{ asset('web_assets/img/book-img-2.png') }}');">
-            <div class="top-bar-style"></div>
-            <div class="ticket_content">
-                <h4 class="mb-2">글과 파도</h4>
-                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                <div class="seperator"></div>
-                <p class="mb-0">참여중/SF,참여<br>참여중/SF,참여중인</p>
-                <h4 class="mb-2">25중</h4>
-            </div>
-        </div>
-        <div class="ticket_item ticket_detail" style="display: none;">
-            <div class="ticket-detail-content">
-                <div class="top-bar-style"></div>
-                <div class="ticket_item_content">
-                    <div class="d-flex">
-                        <div class="left-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2001:<br>Odyssey</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket_tags">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                    <span class="ticket_tag">30대</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                </div>
-                                <div class="ticket_tags my-2">
-                                    <span class="ticket_tag">SF</span>
-                                    <span class="ticket_tag">정기적으로 모여요</span>
-                                    <span class="ticket_tag">서울/경기</span>
-                                    <span class="ticket_tag">직장인</span>
-                                </div>
-                            </div>
-
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-0 font-size-12">신림드로잉 클럽<br>글과 파도</p>
-                                    <h4 class="mb-0">19도</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-content mx-2">
-                            <div class="ticket_item_content_header">
-                                <h4 class="mb-2">2020.<br>03.12~</h4>
-                                <p class="mb-0">티켓/Science Fiction<br>참여중/SF,참여중인</p>
-                            </div>
-                            <div class="ticket_item_content_body">
-                                <div class="ticket-item-detail mt-2">
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">9도I</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">2021로</h4>
-                                        <p class="mb-0">티켓</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">12도</h4>
-                                        <p class="mb-0">신림드로잉</p>
-                                    </div>
-                                    <div class="w-50 mb-2">
-                                        <h4 class="mb-0">80%</h4>
-                                        <p class="mb-0">글과 파도</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ticket_item_content-footer">
-                                <div class="my-1">
-                                    <p class="mb-2 font-size-12">공상 과학 소설, 영화 그리고 커피를 좋아하는 사람들</p>
-                                    <a href="javascript:void(0)" class="btn btn-warning btn-theme-sm w-100">직장인</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ticket group end -->
+            <!-- ticket group end -->
+        @endforeach
 
     </div>
 
