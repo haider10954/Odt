@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\TicketController;
+use App\Http\Controllers\user\AuthController as UserAuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,33 @@ Route::prefix('admin')->group(function () {
         })->name('member-management');
     });
 });
+
+Route::prefix('web')->group(function(){
+    Route::view('/','web.index')->name('web_index');
+
+    Route::middleware('guest')->group(function () {
+        Route::view('/signup','web.signup')->name('web_signup');
+        Route::post('/auth-signup',[UserAuthController::class,'signup'])->name('web_auth_signup');
+
+        Route::view('/login','web.login')->name('web_login');
+        Route::post('/auth-login',[UserAuthController::class,'login'])->name('web_auth_login');
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/logout' ,[UserAuthController::class, 'logout'])->name('web_auth_logout');
+
+        Route::view('/tickets','web.tickets')->name('web_tickets');
+        Route::view('/reservations','web.reservations')->name('web_reservations');
+        Route::view('/drawing','web.drawing')->name('web_drawing');
+        Route::view('/library','web.library')->name('web_library');
+        Route::view('/book-detail','web.book_detail')->name('web_book_detail');
+    });
+});
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
