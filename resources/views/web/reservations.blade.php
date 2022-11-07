@@ -7,9 +7,8 @@
         <div class="d-flex align-items-center">
             <img src="{{ asset('web_assets/img/user-1.png') }}" height="70" class="mx-3">
             <div class="info mx-2">
-                <p class="mb-1">Name : John Doe</p>
-                <p class="mb-1">honghong@naver.com</p>
-                <p class="mb-1">010-1234-5678</p>
+                <p class="mb-1">Name : {{ auth()->user()->name }}</p>
+                <p class="mb-1">{{ auth()->user()->email }}</p>
             </div>
         </div>
     </div>
@@ -27,101 +26,33 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('web_assets/img/book-1.png') }}" height="70">
-                            <div class="club-name-content mx-2">
-                                <p class="mb-0">글과 파도</p>
-                                <p class="mb-0">신림드로잉 클럽</p>
+                @if($reservations->count() > 0)
+                    @foreach ($reservations as $item)
+                    <tr>
+                        <td>{{ $loop->index + 1 }}</td>
+                        <td>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img src="{{ asset('storage/ticket/'.$item->ticket->image) }}" height="90">
+                                <div class="club-name-content mx-2">
+                                    <p class="mb-0">{{ $item->ticket->club_name }}</p>
+                                    <p class="mb-0">{{ Str::limit($item->ticket->description, 40) }}</p>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>2022.11.26 10pm</td>
-                    <td>
-                        <span class="badge bg-primary">Completed</span>
-                    </td>
-                    <td>
-                        <a href="javascript:void(0)" class="btn btn-light btn-table-theme">TICKET INFO</a>
-                    </td>
-                </tr>
+                        </td>
+                        <td>{{\Carbon\Carbon::parse($item->ticket->meet_up_date)->format('d M, Y')}}</td>
+                        <td>
+                            <span class="badge bg-{{ $item->getStatus() }}">{{ $item->status }}</span>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-light btn-table-theme">TICKET INFO</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                @else
                 <tr>
-                    <td>2</td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('web_assets/img/book-2.png') }}" height="70">
-                            <div class="club-name-content mx-2">
-                                <p class="mb-0">글과 파도</p>
-                                <p class="mb-0">신림드로잉 클럽</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>2022.11.26 10pm</td>
-                    <td>
-                        <span class="badge bg-light text-muted">Declined</span>
-                    </td>
-                    <td>
-                        <a href="javascript:void(0)" class="btn btn-light btn-table-theme">TICKET INFO</a>
-                    </td>
+                    <td colspan="5">No Reservations Found</td>
                 </tr>
-                <tr>
-                    <td>3</td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('web_assets/img/book-3.png') }}" height="70">
-                            <div class="club-name-content mx-2">
-                                <p class="mb-0">글과 파도</p>
-                                <p class="mb-0">신림드로잉 클럽</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>2022.11.26 10pm</td>
-                    <td>
-                        <span class="badge bg-primary">Completed</span>
-                    </td>
-                    <td>
-                        <a href="javascript:void(0)" class="btn btn-light btn-table-theme">TICKET INFO</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('web_assets/img/book-4.png') }}" height="70">
-                            <div class="club-name-content mx-2">
-                                <p class="mb-0">글과 파도</p>
-                                <p class="mb-0">신림드로잉 클럽</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>2022.11.26 10pm</td>
-                    <td>
-                        <span class="badge bg-light text-muted">Declined</span>
-                    </td>
-                    <td>
-                        <a href="javascript:void(0)" class="btn btn-light btn-table-theme">TICKET INFO</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('web_assets/img/book-5.png') }}" height="70">
-                            <div class="club-name-content mx-2">
-                                <p class="mb-0">글과 파도</p>
-                                <p class="mb-0">신림드로잉 클럽</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>2022.11.26 10pm</td>
-                    <td>
-                        <span class="badge bg-primary">Completed</span>
-                    </td>
-                    <td>
-                        <a href="javascript:void(0)" class="btn btn-light btn-table-theme">TICKET INFO</a>
-                    </td>
-                </tr>
+                @endif
             </tbody>
         </table>
     </div>

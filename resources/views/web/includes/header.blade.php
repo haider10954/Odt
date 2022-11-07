@@ -131,7 +131,7 @@
 
                 <li>
 
-                    <a href="javascript:void(0)"><span>마이페이지</span></a>
+                    <a href="{{ route('web_reservations') }}"><span>마이페이지</span></a>
 
                 </li>
 
