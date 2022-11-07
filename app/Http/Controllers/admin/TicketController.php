@@ -84,63 +84,99 @@ class TicketController extends Controller
         }
     }
 
-    // public function edit_ticket(Request $request)
-    // {
-    //     dd($request->all());
-    //     $this->validate($request, [
-    //         'club_name' => 'required',
-    //         'total_number' => 'required',
-    //         'subject' => 'required',
-    //         'meet_up_date' => 'required',
-    //         'last_date' => 'required',
-    //         'number_of_gathering' => 'required',
-    //         'meet_now' => 'required',
-    //         'tag_1' => 'required',
-    //         'tag_2' => 'required',
-    //         'description' => 'required',
-    //         'sub_description' => 'required',
-    //     ]);
-    //     if ($request['image'] == null) {
-    //         $file = $this->upload_files($request['image']);
-    //         $ticket = Ticket::where('id', $request['id'])->update([
-    //             'club_name' => $request['club_name'],
-    //             'number' => $request['total_number'],
-    //             'subject' => $request['subject'],
-    //             'meet_up_date' => $request['meet_up_date'],
-    //             'date_last_meeting' => $request['last_date'],
-    //             'gatherings' => $request['number_of_gathering'],
-    //             'meetups' => $request['meet_now'],
-    //             'tag_1' => $request['tag_1'],
-    //             'tag_2' => $request['tag_2'],
-    //             'description' => $request['description'],
-    //             'sub_description' => $request['sub_description'],
-    //             'image' =>  $file,
-    //         ]);
-    //     }else{
-    //         $ticket = Ticket::where('id', $request['id'])->update([
-    //             'club_name' => $request['club_name'],
-    //             'number' => $request['total_number'],
-    //             'subject' => $request['subject'],
-    //             'meet_up_date' => $request['meet_up_date'],
-    //             'date_last_meeting' => $request['last_date'],
-    //             'gatherings' => $request['number_of_gathering'],
-    //             'meetups' => $request['meet_now'],
-    //             'tag_1' => $request['tag_1'],
-    //             'tag_2' => $request['tag_2'],
-    //             'description' => $request['description'],
-    //             'sub_description' => $request['sub_description'],
-    //         ]);
-    //     }
-    //     if ($ticket) {
-    //         return json_encode([
-    //             'error' => false,
-    //             'message' => 'Ticket has been update successfully.'
-    //         ]);
-    //     } else {
-    //         return json_encode([
-    //             'error' => false,
-    //             'message' => 'Something went wrong Please try again.'
-    //         ]);
-    //     }
-    // }
+    public function edit_ticket_form($id)
+    {
+        $ticket = Ticket::where('id' , $id)->first();
+        return view('admin_dashboard.Ticket_management.edit_ticket' , compact('ticket'));
+    }
+
+    public function edit_ticket(Request $request)
+    {
+        $this->validate($request, [
+            'club_name' => 'required',
+            'total_number' => 'required',
+            'subject' => 'required',
+            'meet_up_date' => 'required',
+            'last_date' => 'required',
+            'number_of_gathering' => 'required',
+            'meet_now' => 'required',
+            'tag_1' => 'required',
+            'tag_2' => 'required',
+            'description' => 'required',
+            'sub_description' => 'required',
+        ]);
+        $tag1 = collect(json_decode($request->tag_1))->pluck('value');
+        $tag2 = collect(json_decode($request->tag_2))->pluck('value');
+        if ($request->hasFile('image')) {
+            $file = $this->upload_files($request['image']);
+            $ticket = Ticket::where('id', $request['id'])->update([
+                'club_name' => $request['club_name'],
+                'number' => $request['total_number'],
+                'subject' => $request['subject'],
+                'meet_up_date' => $request['meet_up_date'],
+                'date_last_meeting' => $request['last_date'],
+                'gatherings' => $request['number_of_gathering'],
+                'meetups' => $request['meet_now'],
+                'tag_1' => $tag1,
+                'tag_2' => $tag2,
+                'description' => $request['description'],
+                'sub_description' => $request['sub_description'],
+                'image' =>  $file,
+            ]);
+        }else{
+            $ticket = Ticket::where('id', $request['id'])->update([
+                'club_name' => $request['club_name'],
+                'number' => $request['total_number'],
+                'subject' => $request['subject'],
+                'meet_up_date' => $request['meet_up_date'],
+                'date_last_meeting' => $request['last_date'],
+                'gatherings' => $request['number_of_gathering'],
+                'meetups' => $request['meet_now'],
+                'tag_1' => $tag1,
+                'tag_2' => $tag2,
+                'description' => $request['description'],
+                'sub_description' => $request['sub_description'],
+            ]);
+        }
+        if ($ticket) {
+            return json_encode([
+                'error' => false,
+                'message' => 'Ticket has been update successfully.'
+            ]);
+        } else {
+            return json_encode([
+                'error' => false,
+                'message' => 'Something went wrong Please try again.'
+            ]);
+        }
+    }
+
+    public function delete_ticket_image(Request $request)
+    {
+
+
+        $picture = explode('/', $request->image);
+
+        $image_name = $picture[count($picture) - 1];
+        $data['image'] = $request->image;
+        $ticket = Ticket::where('id', $request->id)->update($data);
+
+        $filePath = storage_path('app/public/ticket/' . $image_name);
+        if (file_exists($filePath)) {
+            @unlink($filePath);
+        }
+
+        if ($ticket) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Ticket image deleted Successfully'
+            ]);
+        } else {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong, Please try again'
+            ]);
+        }
+    }
 }

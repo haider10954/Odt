@@ -20,4 +20,13 @@ class Ticket extends Model
         return asset('storage/ticket/' . $this->image);
     }
 
+    public function getTagsJsonString($tag)
+    {
+        $list = [];
+        foreach($this[$tag] as $tag)
+        {
+            $list[] = ['value'=>$tag];
+        }
+        return json_encode($list);
+    }
 }

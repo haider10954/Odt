@@ -37,7 +37,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/ticket-management', [TicketController::class, 'ticket_listings'])->name('ticket-management');
         Route::post('add-ticket', [TicketController::class, 'add_ticket'])->name('add-ticket');
         Route::post('delete-ticket', [TicketController::class, 'delete_ticket'])->name('delete-ticket');
+        Route::get('/edit-ticket/{id}',[TicketController::class , 'edit_ticket_form'])->name('edit_ticket_form');
         Route::post('edit-ticket', [TicketController::class, 'edit_ticket'])->name('edit-ticket');
+        Route::post('delete-ticket-image' , [TicketController::class , 'delete_ticket_image'])->name('delete_ticket_image');
         Route::get('/content-management/{id}', [TicketController::class, 'participant_listing'])->name('content-management');
 
         Route::get('/library-management', [BookController::class, 'library_listing'])->name('library-management');

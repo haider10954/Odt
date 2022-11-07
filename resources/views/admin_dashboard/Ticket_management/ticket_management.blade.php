@@ -48,7 +48,17 @@
 
     .button-edit {
         font-size: 9px;
-        padding: 0px 10px 0px 10px;
+        padding: 7px 10px 0px 10px;
+        height: 30px;
+        background-color: #C5C7CD;
+        border-radius: 2px;
+        color: white;
+        border: none;
+    }
+
+    .button-edit:hover {
+        font-size: 9px;
+        padding: 7px 10px 0px 10px;
         height: 30px;
         background-color: #C5C7CD;
         border-radius: 2px;
@@ -141,7 +151,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Ticket ongoing <span class="span-text">5</span>
+            <h4 class="mb-sm-0 font-size-18 bold-text">Ticket ongoing <span class="span-text"> {{ $ticket->count() }}</span>
                 <span style="padding-left: 30px;">
                     <button type="button" class="button-add" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Tickets</button>
                 </span>
@@ -182,7 +192,7 @@
                     <span class="bold-text">Sub Description : {{ $tickets->sub_description }}</span>
                     <div class="mb-2 mt-3 d-flex justify-content-center">
                         <a class="button-reserve gap" href="{{ route('content-management' , $tickets->id)}}">Reservation Status</a>
-                        <button class="button-edit gap" data-bs-toggle="modal" data-bs-target="#exampleModal1">Edit</button>
+                        <a class="button-edit gap" href="{{ route('edit_ticket_form' , $tickets->id ) }}">Edit</a>
                         <button class="button-delete gap" onclick="deleteModal('{{ $tickets -> id }}')">Delete</button>
                     </div>
                 </div>
@@ -333,10 +343,6 @@
 </div>
 <!-- Add Modal End -->
 
-<!-- Edit Modal -->
-
-<!-- End Edit Modal -->
-
 <!-- Delete Modal -->
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -387,34 +393,6 @@
         $.ajax({
             type: "POST",
             url: "{{ route('add-ticket') }}",
-            dataType: 'json',
-            data: formData,
-            contentType: false,
-            processData: false,
-            cache: false,
-            mimeType: "multipart/form-data",
-            beforeSend: function() {
-
-            },
-            success: function(res) {
-                $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
-                setTimeout(function() {
-                    window.location.href = "{{ route('ticket-management') }}";
-                }, 3000);
-            },
-            error: function(e) {
-                console.log('error');
-            }
-
-        });
-    });
-
-    $("#ticketEditForm").on('submit', function(e) {
-        e.preventDefault();
-        var formData = new FormData($("#ticketEditForm")[0]);
-        $.ajax({
-            type: "POST",
-            url: "{{ route('edit-ticket') }}",
             dataType: 'json',
             data: formData,
             contentType: false,

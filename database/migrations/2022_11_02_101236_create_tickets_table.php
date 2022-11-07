@@ -26,7 +26,7 @@ return new class extends Migration
             $table->longText('tag_2');
             $table->longText('description');
             $table->longText('sub_description');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }
