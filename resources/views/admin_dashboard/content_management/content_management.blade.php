@@ -182,7 +182,7 @@
                                     </div>
                                 </td>
                                 <td>{{ $r->user->email }}</td>
-                                <td>010-0000-0000</td>
+                                <td>{{ $r->user->mobile}}</td>
                                 <td>
                                     <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                         Confirm
