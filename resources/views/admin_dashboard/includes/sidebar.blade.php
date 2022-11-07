@@ -19,14 +19,6 @@
                                     <span key="t-layouts">Ticket Management</span>
                                 </a>
                             </li>
-
-                            <li>
-                                <a  class="has-arrow waves-effect">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span key="t-dashboards">Contents Management</span>
-                                </a>
-                            </li>
-
                             <li>
                                 <a href="{{ route('library-management')}}" class="has-arrow waves-effect">
                                     <i class="fa fa-users"></i>
