@@ -96,7 +96,7 @@
         margin-right: 10px;
     }
 
-    .paginate a.active{
+    .paginate a.active {
         color: black;
     }
 
@@ -106,12 +106,14 @@
         color: #9FA2B4;
         border-radius: 50%;
     }
-    .card-content{
+
+    .card-content {
         border: 1px solid #DFE0EB;
         box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05);
         border-radius: 8px;
     }
-    .header-content{
+
+    .header-content {
         background: #fff;
         border: 1px solid #DFE0EB;
     }
@@ -141,7 +143,7 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content">
-                <p class="heading">Club Name : {{ $ticket->club_name }} <a style="margin-left: 20px;" >Meet up date : {{ $ticket->meet_up_date->format('Y-m-d')}}</a></p>
+                <p class="heading">Club Name : {{ $ticket->club_name }} <a style="margin-left: 20px;">Meet up date : {{ $ticket->meet_up_date->format('Y-m-d')}}</a></p>
                 <p class="heading">Registered Participants : <span>{{ $reserve->count() }} / {{ $user->count() }} </span> </p>
                 <p class="heading">Confirmed Participants : <span> {{ $confirmed_reservations }} / {{ $user->count() }} </span></p>
             </div>
@@ -196,21 +198,7 @@
                 </div>
                 <!-- end table-responsive -->
             </div>
-            <div class="custom-pagination mb-3">
-                <div class="paginate">
-                    <a class="paginate-btn">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a href="javascript:void(0)" class="active">1</a>
-                    <a href="javascript:void(0)">2</a>
-                    <a href="javascript:void(0)">3</a>
-                    <a href="javascript:void(0)">4</a>
-                    <a href="javascript:void(0)">5</a>
-                    <a class="paginate-btn">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
+            {{ $reserve->links('vendor.pagination.custom-pagination') }}
         </div>
     </div>
 </div>
