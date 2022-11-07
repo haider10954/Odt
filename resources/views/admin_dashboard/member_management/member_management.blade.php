@@ -141,7 +141,7 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content">
-                <p class="heading">Total members : <span> {{ $user->count() }} </span></p>
+                <p class="heading">Total members : <span> {{ $user->total() }} </span></p>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
