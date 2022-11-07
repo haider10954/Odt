@@ -141,9 +141,9 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content">
-                <p class="heading">Club Name : {{ $ticket->club_name }} <a style="margin-left: 20px;" >Meet up date : {{ $ticket->meet_up_date->format('Y-m-d H:i:s a')}}</a></p>
-                <p class="heading">Registered Participants : <span>10 / 20 </span> </p>
-                <p class="heading">Confirmed Participants : <span> 5 / 20 </span></p>
+                <p class="heading">Club Name : {{ $ticket->club_name }} <a style="margin-left: 20px;" >Meet up date : {{ $ticket->meet_up_date->format('Y-m-d')}}</a></p>
+                <p class="heading">Registered Participants : <span>{{ $reserve->count() }} / {{ $user->count() }} </span> </p>
+                <p class="heading">Confirmed Participants : <span> {{ $confirmed_reservations }} / {{ $user->count() }} </span></p>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -159,6 +159,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($reserve as $r)
                             <tr>
                                 <td>
                                     <div class="form-check font-size-16">
@@ -166,19 +167,19 @@
                                         <label class="form-check-label" for="transactionCheck02"></label>
                                     </div>
                                 </td>
-                                <td>1</td>
+                                <td>{{ $loop -> index + 1 }}</td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
                                         </div>
                                         <div>
-                                            <span class="span-text">Name</span> <br />
+                                            <span class="span-text">{{ $r->user->name }}</span> <br />
                                             <span class="update">Updated 1 day ago</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td>asff1009</td>
+                                <td>{{ $r->user->email }}</td>
                                 <td>010-0000-0000</td>
                                 <td>
                                     <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
@@ -189,161 +190,7 @@
                                     </span>
                                 </td>
                             </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>2</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        Confirm
-                                    </button>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>3</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        Confirm
-                                    </button>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>4</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        Confirm
-                                    </button>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>5</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        Confirm
-                                    </button>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>6</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <button type="button" class="btn button-wait" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        Waiting
-                                    </button>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

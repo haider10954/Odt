@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Reservation;
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -11,8 +13,11 @@ class TicketController extends Controller
 
     public function participant_listing($id)
     {
-        $ticket= Ticket::where('id' , $id)->first();
-        return view('admin_dashboard.content_management.content_management', compact('ticket'));
+        $ticket = Ticket::where('id', $id)->first();
+        $reserve = Reservation::paginate(5);
+        $confirmed_reservations = Reservation::where('status' , 'completed')->count();
+        $user = User::get();
+        return view('admin_dashboard.content_management.content_management', compact('ticket', 'reserve' , 'user' , 'confirmed_reservations'));
     }
     public function ticket_listings()
     {
@@ -51,7 +56,7 @@ class TicketController extends Controller
             'club_name' => $request['club_name'],
             'number' => $request['total_number'],
             'subject' => $request['subject'],
-            'meet_up_date' => $request['meet_up_date'] ,//2022-11-21 02:10:02
+            'meet_up_date' => $request['meet_up_date'], //2022-11-21 02:10:02
             'date_last_meeting' => $request['last_date'],
             'gatherings' => $request['number_of_gathering'],
             'meetups' => $request['meet_now'],
@@ -86,8 +91,8 @@ class TicketController extends Controller
 
     public function edit_ticket_form($id)
     {
-        $ticket = Ticket::where('id' , $id)->first();
-        return view('admin_dashboard.Ticket_management.edit_ticket' , compact('ticket'));
+        $ticket = Ticket::where('id', $id)->first();
+        return view('admin_dashboard.Ticket_management.edit_ticket', compact('ticket'));
     }
 
     public function edit_ticket(Request $request)
@@ -123,7 +128,7 @@ class TicketController extends Controller
                 'sub_description' => $request['sub_description'],
                 'image' =>  $file,
             ]);
-        }else{
+        } else {
             $ticket = Ticket::where('id', $request['id'])->update([
                 'club_name' => $request['club_name'],
                 'number' => $request['total_number'],
