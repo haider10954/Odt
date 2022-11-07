@@ -19,7 +19,7 @@ class Authenticate extends Middleware
             {
                 return route('web_login');
             }
-            return route('login');
+            return route('admin-login');
         }
     }
 }
