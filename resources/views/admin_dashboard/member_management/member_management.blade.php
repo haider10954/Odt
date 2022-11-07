@@ -141,7 +141,7 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content">
-                <p class="heading">Total members : <span> 150 </span></p>
+                <p class="heading">Total members : <span> {{ $user->count() }} </span></p>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -159,6 +159,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($user as $u)
                             <tr>
                                 <td>
                                     <div class="form-check font-size-16">
@@ -166,216 +167,38 @@
                                         <label class="form-check-label" for="transactionCheck02"></label>
                                     </div>
                                 </td>
-                                <td>1</td>
+                                <td>{{ $loop-> index + 1 }}</td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
                                         </div>
                                         <div>
-                                            <span class="span-text">Name</span> <br />
+                                            <span class="span-text">{{ $u->name}}</span> <br />
                                             <span class="update">Updated 1 day ago</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
+                                <td>{{ $u->id}}</td>
+                                <td>{{ $u->mobile}}</td>
                                 <td>
-                                    <p class="span-text mb-0">2022.09.23</p>
-                                    <span class="update">P.M. 18:30</span>
+                                    <p class="span-text mb-0">{{ Carbon\Carbon::parse($u->created_at)->format('d M, Y')}}</p>
+                                    <span class="update">{{ Carbon\Carbon::parse($u->created_at)->format('g:i A')}}</span>
                                 </td>
-                                <td>asd@gmail.com</td>
+                                <td>{{ $u->email}}</td>
                                 <td>
                                     <span class="dot-icon">
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </span>
                                 </td>
                             </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>2</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <p class="span-text mb-0">2022.09.23</p>
-                                    <span class="update">P.M. 18:30</span>
-                                </td>
-                                <td>asd@gmail.com</td>
-                                <td>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>3</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <p class="span-text mb-0">2022.09.23</p>
-                                    <span class="update">P.M. 18:30</span>
-                                </td>
-                                <td>asd@gmail.com</td>
-                                <td>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>4</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <p class="span-text mb-0">2022.09.23</p>
-                                    <span class="update">P.M. 18:30</span>
-                                </td>
-                                <td>asd@gmail.com</td>
-                                <td>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>5</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <p class="span-text mb-0">2022.09.23</p>
-                                    <span class="update">P.M. 18:30</span>
-                                </td>
-                                <td>asd@gmail.com</td>
-                                <td>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
-                                <td>6</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">Name</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>asff1009</td>
-                                <td>010-0000-0000</td>
-                                <td>
-                                    <p class="span-text mb-0">2022.09.23</p>
-                                    <span class="update">P.M. 18:30</span>
-                                </td>
-                                <td>asd@gmail.com</td>
-                                <td>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
                 <!-- end table-responsive -->
             </div>
-            <div class="custom-pagination mb-3">
-                <div class="paginate">
-                    <a class="paginate-btn">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a href="javascript:void(0)" class="active">1</a>
-                    <a href="javascript:void(0)">2</a>
-                    <a href="javascript:void(0)">3</a>
-                    <a href="javascript:void(0)">4</a>
-                    <a href="javascript:void(0)">5</a>
-                    <a class="paginate-btn">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
+            {{ $user->links('vendor.pagination.custom-pagination') }}
         </div>
     </div>
 </div>

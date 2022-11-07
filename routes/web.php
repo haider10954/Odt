@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\BookController;
+use App\Http\Controllers\admin\MemberController;
 use App\Http\Controllers\admin\TicketController;
 use App\Http\Controllers\user\TicketController as UserTicketController;
 use App\Http\Controllers\user\AuthController as UserAuthController;
@@ -50,9 +51,7 @@ Route::prefix('admin')->group(function () {
         Route::post('delete-book-page-images', [BookController::class, 'delete_book_page_images'])->name('delete_book_page_images');
         Route::post('delete-book-cover-image', [BookController::class, 'delete_book_cover_image'])->name('delete_book_cover_image');
 
-        Route::get('/member-management', function () {
-            return view('admin_dashboard.member_management.member_management');
-        })->name('member-management');
+        Route::get('/member-management',[MemberController::class , 'member_listing'])->name('member-management');
     });
 });
 
