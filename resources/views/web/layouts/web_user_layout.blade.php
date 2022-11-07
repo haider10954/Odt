@@ -80,6 +80,8 @@
         </div>
         
     </div>
+    
+    @yield('modals')
 
     @include('web.web_user_includes.script')
 

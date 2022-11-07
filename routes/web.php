@@ -71,7 +71,10 @@ Route::prefix('web')->group(function(){
         Route::get('/logout' ,[UserAuthController::class, 'logout'])->name('web_auth_logout');
 
         Route::get('/tickets',[UserTicketController::class,'tickets'])->name('web_tickets');
-        Route::view('/reservations','web.reservations')->name('web_reservations');
+        Route::post('/reserve-ticket',[UserTicketController::class,'reserve_ticket'])->name('web_reserve_ticket');
+
+        Route::get('/reservations',[UserTicketController::class,'reservations'])->name('web_reservations');
+
         Route::view('/drawing','web.drawing')->name('web_drawing');
         Route::view('/library','web.library')->name('web_library');
         Route::view('/book-detail','web.book_detail')->name('web_book_detail');
