@@ -183,14 +183,25 @@
                                 </td>
                                 <td>{{ $r->user->email }}</td>
                                 <td>{{ $r->user->mobile}}</td>
+                                @if ($r->status == 'pending')
                                 <td>
-                                    <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        Confirm
+                                    <button type="button" class="btn button-wait" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        Pending
                                     </button>
                                     <span class="dot-icon">
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </span>
                                 </td>
+                                @else
+                                <td>
+                                    <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                        In-Progress
+                                    </button>
+                                    <span class="dot-icon">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </span>
+                                </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
