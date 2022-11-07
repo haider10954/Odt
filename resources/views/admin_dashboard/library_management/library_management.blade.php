@@ -151,7 +151,7 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content d-flex justify-content-between">
-                <p class="heading mb-0">In-progress content : <span> 10 </span></p>
+                <p class="heading mb-0">In-progress content : <span> {{ $book->count() }} </span></p>
                 <a class="btn btn-primary" href="{{ route('add-book-form')}}"> Add Book </a>
             </div>
             <div class="card-body">
@@ -205,22 +205,7 @@
                 </div>
                 <!-- end table-responsive -->
             </div>
-            <div class="custom-pagination mb-3">
-                <div class="paginate">
-                    <a class="paginate-btn">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a href="javascript:void(0)" class="active">1</a>
-                    <a href="javascript:void(0)">2</a>
-                    <a href="javascript:void(0)">3</a>
-                    <a href="javascript:void(0)">4</a>
-                    <a href="javascript:void(0)">5</a>
-                    <a class="paginate-btn">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
-            {{ $book->links() }}
+            {{ $book->links('vendor.pagination.custom-pagination') }}
         </div>
     </div>
 </div>
