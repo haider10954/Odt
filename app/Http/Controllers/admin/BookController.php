@@ -38,6 +38,7 @@ class BookController extends Controller
         $this->validate($request, [
             'book_title' => 'required',
             'book_description' => 'required',
+            'category' => 'required',
             'image.*' => 'required|mimes:jpeg,png,jpg',
             'book_pages.*' => 'required|mimes:jpeg,png,jpg'
         ]);
@@ -53,6 +54,7 @@ class BookController extends Controller
         $book = Book::create([
             'book_title' => $request['book_title'],
             'description' => $request['book_description'],
+            'category' => $request['category'],
             'image' =>  $book_cover,
             'book_pages' => $book_pages ?? []
         ]);
@@ -74,6 +76,7 @@ class BookController extends Controller
         $this->validate($request, [
             'book_title' => 'required',
             'book_description' => 'required',
+            'category' => 'required',
             'image' => 'mimes:jpeg,png,jpg',
             'book_pages.*' => 'mimes:jpeg,png,jpg'
         ]);
@@ -95,6 +98,7 @@ class BookController extends Controller
 
         $data['book_title'] = $request['book_title'] ?? $book->book_title;
         $data['description'] = $request['book_description'] ?? $book->description;
+        $data['category'] = $request['category'] ?? $book->category;
 
         $book = Book::where('id', $request->id)->update($data);
 

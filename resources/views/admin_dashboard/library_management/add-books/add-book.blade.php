@@ -39,7 +39,7 @@
         </div>
     </div>
 </div>
-<div class="prompt p-3"></div>
+<div class="prompt"></div>
 <div class="row">
     <div class="col-lg-4 preview-img">
         <div id="main_image_view" class="h-100">
@@ -66,6 +66,18 @@
             </div>
 
             <div class="form-group mb-2">
+                <label class="form-label">Book Category</label>
+                <select type="text" class="form-control" name="category">
+                    <option>Select Category</option>
+                    <option value="reading">Reading</option>
+                    <option value="drawing">Drawing</option>
+                </select>
+                @error('category')
+                <p style="color:#d02525;">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="form-group mb-2">
                 <label class="form-label">Book Cover</label>
                 <input type="file" class="form-control" name="image" id="main_picture" />
             </div>
@@ -81,7 +93,7 @@
             <div class="row mb-3" id="other_images_preview">
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-sm btn-dark">Add</button>
+                <button type="submit" class="btn btn-dark">Add Book</button>
             </div>
         </form>
     </div>

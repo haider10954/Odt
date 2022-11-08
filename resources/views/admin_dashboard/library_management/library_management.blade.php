@@ -151,7 +151,7 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content d-flex justify-content-between">
-                <p class="heading mb-0">In-progress content : <span> {{ $book->count() }} </span></p>
+                <p class="heading mb-0">In-progress content : <span> {{ $book->total() }} </span></p>
                 <a class="btn btn-primary" href="{{ route('add-book-form')}}"> Add Book </a>
             </div>
             <div class="card-body">
@@ -182,7 +182,7 @@
                                             </div>
                                             <div>
                                                 <span class="span-text">{{ $books->book_title }}</span> <br />
-                                                <span class="update">{{ $books->description }}</span>
+                                                <span class="update">{{ Str::limit($books->description, 50) }}</span>
                                             </div>
                                         </div>
                                         <div>

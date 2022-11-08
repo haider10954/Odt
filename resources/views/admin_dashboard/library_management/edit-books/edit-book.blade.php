@@ -83,6 +83,18 @@
             </div>
 
             <div class="form-group mb-2">
+                <label class="form-label">Book Category</label>
+                <select type="text" class="form-control" name="category">
+                    <option>Select Category</option>
+                    <option value="reading" {{ $book->category == 'reading' ? 'selected' : ' ' }}>Reading</option>
+                    <option value="drawing" {{ $book->category == 'drawing' ? 'selected' : ' ' }}>Drawing</option>
+                </select>
+                @error('category')
+                <p style="color:#d02525;">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="form-group mb-2">
                 <label class="form-label">Book Description</label>
                 <input type="text" class="form-control" name="book_description" value="{{ $book->description}}">
                 @error('book_description')
@@ -119,7 +131,7 @@
             <div class="row mb-3" id="other_images_preview">
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-sm btn-dark">Add</button>
+                <button type="submit" class="btn btn-dark">Submit</button>
             </div>
         </form>
     </div>

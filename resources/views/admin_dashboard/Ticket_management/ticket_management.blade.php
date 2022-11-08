@@ -26,7 +26,7 @@
 
     .button-reserve {
         font-size: 9px;
-        padding: 0px 10px 0px 10px;
+        padding: 7px 10px 0px 10px;
         height: 30px;
         background-color: #696CFF;
         border-radius: 2px;
@@ -36,7 +36,7 @@
 
     .button-reserve:hover {
         font-size: 9px;
-        padding: 0px 10px 0px 10px;
+        padding: 7px 10px 0px 10px;
         height: 30px;
         background-color: #696CFF;
         border-radius: 2px;
