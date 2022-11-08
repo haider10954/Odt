@@ -2,6 +2,8 @@
 
 @section('title', 'Odt - Tickets')
 
+@section('page_title','Ticketing')
+
 @section('content')
     <div class="content-heading mb-4">
         <div class="left">

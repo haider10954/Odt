@@ -2,6 +2,8 @@
 
 @section('title', 'Odt - Reservations')
 
+@section('page_title','My Page')
+
 @section('content')
     <div class="theme-box mb-4">
         <div class="d-flex align-items-center">

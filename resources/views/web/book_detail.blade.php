@@ -2,21 +2,15 @@
 
 @section('title', 'Odt - Book Detail')
 
-@section('content')
-<p class="font-weight-600">TDYB vol.3</p>
+@section('page_title','Book Detail')
 
+@section('content')
+<p class="font-weight-600">{{ $book->book_title }}</p>
 <div class="book-pages">
-    <div class="book-page">
-        <img src="{{ asset('web_assets/img/book-img-1.png') }}" class="book-page-img">
-    </div>
-    <div class="book-page">
-        <img src="{{ asset('web_assets/img/book-img-2.png') }}" class="book-page-img">
-    </div>
-    <div class="book-page">
-        <img src="{{ asset('web_assets/img/book-img-3.png') }}" class="book-page-img">
-    </div>
-    <div class="book-page">
-        <img src="{{ asset('web_assets/img/book-img-4.png') }}" class="book-page-img">
-    </div>
+    @foreach ($book->book_pages as $item)
+        <div class="book-page">
+            <img src="{{ asset('storage/books/pages/'.$item) }}" class="book-page-img">
+        </div>
+    @endforeach
 </div>
 @endsection
