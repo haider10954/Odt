@@ -40,7 +40,7 @@
     </div>
 </div>
 <div class="prompt"></div>
-<div class="row">
+<div class="row align-items-center">
     <div class="col-lg-4 preview-img">
         <div id="main_image_view" class="h-100">
             <p class="d-flex align-items-center h-100 justify-content-center fw-bold fs-4">Preview Image</p>

@@ -206,7 +206,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" id="modal-header">
                 <h5 class="modal-title fw-bolder" id="exampleModalLabel">Meeting Information</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -334,7 +334,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="button-add-modal">Add</button>
+                    <a  href="#modal-header" id="submitForm" class="btn button-add-modal">Add</a>
                     <button type="button" class="button-delete-modal">Delete</button>
                 </div>
             </form>
@@ -348,7 +348,7 @@
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" >
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -386,9 +386,10 @@
         $('#del_id').val(id);
         showModal.show();
     }
+    $('#submitForm').on('click', function() {
+        $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
+        $("#submitForm").attr('disabled', '');
 
-    $("#ticketForm").on('submit', function(e) {
-        e.preventDefault();
         var formData = new FormData($("#ticketForm")[0]);
         $.ajax({
             type: "POST",
@@ -413,6 +414,12 @@
             }
 
         });
+    });
+
+    $("#ticketForm").on('submit', function(e) {
+        e.preventDefault();
+
+
     });
 </script>
 
