@@ -55,7 +55,7 @@
     </div>
 </div>
 <div class="prompt p-3"></div>
-<div class="row">
+<div class="row align-items-center">
     <div class="col-lg-4">
         <div id="toHide1" class="mb-2 justify-content-center align-items-center preview-img">
             <div class="display-img h-100" id='toHide'>
