@@ -141,7 +141,7 @@
     <div class="col-12">
         <form class="app-search d-none d-lg-block">
             <div class="position-relative">
-                <input type="text" class="form-control" placeholder="Search Tickets">
+                <input type="text" class="form-control" placeholder="Search Tickets" id="myInput">
                 <span class="fa fa-search"></span>
             </div>
         </form>
@@ -172,7 +172,7 @@
     @foreach ($ticket as $tickets)
 
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 searchable" data-name="{{ $tickets->club_name }}">
         <div class="card">
             <div class="d-flex align-items-start">
                 <div style="width:50%">
@@ -422,4 +422,24 @@
     new Tagify(input);
     new Tagify(input2);
 </script>
+
+<script>
+
+    $("#myInput").on("keyup keypress", function() {
+        var value = $(this).val();
+        $(".searchable").each(function(index) {
+            $row = $(this);
+            var id = $row.attr("data-name");
+            if (id.indexOf(value) != 0) {
+                $(this).hide();
+            }
+            else {
+                $(this).show();
+            }
+        });
+    });
+</script>
+
 @endsection
+
+
