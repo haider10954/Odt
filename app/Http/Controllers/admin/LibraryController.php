@@ -9,12 +9,12 @@ use App\Models\Book;
 class LibraryController extends Controller
 {
     public function drawing(){
-        $books = Book::paginate(4);
+        $books = Book::where('category','drawing')->paginate(4);
         return view('web.drawing',compact('books'));
     }
 
     public function reading(){
-        $books = Book::paginate(4);
+        $books = Book::where('category','reading')->paginate(4);
         return view('web.library',compact('books'));
     }
 
