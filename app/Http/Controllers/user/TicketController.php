@@ -28,7 +28,7 @@ class TicketController extends Controller
         }
     }
     public function reservations(){
-        $reservations = Reservation::with('ticket')->get();
+        $reservations = Reservation::where('user_id',auth()->id())->with('ticket')->get();
         return view('web.reservations',compact('reservations'));
     }
 }
