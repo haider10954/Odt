@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\MemberController;
 use App\Http\Controllers\admin\TicketController;
 use App\Http\Controllers\user\TicketController as UserTicketController;
 use App\Http\Controllers\user\AuthController as UserAuthController;
+use App\Http\Controllers\admin\LibraryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -74,9 +75,11 @@ Route::prefix('web')->group(function(){
 
         Route::get('/reservations',[UserTicketController::class,'reservations'])->name('web_reservations');
 
-        Route::view('/drawing','web.drawing')->name('web_drawing');
-        Route::view('/library','web.library')->name('web_library');
-        Route::view('/book-detail','web.book_detail')->name('web_book_detail');
+        Route::get('/library',[LibraryController::class,'reading'])->name('web_library');
+
+        Route::get('/drawing',[LibraryController::class,'drawing'])->name('web_drawing');
+
+        Route::get('/book-detail/{id}',[LibraryController::class,'book_detail'])->name('web_book_detail');
     });
 });
 

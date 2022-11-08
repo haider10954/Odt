@@ -665,6 +665,7 @@ footer{
 	border-top-right-radius: 20px;
 	margin-right: 20px;
 	margin-bottom: 50px;
+	margin-top: 50px;
 }
 .book-img{
 	padding-top: 20px;
@@ -762,6 +763,8 @@ footer{
 }
 .book-page-img{
 	height: 450px;
+	width: 100%;
+	object-fit: cover;
 }
 .book-pages{
 	display: flex;

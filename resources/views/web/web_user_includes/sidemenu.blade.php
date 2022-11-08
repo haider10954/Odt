@@ -4,43 +4,33 @@
 
         <div class="sidemenu-header">
 
-            <p class="font-18 mb-0">참여중인 모임</p>
+            <p class="font-18 mb-0">Meeting in attendace</p>
 
         </div>
 
         <div class="sidemenu-menu">
 
             <ul class="books-list">
-
+                @foreach (latest_reservation() as $item)
                 <li class="d-flex align-items-center justify-content-between">
-                    <a href="javascript:void(0)">2001:Odyssey</a>
-                    <span class="book-badge book-badge-dark">NEW</span>
+                    <a href="javascript:void(0)">{{ $item->ticket->club_name }}</a>
+                    <span class="book-badge book-badge-dark">{{\Carbon\Carbon::parse($item->meet_up_date)->format('d M, Y')}}</span>
                 </li>
-
-                <li class="d-flex align-items-center justify-content-between">
-                    <a href="javascript:void(0)">글과 파도</a>
-                    <span class="book-badge">02/21</span>
-                </li>
-
-                <li class="d-flex align-items-center justify-content-between">
-                    <a href="javascript:void(0)">신림드로잉 클럽</a>
-                    <span class="book-badge book-badge-dark">D-7</span>
-                </li>
-
+                @endforeach
             </ul>
 
             <ul class="menu">
 
-                <li><a href="ticketing.html">티켓팅</a></li>
+                <li><a href="{{ route('web_tickets') }}">Ticketing</a></li>
 
                 <li>
                     <a href="javascript:void(0)"
-                        class="d-flex align-items-center justify-content-between submenu-toggle"><span>도서관</span> <i
+                        class="d-flex align-items-center justify-content-between submenu-toggle"><span>Library</span> <i
                             class="fa fa-angle-down"></i></a>
 
                     <ul class="submenu mt-3 mb-0" style="display: none;">
-                        <li><a href="library.html">독서</a></li>
-                        <li><a href="drwaing.html">드로잉</a></li>
+                        <li><a href="{{ route('web_library') }}">Reading</a></li>
+                        <li><a href="{{ route('web_drawing') }}">Drawing</a></li>
                     </ul>
                 </li>
 
