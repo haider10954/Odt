@@ -139,7 +139,7 @@
     <div class="col-12">
         <form class="app-search d-none d-lg-block">
             <div class="position-relative">
-                <input type="text" class="form-control" placeholder="Search all books" id="myInput" onkeyup="myFunction()">
+                <input type="text" class="form-control" placeholder="Search all books">
                 <span class="fa fa-search"></span>
             </div>
         </form>
@@ -151,12 +151,12 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content d-flex justify-content-between">
-                <p class="heading mb-0">In-progress content : <span> {{ $book->count() }} </span></p>
+                <p class="heading mb-0">In-progress content : <span> {{ $book->total() }} </span></p>
                 <a class="btn btn-primary" href="{{ route('add-book-form')}}"> Add Book </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap mb-0" id="myTable">
+                    <table class="table align-middle table-nowrap mb-0">
                         <thead>
                             <tr>
                                 <th></th>
@@ -186,7 +186,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <a class="button-confirm" href="{{ route('edit-book',$books->id) }}">
+                                            <a class="button-confirm"  href ="{{ route('edit-book',$books->id) }}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <button type="button" class="button-wait" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
@@ -212,26 +212,3 @@
 
 @endsection
 
-
-@section('custom-script')
-<script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script>
-@endsection
