@@ -188,8 +188,8 @@
                     <span>Meet up til now: {{ $tickets->meetups }} (회)</span> <br>
                     <span class="bold-text">Tag 1 : {{ implode(' , ',$tickets->tag_1) }}</span> <br>
                     <span>Tag 2 : {{ implode(' , ',$tickets->tag_2) }} </span> <br>
-                    <span>Description : {{ $tickets->description }}</span> <br>
-                    <span class="bold-text">Sub Description : {{ $tickets->sub_description }}</span>
+                    <span>Description : {{ Str::limit($tickets->description, 40) }}</span> <br>
+                    <span class="bold-text">Sub Description : {{ Str::limit($tickets->sub_description, 40) }}</span>
                     <div class="mb-2 mt-3 d-flex justify-content-center">
                         <a class="button-reserve gap" href="{{ route('content-management' , $tickets->id)}}">Reservation Status</a>
                         <a class="button-edit gap" href="{{ route('edit_ticket_form' , $tickets->id ) }}">Edit</a>
