@@ -205,7 +205,7 @@
 <!--Add Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content" id="modal-content">
             <div class="modal-header" id="modal-header">
                 <h5 class="modal-title fw-bolder" id="exampleModalLabel">Meeting Information</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -334,7 +334,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a  href="#modal-header" id="submitForm" class="btn button-add-modal">Add</a>
+                    <button id="submitForm" type="button" class="button-add-modal">Add</button>
                     <button type="button" class="button-delete-modal">Delete</button>
                 </div>
             </form>
@@ -348,7 +348,7 @@
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" >
+                <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -387,7 +387,10 @@
         showModal.show();
     }
     $('#submitForm').on('click', function() {
+
         $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
+
+        $('#exampleModal').animate({scrollTop:0}, '300');;
         $("#submitForm").attr('disabled', '');
 
         var formData = new FormData($("#ticketForm")[0]);
@@ -415,12 +418,6 @@
 
         });
     });
-
-    $("#ticketForm").on('submit', function(e) {
-        e.preventDefault();
-
-
-    });
 </script>
 
 <script>
@@ -431,7 +428,6 @@
 </script>
 
 <script>
-
     $("#myInput").on("keyup keypress", function() {
         var value = $(this).val();
         $(".searchable").each(function(index) {
@@ -439,14 +435,13 @@
             var id = $row.attr("data-name");
             if (id.indexOf(value) != 0) {
                 $(this).hide();
-            }
-            else {
+            } else {
                 $(this).show();
             }
         });
     });
 </script>
+<script>
 
+</script>
 @endsection
-
-
