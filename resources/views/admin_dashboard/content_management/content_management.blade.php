@@ -157,6 +157,7 @@
                                 <th class="align-middle">Name</th>
                                 <th class="align-middle">Email</th>
                                 <th class="align-middle">Phone Number</th>
+                                <th class="align-middle">Status</th>
                                 <th class="align-middle">Reservation confirm</th>
                             </tr>
                         </thead>
@@ -183,6 +184,7 @@
                                 </td>
                                 <td>{{ $r->user->email }}</td>
                                 <td>{{ $r->user->mobile}}</td>
+                                <td>{{ $r->status }}</td>
                                 @if ($r->status == 'pending')
                                 <td>
                                     <button type="button" class="btn button-wait" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
