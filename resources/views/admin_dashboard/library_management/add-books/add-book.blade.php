@@ -137,7 +137,7 @@
                     }, 1000);
                     setTimeout(function() {
                         window.location.href = "{{ route('library-management') }}";
-                    }, 3000);
+                    }, 2000);
                 }
             },
             error: function(e) {
