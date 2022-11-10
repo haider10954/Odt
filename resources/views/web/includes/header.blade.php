@@ -119,25 +119,25 @@
 
                 <li>
 
-                    <a href="javascript:void(0)"><span>티켓팅</span></a>
+                    <a href="{{ route('web_tickets') }}"><span>{{ __('translation.Ticketing') }}</span></a>
 
                 </li>
 
                 <li>
 
-                    <a href="javascript:void(0)"><span>도서관</span></a>
+                    <a href="{{ __('web_library') }}"><span>{{ __('translation.Library') }}</span></a>
 
                 </li>
 
                 <li>
 
-                    <a href="{{ route('web_reservations') }}"><span>마이페이지</span></a>
+                    <a href="{{ route('web_reservations') }}"><span>{{ __('translation.My Page') }}</span></a>
 
                 </li>
 
                 <li>
 
-                    <a href="{{ route('web_login') }}"><span>Login/Sign up</span></a>
+                    <a href="{{ route('web_login') }}"><span>{{ __('translation.Login') }}/{{ __('translation.Signup') }}</span></a>
                 </li>
 
             </ul>
@@ -164,13 +164,17 @@
 
                     <li class="lavel-1"><a href="{{ route('web_index') }}"><span>odt</span></a></li>
 
-                    <li class="lavel-1"><a href="javascript:void(0)"><span>티켓팅</span></a></li>
+                    <li class="lavel-1"><a href="{{ route('web_tickets') }}"><span>{{ __('translation.Ticketing') }}</span></a></li>
 
-                    <li class="lavel-1"><a href="javascript:void(0)"><span>도서관</span></a></li>
+                    <li class="lavel-1"><a href="{{ __('web_library') }}"><span>{{ __('translation.Library') }}</span></a></li>
 
-                    <li class="lavel-1"><a href="javascript:void(0)"><span>마이페이지</span></a></li>
+                    <li class="lavel-1"><a href="{{ route('web_reservations') }}"><span>{{ __('translation.My Page') }}</span></a></li>
 
-                    <li class="lavel-1"><a href="{{ route('web_login') }}"><span>Login/Sign up</span></a></li>
+                    @if (auth()->check())
+                        <li class="lavel-1"><a href="{{ route('web_auth_logout') }}"><span>{{ __('translation.Logout') }}</span></a></li>
+                    @else
+                        <li class="lavel-1"><a href="{{ route('web_login') }}"><span>{{ __('translation.Login') }}/{{ __('translation.Signup') }}</span></a></li>
+                    @endif
 
                 </ul>
 
