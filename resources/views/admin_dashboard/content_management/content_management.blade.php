@@ -155,8 +155,8 @@
                             <th class="align-middle">Name</th>
                             <th class="align-middle">Email</th>
                             <th class="align-middle">Phone Number</th>
-                            <th class="align-middle">Status</th>
-                            <th class="align-middle">Reservation confirm</th>
+                            <th class="align-middle">Reservation Status</th>
+                            <th class="align-middle">Action</th>
                         </tr>
                     </thead>
                     <tbody>
