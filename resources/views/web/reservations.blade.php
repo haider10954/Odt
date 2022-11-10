@@ -1,30 +1,30 @@
 @extends('web.layouts.web_user_layout')
 
-@section('title', 'Odt - Reservations')
+@section('title', 'Odt - '.__('Reservations'))
 
-@section('page_title','My Page')
+@section('page_title',__('My Page'))
 
 @section('content')
     <div class="theme-box mb-4">
         <div class="d-flex align-items-center">
             <img src="{{ asset('web_assets/img/user-1.png') }}" height="70" class="mx-3">
             <div class="info mx-2">
-                <p class="mb-1">Name : {{ auth()->user()->name }}</p>
+                <p class="mb-1">{{ __('Name') }} : {{ auth()->user()->name }}</p>
                 <p class="mb-1">{{ auth()->user()->email }}</p>
             </div>
         </div>
     </div>
 
     <div class="theme-box">
-        <p class="font-weight-600">My reservation status</p>
+        <p class="font-weight-600">{{ __('My reservation status') }}</p>
         <table class="table theme-table table-responsive">
             <thead>
                 <tr>
-                    <td class="text-muted">No</td>
-                    <td class="text-muted">Club name</td>
-                    <td class="text-muted">Meet up Date</td>
-                    <td class="text-muted">Status</td>
-                    <td class="text-muted">Action</td>
+                    <td class="text-muted">{{ __('No') }}</td>
+                    <td class="text-muted">{{ __('Club name') }}</td>
+                    <td class="text-muted">{{ __('Meet up Date') }}</td>
+                    <td class="text-muted">{{ __('Status') }}</td>
+                    <td class="text-muted">{{ __('Action') }}</td>
                 </tr>
             </thead>
             <tbody>
@@ -46,13 +46,13 @@
                             <span class="badge bg-{{ $item->getStatus() }}">{{ $item->status }}</span>
                         </td>
                         <td>
-                            <a href="javascript:void(0)" class="btn btn-light btn-table-theme">TICKET INFO</a>
+                            <a href="javascript:void(0)" class="btn btn-light btn-table-theme">{{ __('TICKET INFO') }}</a>
                         </td>
                     </tr>
                     @endforeach
                 @else
                 <tr>
-                    <td colspan="5">No Reservations Found</td>
+                    <td colspan="5">{{ __('No Reservations Found') }}</td>
                 </tr>
                 @endif
             </tbody>

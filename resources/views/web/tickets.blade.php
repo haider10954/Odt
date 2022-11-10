@@ -1,8 +1,8 @@
 @extends('web.layouts.web_user_layout')
 
-@section('title', 'Odt - Tickets')
+@section('title', 'Odt - '.__('Tickets'))
 
-@section('page_title','Ticketing')
+@section('page_title',__('Ticketing'))
 
 @section('content')
 <div class="content-heading mb-4">
@@ -15,23 +15,23 @@
 </div>
 
 <div class="content-tags mb-5">
-    <p>“ 공상 과학 소설, 영화 그리고 커피를 좋아하는 사람들 ”</p>
+    <p>“ {{ __('Sci-Fi Fiction, Movie and Coffee Lovers') }} ”</p>
     <div class="tags">
-        <span class="mx-2 badge-tag">서울/경기</span>
-        <span class="mx-2 badge-tag">직장인</span>
-        <span class="mx-2 badge-tag">정기적으로 모여요</span>
-        <span class="mx-2 badge-tag">30대</span>
+        <span class="mx-2 badge-tag">{{ __('Seoul/Gyeonggi Office') }}</span>
+        <span class="mx-2 badge-tag">{{ __('workers meet') }}</span>
+        <span class="mx-2 badge-tag">{{ __('regularly in their') }}</span>
+        <span class="mx-2 badge-tag">{{ __('30s') }}</span>
     </div>
 </div>
 
 <div class="mb-4">
     <ul class="tabs_links mb-2">
-        <li><a href="javascript:void(0)" class="active">Scedule</a></li>
-        <li><a href="javascript:void(0)">Board</a></li>
-        <li><a href="javascript:void(0)">Number</a></li>
-        <li><a href="javascript:void(0)">Detail</a></li>
+        <li><a href="javascript:void(0)" class="active">{{ __('Scedule') }}</a></li>
+        <li><a href="javascript:void(0)">{{ __('Board') }}</a></li>
+        <li><a href="javascript:void(0)">{{ __('Number') }}</a></li>
+        <li><a href="javascript:void(0)">{{ __('Detail') }}</a></li>
     </ul>
-    <a href="javascript:void(0)" class="btn btn-dark btn-custom mx-2">Notice</a>
+    <a href="javascript:void(0)" class="btn btn-dark btn-custom mx-2">{{ __('Notice') }}</a>
 </div>
 
 <div class="tickets_stack mb-4">
@@ -86,26 +86,26 @@
                             <div class="ticket-item-detail mt-2">
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">{{ $item->meetups }} 도I</h4>
-                                    <p class="mb-0">지금까지의 만남</p>
+                                    <p class="mb-0">{{ __('Encounters so far') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">{{\Carbon\Carbon::parse($item->date_last_meeting)->format('d M, Y')}}</h4>
-                                    <p class="mb-0">마지막 회의 날짜</p>
+                                    <p class="mb-0">{{ __('Last meeting date') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">12도</h4>
-                                    <p class="mb-0">신림드로잉</p>
+                                    <p class="mb-0">{{ __('Sillim Drawing') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">80%</h4>
-                                    <p class="mb-0">글과 파도</p>
+                                    <p class="mb-0">{{ $item->club_name }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="ticket_item_content-footer">
                             <div class="my-1">
                                 <p class="mb-2 font-size-12">{{ $item->description }}</p>
-                                <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#reservationModal" class="btn btn-warning btn-theme-sm w-100 applyBtn" {{ in_array($item->id,$reservation) ? 'disabled' : ''}}>{{ in_array($item->id,$reservation) ? 'Reserved' : 'Apply'}}</button>
+                                <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#reservationModal" class="btn btn-warning btn-theme-sm w-100 applyBtn" {{ in_array($item->id,$reservation) ? 'disabled' : ''}}>{{ in_array($item->id,$reservation) ? __('Reserved') : __('Apply') }}</button>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
     @endforeach
     @else
     <div class="text-center">
-        <h3>No Tickets Found</h3>
+        <h3>{{ __('No Tickets Found') }}</h3>
     </div>
     @endif
 
@@ -130,17 +130,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirm Reservation</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('Confirm Reservation') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="prompt"></div>
                 <input type="hidden" id="confirmReserveTicketId">
-                <p>Are you sure you want to reserve this ticket?</p>
+                <p>{{ __('Are you sure you want to reserve this ticket') }}?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                <a href="javascript:void(0)" id="confirmReservation" class="btn btn-dark">Confirm</a>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                <a href="javascript:void(0)" id="confirmReservation" class="btn btn-dark">{{ __('Confirm') }}</a>
             </div>
         </div>
     </div>

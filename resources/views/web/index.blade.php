@@ -1,6 +1,6 @@
 @extends('web.layouts.web_layout')
 
-@section('title','Odt - Home')
+@section('title','Odt - '.__('Home'))
 
 @section('content')
 <div class="slider-revoluation fullpage" id="fullpage3">

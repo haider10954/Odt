@@ -4,7 +4,7 @@
 
         <div class="sidemenu-header">
 
-            <p class="font-18 mb-0">Meeting in attendace</p>
+            <p class="font-18 mb-0">{{ __('Meeting in attendace') }}</p>
 
         </div>
 
@@ -21,16 +21,16 @@
 
             <ul class="menu">
 
-                <li><a href="{{ route('web_tickets') }}">Ticketing</a></li>
+                <li><a href="{{ route('web_tickets') }}">{{ __('Ticketing') }}</a></li>
 
                 <li>
                     <a href="javascript:void(0)"
-                        class="d-flex align-items-center justify-content-between submenu-toggle"><span>Library</span> <i
+                        class="d-flex align-items-center justify-content-between submenu-toggle"><span>{{ __('Library') }}</span> <i
                             class="fa fa-angle-down"></i></a>
 
                     <ul class="submenu mt-3 mb-0" style="display: none;">
-                        <li><a href="{{ route('web_library') }}">Reading</a></li>
-                        <li><a href="{{ route('web_drawing') }}">Drawing</a></li>
+                        <li><a href="{{ route('web_library') }}">{{ __('Reading') }}</a></li>
+                        <li><a href="{{ route('web_drawing') }}">{{ __('Drawing') }}</a></li>
                     </ul>
                 </li>
 
@@ -40,18 +40,20 @@
 
         <div class="sidemenu-footer">
 
-            <div class="d-flex align-items-center">
+            <a href="{{ route('web_reservations') }}" class="text-dark">
+                <div class="d-flex align-items-center">
 
-                <img src="{{ asset('web_assets/img/user-1.png') }}" height="48" style="margin-right: 20px">
-
-                <div class="sidemenu-footer-content">
-
-                    <p class="mb-0">{{ \Str::ucfirst(auth()->user()->name) }}</p>
-                    <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
-
+                    <img src="{{ asset('web_assets/img/user-1.png') }}" height="48" style="margin-right: 20px">
+    
+                    <div class="sidemenu-footer-content">
+    
+                        <p class="mb-0">{{ \Str::ucfirst(auth()->user()->name) }}</p>
+                        <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
+    
+                    </div>
+    
                 </div>
-
-            </div>
+            </a>
 
         </div>
 

@@ -113,7 +113,7 @@
 
                 <li>
 
-                    <a href="index.html"><span>odt</span></a>
+                    <a href="{{ route('web_index') }}"><span>odt</span></a>
 
                 </li>
 
@@ -137,7 +137,7 @@
 
                 <li>
 
-                    <a href="{{ route('web_auth_login') }}"><span>Login/Sign up</span></a>
+                    <a href="{{ route('web_login') }}"><span>Login/Sign up</span></a>
                 </li>
 
             </ul>
@@ -162,7 +162,7 @@
 
                 <ul class="mainmenu">
 
-                    <li class="lavel-1"><a href="index.html"><span>odt</span></a></li>
+                    <li class="lavel-1"><a href="{{ route('web_index') }}"><span>odt</span></a></li>
 
                     <li class="lavel-1"><a href="javascript:void(0)"><span>티켓팅</span></a></li>
 
@@ -170,7 +170,7 @@
 
                     <li class="lavel-1"><a href="javascript:void(0)"><span>마이페이지</span></a></li>
 
-                    <li class="lavel-1"><a href="login.html"><span>Login/Sign up</span></a></li>
+                    <li class="lavel-1"><a href="{{ route('web_login') }}"><span>Login/Sign up</span></a></li>
 
                 </ul>
 
