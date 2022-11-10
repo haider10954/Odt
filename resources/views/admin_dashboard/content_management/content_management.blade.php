@@ -176,7 +176,7 @@
                             </td>
                             <td>{{ $r->user->email }}</td>
                             <td>{{ $r->user->mobile}}</td>
-                            <td> <span class="badge bg-{{ $r->getStatus() }} p-1">{{ $r->status }}</span> </td>
+                            <td> <span class="badge bg-{{ $r->getStatus() }} p-2">{{ $r->status }}</span> </td>
                             <td>
                                 <div class="dropdown d-inline-block">
                                     <a type="button" class="dot-icon" data-bs-toggle="dropdown">
