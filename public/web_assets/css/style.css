@@ -666,14 +666,15 @@ footer{
 	margin-right: 20px;
 	margin-bottom: 50px;
 	margin-top: 50px;
+	padding-bottom: 50px;
 }
 .book-img{
 	padding-top: 20px;
-	padding-bottom: 40px;
-	padding-left: 30px;
-	padding-right: 30px;
-	height: 280px;
-	object-fit: contain;
+    padding-bottom: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 280px;
+    object-fit: cover;
 }
 
 @media only screen and (max-width: 992px){
@@ -702,7 +703,7 @@ footer{
 	.book-rack{
 		margin-right: 0;
 		margin-left: 0;
-		padding-bottom: 40px;
+		padding-bottom: 50px;
 	}
 	.book-img{
 		padding-bottom: 0;
@@ -966,5 +967,18 @@ footer{
 }
 .sidemenu-footer-content small{
 	word-break: break-all;
+}
+.wooden-frame{
+	height: 51px;
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.wooden-frame img{
+	height: 50px;
+    width: 100%;
+    object-fit: cover;
 }
 

@@ -9,7 +9,10 @@
     <div class="left"><p class="mb-0">2001:Odyssey</p></div>
     <div class="right"><p class="mb-0">19</p></div>
 </div>
-<div class="row book-rack justify-content-center">
+<div class="row book-rack justify-content-center position-relative">
+    <div class="wooden-frame">
+        <img src="{{ asset('web_assets/img/wooden-frame.jpg') }}" alt="img">
+    </div>
     @if ($books->count() > 0)
         @foreach ($books as $item)
             <div class="col-lg-3 col-md-6 col-12 text-center">
