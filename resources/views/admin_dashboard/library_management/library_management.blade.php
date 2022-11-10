@@ -181,7 +181,7 @@
                                                 <img class="ticket-img" src="{{ $books->bookImage()  }}" alt="Header Avatar">
                                             </div>
                                             <div>
-                                                <span class="span-text">{{ $books->book_title }}</span> <br />
+                                                <span class="span-text">{{ Str::limit($books->title, 40) }}</span> <br />
                                                 <span class="update">{{ Str::limit($books->description, 50) }}</span>
                                             </div>
                                         </div>
