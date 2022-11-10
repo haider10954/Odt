@@ -151,6 +151,7 @@
                 <table class="table align-middle table-nowrap mb-0 table-responsive" id="myTable">
                     <thead>
                         <tr>
+                            <th></th>
                             <th class="align-middle">Number</th>
                             <th class="align-middle">Name</th>
                             <th class="align-middle">Email</th>
@@ -162,6 +163,12 @@
                     <tbody>
                         @foreach ($reserve as $r)
                         <tr>
+                            <td>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
+                                    <label class="form-check-label" for="transactionCheck02"></label>
+                                </div>
+                            </td>
                             <td>{{ $loop -> index + 1 }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
@@ -224,32 +231,32 @@
         }
     }
 
-    function changeStatus(value,id) {
-            $.ajax({
-                type: "POST",
-                url: "{{ route('update_status') }}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    status: value,
-                    id: id,
-                },
-                beforeSend: function() {},
-                success: function(res) {
-                    if (res.success) {
-                        $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
-                        setTimeout(function() {
-                            location.reload();
-                        }, 3000);
+    function changeStatus(value, id) {
+        $.ajax({
+            type: "POST",
+            url: "{{ route('update_status') }}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                status: value,
+                id: id,
+            },
+            beforeSend: function() {},
+            success: function(res) {
+                if (res.success) {
+                    $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
+                    setTimeout(function() {
+                        location.reload();
+                    }, 3000);
 
-                    } else {
-                        $('.prompt').html('<div class="alert alert-danger mb-3">' + res.message + '</div>');
-                    }
-                },
-
-                error: function(e) {
-                    console.log('error');
+                } else {
+                    $('.prompt').html('<div class="alert alert-danger mb-3">' + res.message + '</div>');
                 }
-            });
+            },
+
+            error: function(e) {
+                console.log('error');
+            }
+        });
     }
 </script>
 @endsection
