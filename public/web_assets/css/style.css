@@ -964,4 +964,7 @@ footer{
 	padding: 5px !important;
 	font-size: 13px !important;
 }
+.sidemenu-footer-content small{
+	word-break: break-all;
+}
 
