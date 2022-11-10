@@ -48,5 +48,6 @@ return [
     'No Reservations Found' => '예약을 찾을 수 없습니다',
     'Book Detail' => '도서 상세',
     'Home' => '집',
-    'Reservations' => '전세'
+    'Reservations' => '전세',
+    'Menu' => '메뉴'
 ];

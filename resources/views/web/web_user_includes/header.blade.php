@@ -6,13 +6,13 @@
 
         <li><a href="{{ route('web_index') }}" class="fw-bold">odt.</a></li>
 
-        <li><a href="{{ route('web_tickets') }}">{{ __('Ticketing') }}</a></li>
+        <li><a href="{{ route('web_tickets') }}">{{ __('translation.Ticketing') }}</a></li>
 
-        <li><a href="{{ route('web_library') }}">{{ __('Library') }}</a></li>
+        <li><a href="{{ route('web_library') }}">{{ __('translation.Library') }}</a></li>
 
-        <li><a href="{{ route('web_reservations') }}">{{ __('My Page') }}</a></li>
+        <li><a href="{{ route('web_reservations') }}">{{ __('translation.My Page') }}</a></li>
 
-        <li><a href="{{ route('web_auth_logout') }}">{{ __('Logout') }}</a></li>
+        <li><a href="{{ route('web_auth_logout') }}">{{ __('translation.Logout') }}</a></li>
 
     </ul>
 

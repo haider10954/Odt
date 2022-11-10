@@ -39,7 +39,7 @@
 
                     <div class="header-right">
 
-                        <small>identify</small>
+                        <small>{{ __('translation.Menu') }}</small>
 
 
 

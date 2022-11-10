@@ -4,7 +4,7 @@
 
         <div class="sidemenu-header">
 
-            <p class="font-18 mb-0">{{ __('Meeting in attendace') }}</p>
+            <p class="font-18 mb-0">{{ __('translation.Meeting in attendace') }}</p>
 
         </div>
 
@@ -21,16 +21,16 @@
 
             <ul class="menu">
 
-                <li><a href="{{ route('web_tickets') }}">{{ __('Ticketing') }}</a></li>
+                <li><a href="{{ route('web_tickets') }}">{{ __('translation.Ticketing') }}</a></li>
 
                 <li>
                     <a href="javascript:void(0)"
-                        class="d-flex align-items-center justify-content-between submenu-toggle"><span>{{ __('Library') }}</span> <i
+                        class="d-flex align-items-center justify-content-between submenu-toggle"><span>{{ __('translation.Library') }}</span> <i
                             class="fa fa-angle-down"></i></a>
 
                     <ul class="submenu mt-3 mb-0" style="display: none;">
-                        <li><a href="{{ route('web_library') }}">{{ __('Reading') }}</a></li>
-                        <li><a href="{{ route('web_drawing') }}">{{ __('Drawing') }}</a></li>
+                        <li><a href="{{ route('web_library') }}">{{ __('translation.Reading') }}</a></li>
+                        <li><a href="{{ route('web_drawing') }}">{{ __('translation.Drawing') }}</a></li>
                     </ul>
                 </li>
 
