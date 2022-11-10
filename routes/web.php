@@ -51,6 +51,7 @@ Route::prefix('admin')->group(function () {
         Route::post('edit-books', [BookController::class, 'update_book'])->name('edit-books');
         Route::post('delete-book-page-images', [BookController::class, 'delete_book_page_images'])->name('delete_book_page_images');
         Route::post('delete-book-cover-image', [BookController::class, 'delete_book_cover_image'])->name('delete_book_cover_image');
+        Route::post('/delete-user' , [MemberController::class , 'delete_user'])->name('delete_user');
 
         Route::get('/member-management',[MemberController::class , 'member_listing'])->name('member-management');
         Route::post('/update-status', [TicketController::class , 'update_status'])->name('update_status');

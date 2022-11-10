@@ -96,7 +96,7 @@
         margin-right: 10px;
     }
 
-    .paginate a.active{
+    .paginate a.active {
         color: black;
     }
 
@@ -106,12 +106,14 @@
         color: #9FA2B4;
         border-radius: 50%;
     }
-    .card-content{
+
+    .card-content {
         border: 1px solid #DFE0EB;
         box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05);
         border-radius: 8px;
     }
-    .header-content{
+
+    .header-content {
         background: #fff;
     }
 </style>
@@ -136,7 +138,14 @@
         </form>
     </div>
 </div>
-
+<div>
+    @if (Session::has('removed'))
+    <p class="alert alert-info" id="responseMessage">{{ Session::get('removed') }}</p>
+    @endif
+    @if (Session::has('error'))
+    <p class="alert alert-danger" id="responseMessage">{{ Session::get('error') }}</p>
+    @endif
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="card card-content">
@@ -180,9 +189,13 @@
                                 </td>
                                 <td>{{ $u->email}}</td>
                                 <td>
-                                    <span class="dot-icon">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
+                                    <div class="dropdown d-inline-block">
+                                        <a type="button" class="dot-icon" data-bs-toggle="dropdown">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a href="javascript:void(0)" onclick="delete_record( '{{ $u->id }}')" class="dropdown-item text-danger"><span><i class="fa fa-trash pe-2"></i></span>Delete</a>
+                                        </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -195,10 +208,50 @@
         </div>
     </div>
 </div>
+
+<!-- Delete Record -->
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" action="{{ route('delete_user')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <p>Are you sure to delete ? </p>
+                        <input id="del_id" type="hidden" name="id">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('custom-script')
 <script>
+    var delModal = new bootstrap.Modal(document.getElementById("staticBackdrop"), {});
+
+    function delete_record(id) {
+        $('#del_id').val(id);
+        delModal.show();
+    }
+
+    $(document).ready(function() {
+        setTimeout(function() {
+            $("#responseMessage").hide()
+        }, 2000);
+    });
+
     function myFunction() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
