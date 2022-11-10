@@ -181,9 +181,9 @@
                 <div class="card-body description py-0 w-50">
                     <span class="bold-text">Club name: {{ $tickets->club_name }}</span> <br>
                     <span>Subjects : {{ $tickets->subject }} </span> <br>
-                    <span class="bold-text">Total number : {{ $tickets->number }} (명)</span> <br>
-                    <span>Meet up date : {{ $tickets->meet_up_date }}</span> <br>
-                    <span>Date of last meeting : {{ $tickets->date_last_meeting}}</span> <br>
+                    <span class="bold-text">Total number : {{ $tickets->number }}</span> <br>
+                    <span>Meet up date : {{  Carbon\Carbon::parse($tickets->meet_up_date)->format('Y-m-d') }}</span> <br>
+                    <span>Date of last meeting : {{ Carbon\Carbon::parse($tickets->date_last_meeting)->format('Y-m-d') }}</span> <br>
                     <span>Number of gatherings : {{ $tickets->gatherings }}</span> <br>
                     <span>Meet up til now: {{ $tickets->meetups }} (회)</span> <br>
                     <span class="bold-text">Tag 1 : {{ implode(' , ',$tickets->tag_1) }}</span> <br>
