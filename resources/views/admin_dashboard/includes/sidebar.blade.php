@@ -21,7 +21,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('library-management')}}" class="has-arrow waves-effect">
-                                    <i class="fa fa-users"></i>
+                                    <i class="fa fa-file"></i>
                                     <span key="t-file-manager">Library Management</span>
                                 </a>
                             </li>

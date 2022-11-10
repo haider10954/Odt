@@ -151,7 +151,6 @@
                 <table class="table align-middle table-nowrap mb-0 table-responsive" id="myTable">
                     <thead>
                         <tr>
-                            <th></th>
                             <th class="align-middle">Number</th>
                             <th class="align-middle">Name</th>
                             <th class="align-middle">Email</th>
@@ -163,12 +162,6 @@
                     <tbody>
                         @foreach ($reserve as $r)
                         <tr>
-                            <td>
-                                <div class="form-check font-size-16">
-                                    <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                    <label class="form-check-label" for="transactionCheck02"></label>
-                                </div>
-                            </td>
                             <td>{{ $loop -> index + 1 }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
