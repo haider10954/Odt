@@ -981,4 +981,15 @@ footer{
     width: 100%;
     object-fit: cover;
 }
+.ticket_item_content-footer{
+	height: 87px;
+    display: flex;
+    align-items: end;
+}
+.right-content .ticket_item_content_body{
+	height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
