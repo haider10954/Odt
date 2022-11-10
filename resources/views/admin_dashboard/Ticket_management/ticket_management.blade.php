@@ -175,10 +175,10 @@
     <div class="col-lg-4 searchable" data-name="{{ $tickets->club_name }}">
         <div class="card">
             <div class="d-flex align-items-start">
-                <div style="width:50%">
+                <div class="w-50">
                     <img src="{{ $tickets->ticketImage() }}" class="Image" alt="Card image">
                 </div>
-                <div class="card-body description py-0">
+                <div class="card-body description py-0 w-50">
                     <span class="bold-text">Club name: {{ $tickets->club_name }}</span> <br>
                     <span>Subjects : {{ $tickets->subject }} </span> <br>
                     <span class="bold-text">Total number : {{ $tickets->number }} (명)</span> <br>
@@ -191,7 +191,7 @@
                     <span>Description : {{ Str::limit($tickets->description, 40) }}</span> <br>
                     <span class="bold-text">Sub Description : {{ Str::limit($tickets->sub_description, 40) }}</span>
                     <div class="mb-2 mt-3 d-flex justify-content-center">
-                        <a class="button-reserve gap" href="{{ route('content-management' , $tickets->id)}}">Reservation Status</a>
+                        <a class="button-reserve gap" href="{{ route('content-management' , $tickets->id)}}">Reservations</a>
                         <a class="button-edit gap" href="{{ route('edit_ticket_form' , $tickets->id ) }}">Edit</a>
                         <button class="button-delete gap" onclick="deleteModal('{{ $tickets -> id }}')">Delete</button>
                     </div>
