@@ -176,71 +176,19 @@
                             </td>
                             <td>{{ $r->user->email }}</td>
                             <td>{{ $r->user->mobile}}</td>
-                            <td>{{ $r->status }}</td>
-                            @if ($r->status == 'pending')
+                            <td> <span class="badge bg-{{ $r->getStatus() }} p-1">{{ $r->status }}</span> </td>
                             <td>
-                                <button type="button" class="btn button-wait" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                    Pending
-                                </button>
                                 <div class="dropdown d-inline-block">
                                     <a type="button" class="dot-icon" data-bs-toggle="dropdown">
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </a>
-
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <form id="changeStatus" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" id="status_id" value="{{ $r->id}}">
-                                            <a onclick="changeStatus('in-Progress ')" class="dropdown-item">In-Progress</a>
-                                            <a onclick="changeStatus('pending')" class="dropdown-item">Pending</a>
-                                            <a onclick="changeStatus('completed')" class="dropdown-item">Confirm</a>
-                                        </form>
+                                        <a href="javascript:void(0)" onclick="changeStatus('in-Progress','{{ $r->id }}')" class="dropdown-item">In-Progress</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('pending','{{ $r->id }}')" class="dropdown-item">Pending</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('completed','{{ $r->id }}')" class="dropdown-item">Confirm</a>
                                     </div>
                                 </div>
                             </td>
-                            @elseif($r->status == 'in-progress')
-                            <td>
-                                <button type="button" class="btn button-confirm">
-                                    In-Progress
-                                </button>
-                                <div class="dropdown d-inline-block">
-                                    <a type="button" class="dot-icon" data-bs-toggle="dropdown">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <form id="changeStatus" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" id="status_id" value="{{ $r->id}}">
-                                            <a onclick="changeStatus('in-Progress ')" class="dropdown-item">In-Progress</a>
-                                            <a onclick="changeStatus('pending')" class="dropdown-item">Pending</a>
-                                            <a onclick="changeStatus('completed')" class="dropdown-item">Confirm</a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                            @else
-                            <td>
-                                <button type="button" class="btn button-confirm">
-                                    Completed
-                                </button>
-                                <div class="dropdown d-inline-block">
-                                    <a type="button" class="dot-icon" data-bs-toggle="dropdown">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <form id="changeStatus" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" id="status_id" value="{{ $r->id}}">
-                                            <a onclick="changeStatus('in-Progress ')" class="dropdown-item">In-Progress</a>
-                                            <a onclick="changeStatus('pending')" class="dropdown-item">Pending</a>
-                                            <a onclick="changeStatus('completed')" class="dropdown-item">Confirm</a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                            @endif
                         </tr>
                         @endforeach
                     </tbody>
@@ -276,16 +224,14 @@
         }
     }
 
-    function changeStatus(value) {
-        $("#changeStatus").on('click', function(e) {
-            e.preventDefault();
+    function changeStatus(value,id) {
             $.ajax({
                 type: "POST",
                 url: "{{ route('update_status') }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     status: value,
-                    id: $('#status_id').val(),
+                    id: id,
                 },
                 beforeSend: function() {},
                 success: function(res) {
@@ -295,9 +241,7 @@
                             location.reload();
                         }, 3000);
 
-                    }
-                    else
-                    {
+                    } else {
                         $('.prompt').html('<div class="alert alert-danger mb-3">' + res.message + '</div>');
                     }
                 },
@@ -306,7 +250,6 @@
                     console.log('error');
                 }
             });
-        });
     }
 </script>
 @endsection
