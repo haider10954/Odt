@@ -49,5 +49,6 @@ return [
     'Book Detail' => 'Book Detail',
     'Home' => 'Home',
     'Reservations' => 'Reservations',
-    'Menu' => 'Menu'
+    'Menu' => 'Menu',
+    'Sign Up' => 'Sign Up'
 ];

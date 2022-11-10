@@ -42,7 +42,7 @@
    
                 <p class="mt-4 text-muted text-center">
    
-                   <a href="javascript:void(0)" class="text-muted">{{ __('translation.Forget Password') }}?</a>   <span class="mx-2">|</span>  <a href="{{ route('web_signup') }}" class="text-muted">{{ __('translation.Signup') }}</a>
+                   <a href="{{ route('password.request') }}" class="text-muted">{{ __('translation.Forget Password') }}?</a>   <span class="mx-2">|</span>  <a href="{{ route('web_signup') }}" class="text-muted">{{ __('translation.Signup') }}</a>
    
                 </p>
    
