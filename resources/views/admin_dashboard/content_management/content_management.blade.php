@@ -289,11 +289,19 @@
                 },
                 beforeSend: function() {},
                 success: function(res) {
-                    $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
-                    setTimeout(function() {
-                        location.reload();
-                    }, 3000);
+                    if (res.success) {
+                        $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 3000);
+
+                    }
+                    else
+                    {
+                        $('.prompt').html('<div class="alert alert-danger mb-3">' + res.message + '</div>');
+                    }
                 },
+
                 error: function(e) {
                     console.log('error');
                 }
