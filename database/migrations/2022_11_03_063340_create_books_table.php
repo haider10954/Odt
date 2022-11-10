@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->longText('book_title');
             $table->longText('description');
-            $table->text('image');
-            $table->text('book_pages');
+            $table->text('image')->nullable();
+            $table->text('book_pages')->nullable();
             $table->timestamps();
         });
     }

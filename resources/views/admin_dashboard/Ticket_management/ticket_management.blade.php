@@ -188,8 +188,8 @@
                     <span>Meet up til now: {{ $tickets->meetups }} (회)</span> <br>
                     <span class="bold-text">Tag 1 : {{ implode(' , ',$tickets->tag_1) }}</span> <br>
                     <span>Tag 2 : {{ implode(' , ',$tickets->tag_2) }} </span> <br>
-                    <span>Description : {{ $tickets->description }}</span> <br>
-                    <span class="bold-text">Sub Description : {{ $tickets->sub_description }}</span>
+                    <span>Description : {{ Str::limit($tickets->description, 40) }}</span> <br>
+                    <span class="bold-text">Sub Description : {{ Str::limit($tickets->sub_description, 40) }}</span>
                     <div class="mb-2 mt-3 d-flex justify-content-center">
                         <a class="button-reserve gap" href="{{ route('content-management' , $tickets->id)}}">Reservation Status</a>
                         <a class="button-edit gap" href="{{ route('edit_ticket_form' , $tickets->id ) }}">Edit</a>
@@ -205,8 +205,8 @@
 <!--Add Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" id="modal-content">
+            <div class="modal-header" id="modal-header">
                 <h5 class="modal-title fw-bolder" id="exampleModalLabel">Meeting Information</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -334,7 +334,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="button-add-modal">Add</button>
+                    <button id="submitForm" type="button" class="button-add-modal">Add</button>
                     <button type="button" class="button-delete-modal">Delete</button>
                 </div>
             </form>
@@ -386,9 +386,13 @@
         $('#del_id').val(id);
         showModal.show();
     }
+    $('#submitForm').on('click', function() {
 
-    $("#ticketForm").on('submit', function(e) {
-        e.preventDefault();
+        $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
+
+        $('#exampleModal').animate({scrollTop:0}, '300');;
+        $("#submitForm").attr('disabled', '');
+
         var formData = new FormData($("#ticketForm")[0]);
         $.ajax({
             type: "POST",
@@ -424,7 +428,6 @@
 </script>
 
 <script>
-
     $("#myInput").on("keyup keypress", function() {
         var value = $(this).val();
         $(".searchable").each(function(index) {
@@ -432,14 +435,13 @@
             var id = $row.attr("data-name");
             if (id.indexOf(value) != 0) {
                 $(this).hide();
-            }
-            else {
+            } else {
                 $(this).show();
             }
         });
     });
 </script>
+<script>
 
+</script>
 @endsection
-
-

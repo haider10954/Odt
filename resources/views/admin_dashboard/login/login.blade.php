@@ -90,10 +90,6 @@
                                     <div class="mt-3 d-grid">
                                         <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
                                     </div>
-
-                                    <div class="mt-4 text-center">
-                                        <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
-                                    </div>
                                 </form>
                             </div>
 

@@ -15,9 +15,9 @@ class TicketController extends Controller
     {
         $ticket = Ticket::where('id', $id)->first();
         $reserve = Reservation::paginate(5);
-        $confirmed_reservations = Reservation::where('status' , 'completed')->count();
+        $confirmed_reservations = Reservation::where('status', 'completed')->count();
         $user = User::get();
-        return view('admin_dashboard.content_management.content_management', compact('ticket', 'reserve' , 'user' , 'confirmed_reservations'));
+        return view('admin_dashboard.content_management.content_management', compact('ticket', 'reserve', 'user', 'confirmed_reservations'));
     }
     public function ticket_listings()
     {
@@ -175,6 +175,28 @@ class TicketController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Ticket image deleted Successfully'
+            ]);
+        } else {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong, Please try again'
+            ]);
+        }
+    }
+
+    public function update_status(Request $request)
+    {
+        $status = $request->post('status');
+        $id = $request->post('id');
+        $ticket_status = Reservation::where('id', $id)->update([
+            'status' => $status,
+        ]);
+
+        if ($ticket_status) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Ticket Reservation Status Updated Successfully'
             ]);
         } else {
 

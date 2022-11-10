@@ -53,6 +53,7 @@ Route::prefix('admin')->group(function () {
         Route::post('delete-book-cover-image', [BookController::class, 'delete_book_cover_image'])->name('delete_book_cover_image');
 
         Route::get('/member-management',[MemberController::class , 'member_listing'])->name('member-management');
+        Route::post('/update-status', [TicketController::class , 'update_status'])->name('update_status');
     });
 });
 

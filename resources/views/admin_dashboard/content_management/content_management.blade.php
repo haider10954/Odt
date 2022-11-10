@@ -138,7 +138,7 @@
         </form>
     </div>
 </div>
-
+<div class="prompt"></div>
 <div class="row">
     <div class="col-lg-12">
         <div class="card card-content">
@@ -148,67 +148,110 @@
                 <p class="heading">Confirmed Participants : <span> {{ $confirmed_reservations }} / {{ $user->count() }} </span></p>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table align-middle table-nowrap mb-0" id="myTable">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th class="align-middle">Number</th>
-                                <th class="align-middle">Name</th>
-                                <th class="align-middle">Email</th>
-                                <th class="align-middle">Phone Number</th>
-                                <th class="align-middle">Status</th>
-                                <th class="align-middle">Reservation confirm</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($reserve as $r)
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
+                <table class="table align-middle table-nowrap mb-0 table-responsive" id="myTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="align-middle">Number</th>
+                            <th class="align-middle">Name</th>
+                            <th class="align-middle">Email</th>
+                            <th class="align-middle">Phone Number</th>
+                            <th class="align-middle">Status</th>
+                            <th class="align-middle">Reservation confirm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($reserve as $r)
+                        <tr>
+                            <td>
+                                <div class="form-check font-size-16">
+                                    <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
+                                    <label class="form-check-label" for="transactionCheck02"></label>
+                                </div>
+                            </td>
+                            <td>{{ $loop -> index + 1 }}</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3">
+                                        <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
                                     </div>
-                                </td>
-                                <td>{{ $loop -> index + 1 }}</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-3">
-                                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/user-avatar.png') }}" alt="Header Avatar">
-                                        </div>
-                                        <div>
-                                            <span class="span-text">{{ $r->user->name }}</span> <br />
-                                            <span class="update">Updated 1 day ago</span>
-                                        </div>
+                                    <div>
+                                        <span class="span-text">{{ $r->user->name }}</span> <br />
+                                        <span class="update">Updated 1 day ago</span>
                                     </div>
-                                </td>
-                                <td>{{ $r->user->email }}</td>
-                                <td>{{ $r->user->mobile}}</td>
-                                <td>{{ $r->status }}</td>
-                                @if ($r->status == 'pending')
-                                <td>
-                                    <button type="button" class="btn button-wait" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        Pending
-                                    </button>
-                                    <span class="dot-icon">
+                                </div>
+                            </td>
+                            <td>{{ $r->user->email }}</td>
+                            <td>{{ $r->user->mobile}}</td>
+                            <td>{{ $r->status }}</td>
+                            @if ($r->status == 'pending')
+                            <td>
+                                <button type="button" class="btn button-wait" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                    Pending
+                                </button>
+                                <div class="dropdown d-inline-block">
+                                    <a type="button" class="dot-icon" data-bs-toggle="dropdown">
                                         <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                                @else
-                                <td>
-                                    <button type="button" class="btn button-confirm" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        In-Progress
-                                    </button>
-                                    <span class="dot-icon">
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <form id="changeStatus" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" id="status_id" value="{{ $r->id}}">
+                                            <a onclick="changeStatus('in-Progress ')" class="dropdown-item">In-Progress</a>
+                                            <a onclick="changeStatus('pending')" class="dropdown-item">Pending</a>
+                                            <a onclick="changeStatus('completed')" class="dropdown-item">Confirm</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                            @elseif($r->status == 'in-progress')
+                            <td>
+                                <button type="button" class="btn button-confirm">
+                                    In-Progress
+                                </button>
+                                <div class="dropdown d-inline-block">
+                                    <a type="button" class="dot-icon" data-bs-toggle="dropdown">
                                         <i class="mdi mdi-dots-vertical"></i>
-                                    </span>
-                                </td>
-                                @endif
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <form id="changeStatus" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" id="status_id" value="{{ $r->id}}">
+                                            <a onclick="changeStatus('in-Progress ')" class="dropdown-item">In-Progress</a>
+                                            <a onclick="changeStatus('pending')" class="dropdown-item">Pending</a>
+                                            <a onclick="changeStatus('completed')" class="dropdown-item">Confirm</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                            @else
+                            <td>
+                                <button type="button" class="btn button-confirm">
+                                    Completed
+                                </button>
+                                <div class="dropdown d-inline-block">
+                                    <a type="button" class="dot-icon" data-bs-toggle="dropdown">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <form id="changeStatus" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" id="status_id" value="{{ $r->id}}">
+                                            <a onclick="changeStatus('in-Progress ')" class="dropdown-item">In-Progress</a>
+                                            <a onclick="changeStatus('pending')" class="dropdown-item">Pending</a>
+                                            <a onclick="changeStatus('completed')" class="dropdown-item">Confirm</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                            @endif
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                 <!-- end table-responsive -->
             </div>
             {{ $reserve->links('vendor.pagination.custom-pagination') }}
@@ -238,6 +281,31 @@
                 }
             }
         }
+    }
+
+    function changeStatus(value) {
+        $("#changeStatus").on('click', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "{{ route('update_status') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    status: value,
+                    id: $('#status_id').val(),
+                },
+                beforeSend: function() {},
+                success: function(res) {
+                    $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
+                    setTimeout(function() {
+                        location.reload();
+                    }, 3000);
+                },
+                error: function(e) {
+                    console.log('error');
+                }
+            });
+        });
     }
 </script>
 @endsection

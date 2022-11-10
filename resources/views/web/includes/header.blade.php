@@ -138,7 +138,6 @@
                 <li>
 
                     <a href="{{ route('web_auth_login') }}"><span>Login/Sign up</span></a>
-
                 </li>
 
             </ul>
