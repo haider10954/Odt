@@ -159,7 +159,7 @@
                     <table class="table align-middle table-nowrap mb-0" id="myTable">
                         <thead>
                             <tr>
-                                <th></th>
+                                
                                 <th class="align-middle">Number</th>
                                 <th colspan="2" class="align-middle">Title</th>
                             </tr>
@@ -167,12 +167,7 @@
                         <tbody>
                             @foreach ($book as $books)
                             <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input class="form-check-input border border-dark" type="checkbox" id="transactionCheck02">
-                                        <label class="form-check-label" for="transactionCheck02"></label>
-                                    </div>
-                                </td>
+
                                 <td>{{ $loop -> index + 1 }}</td>
                                 <td colspan="2">
                                     <div class="d-flex align-items-center justify-content-between">
