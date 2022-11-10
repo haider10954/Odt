@@ -40,7 +40,7 @@
     </div>
 </div>
 <div class="prompt"></div>
-<div class="row">
+<div class="row" id="onTop">
     <div class="col-lg-4 preview-img mt-4">
         <div id="main_image_view" class="h-100">
             <p class="d-flex align-items-center h-100 justify-content-center fw-bold fs-4">Preview Image</p>
@@ -93,7 +93,7 @@
             <div class="row mb-3" id="other_images_preview">
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-dark">Add Book</button>
+                <button type="submit" class="btn btn-dark" id="submitForm">Add Book</button>
             </div>
         </form>
     </div>
@@ -105,6 +105,8 @@
 <script src="{{ asset('assets/js/book.js') }}"></script>
 <script>
     $("#bookForm").on('submit', function(e) {
+        $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
+        $("#submitForm").attr('disabled', '');
         e.preventDefault();
         var formData = new FormData($("#bookForm")[0]);
         $.ajax({
@@ -120,10 +122,23 @@
 
             },
             success: function(res) {
-                $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
-                setTimeout(function() {
-                    window.location.href = "{{ route('library-management') }}";
-                }, 3000);
+                if (res.error)
+                {
+                    $('.prompt').html('<div class="alert alert-danger mb-3">' + res.message + '</div>');
+                    $('html, body').animate({
+                        scrollTop: $("html, body").offset().top
+                    }, 1000);
+                }
+                else
+                {
+                    $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
+                    $('html, body').animate({
+                        scrollTop: $("html, body").offset().top
+                    }, 1000);
+                    setTimeout(function() {
+                        window.location.href = "{{ route('library-management') }}";
+                    }, 3000);
+                }
             },
             error: function(e) {
                 console.log('error');

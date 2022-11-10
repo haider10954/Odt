@@ -65,7 +65,7 @@ class BookController extends Controller
             ]);
         } else {
             return json_encode([
-                'error' => false,
+                'error' => true,
                 'message' => 'Something went wrong Please try again.'
             ]);
         }
