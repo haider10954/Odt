@@ -1,8 +1,8 @@
 @extends('web.layouts.web_user_layout')
 
-@section('title', 'Odt - '.__('Tickets'))
+@section('title', 'Odt - '.__('translation.Tickets'))
 
-@section('page_title',__('Ticketing'))
+@section('page_title',__('translation.Ticketing'))
 
 @section('content')
 <div class="content-heading mb-4">
@@ -15,23 +15,23 @@
 </div>
 
 <div class="content-tags mb-5">
-    <p>“ {{ __('Sci-Fi Fiction, Movie and Coffee Lovers') }} ”</p>
+    <p>“ {{ __('translation.Sci-Fi Fiction, Movie and Coffee Lovers') }} ”</p>
     <div class="tags">
-        <span class="mx-2 badge-tag">{{ __('Seoul/Gyeonggi Office') }}</span>
-        <span class="mx-2 badge-tag">{{ __('workers meet') }}</span>
-        <span class="mx-2 badge-tag">{{ __('regularly in their') }}</span>
-        <span class="mx-2 badge-tag">{{ __('30s') }}</span>
+        <span class="mx-2 badge-tag">{{ __('translation.Seoul/Gyeonggi Office') }}</span>
+        <span class="mx-2 badge-tag">{{ __('translation.workers meet') }}</span>
+        <span class="mx-2 badge-tag">{{ __('translation.regularly in their') }}</span>
+        <span class="mx-2 badge-tag">{{ __('translation.30s') }}</span>
     </div>
 </div>
 
 <div class="mb-4">
     <ul class="tabs_links mb-2">
-        <li><a href="javascript:void(0)" class="active">{{ __('Scedule') }}</a></li>
-        <li><a href="javascript:void(0)">{{ __('Board') }}</a></li>
-        <li><a href="javascript:void(0)">{{ __('Number') }}</a></li>
-        <li><a href="javascript:void(0)">{{ __('Detail') }}</a></li>
+        <li><a href="javascript:void(0)" class="active">{{ __('translation.Scedule') }}</a></li>
+        <li><a href="javascript:void(0)">{{ __('translation.Board') }}</a></li>
+        <li><a href="javascript:void(0)">{{ __('translation.Number') }}</a></li>
+        <li><a href="javascript:void(0)">{{ __('translation.Detail') }}</a></li>
     </ul>
-    <a href="javascript:void(0)" class="btn btn-dark btn-custom mx-2">{{ __('Notice') }}</a>
+    <a href="javascript:void(0)" class="btn btn-dark btn-custom mx-2">{{ __('translation.Notice') }}</a>
 </div>
 
 <div class="tickets_stack mb-4">
@@ -86,15 +86,15 @@
                             <div class="ticket-item-detail mt-2">
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">{{ $item->meetups }} 도I</h4>
-                                    <p class="mb-0">{{ __('Encounters so far') }}</p>
+                                    <p class="mb-0">{{ __('translation.Encounters so far') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">{{\Carbon\Carbon::parse($item->date_last_meeting)->format('d M, Y')}}</h4>
-                                    <p class="mb-0">{{ __('Last meeting date') }}</p>
+                                    <p class="mb-0">{{ __('translation.Last meeting date') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">12도</h4>
-                                    <p class="mb-0">{{ __('Sillim Drawing') }}</p>
+                                    <p class="mb-0">{{ __('translation.Sillim Drawing') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
                                     <h4 class="mb-0">80%</h4>
@@ -117,7 +117,7 @@
     @endforeach
     @else
     <div class="text-center">
-        <h3>{{ __('No Tickets Found') }}</h3>
+        <h3>{{ __('translation.No Tickets Found') }}</h3>
     </div>
     @endif
 
@@ -130,17 +130,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('Confirm Reservation') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('translation.Confirm Reservation') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="prompt"></div>
                 <input type="hidden" id="confirmReserveTicketId">
-                <p>{{ __('Are you sure you want to reserve this ticket') }}?</p>
+                <p>{{ __('translation.Are you sure you want to reserve this ticket') }}?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
-                <a href="javascript:void(0)" id="confirmReservation" class="btn btn-dark">{{ __('Confirm') }}</a>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('translation.Close') }}</button>
+                <a href="javascript:void(0)" id="confirmReservation" class="btn btn-dark">{{ __('translation.Confirm') }}</a>
             </div>
         </div>
     </div>

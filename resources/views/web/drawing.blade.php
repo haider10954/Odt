@@ -1,8 +1,8 @@
 @extends('web.layouts.web_user_layout')
 
-@section('title', 'Odt - '.__('Drawing'))
+@section('title', 'Odt - '.__('translation.Drawing'))
 
-@section('page_title',__('Drawing'))
+@section('page_title',__('translation.Drawing'))
 
 @section('content')
 <div class="content-heading mb-4">
@@ -21,7 +21,7 @@
         @endforeach
     @else
         <div class="col-12 text-center">
-            <h4 class="my-3 font-weight-600">{{ __('No Books Found') }}</h4>
+            <h4 class="my-3 font-weight-600">{{ __('translation.No Books Found') }}</h4>
         </div>
     @endif
 </div>

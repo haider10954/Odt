@@ -1,8 +1,8 @@
 @extends('web.layouts.web_user_layout')
 
-@section('title', 'Odt - '.__('Book Detail'))
+@section('title', 'Odt - '.__('translation.Book Detail'))
 
-@section('page_title',__('Book Detail'))
+@section('page_title',__('translation.Book Detail'))
 
 @section('custom-style')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
