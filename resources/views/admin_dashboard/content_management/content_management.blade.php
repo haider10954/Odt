@@ -125,14 +125,14 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Ticket Management</h4>
+            <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Ticket Management')}}</h4>
         </div>
     </div>
 
     <div class="col-12">
         <form class="app-search d-none d-lg-block">
             <div class="position-relative">
-                <input type="text" class="form-control" placeholder="Search Tickets" id="myInput" onkeyup="myFunction()">
+                <input type="text" class="form-control" placeholder="{{ __('translation.Search Tickets') }}" id="myInput" onkeyup="myFunction()">
                 <span class="fa fa-search"></span>
             </div>
         </form>
@@ -143,21 +143,21 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content">
-                <p class="heading">Club Name : {{ $ticket->club_name }} <a style="margin-left: 20px;">Meet up date : {{ $ticket->meet_up_date->format('Y-m-d')}}</a></p>
-                <p class="heading">Registered Participants : <span>{{ $reserve->count() }} / {{ $user->count() }} </span> </p>
-                <p class="heading">Confirmed Participants : <span> {{ $confirmed_reservations }} / {{ $user->count() }} </span></p>
+                <p class="heading">{{ __('translation.Club name') }} : {{ $ticket->club_name }} <a style="margin-left: 20px;">{{ __('translation.Meet up Date') }} : {{ $ticket->meet_up_date->format('Y-m-d')}}</a></p>
+                <p class="heading">{{ __('translation.Registered Participants') }} : <span>{{ $reserve->count() }} / {{ $user->count() }} </span> </p>
+                <p class="heading">{{ __('translation.Confirmed Participants') }} : <span> {{ $confirmed_reservations }} / {{ $user->count() }} </span></p>
             </div>
             <div class="card-body">
                 <table class="table align-middle table-nowrap mb-0 table-responsive" id="myTable">
                     <thead>
                         <tr>
                             <th></th>
-                            <th class="align-middle">Number</th>
-                            <th class="align-middle">Name</th>
-                            <th class="align-middle">Email</th>
-                            <th class="align-middle">Phone Number</th>
-                            <th class="align-middle">Reservation Status</th>
-                            <th class="align-middle">Action</th>
+                            <th class="align-middle">{{ __('translation.Number')}}</th>
+                            <th class="align-middle">{{ __('translation.Name')}}</th>
+                            <th class="align-middle">{{ __('translation.Email Address')}}</th>
+                            <th class="align-middle">{{ __('translation.Mobile Number')}}</th>
+                            <th class="align-middle">{{ __('translation.Reservation Status')}}</th>
+                            <th class="align-middle">{{ __('translation.Action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -190,9 +190,9 @@
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:void(0)" onclick="changeStatus('in-Progress','{{ $r->id }}')" class="dropdown-item">In-Progress</a>
-                                        <a href="javascript:void(0)" onclick="changeStatus('pending','{{ $r->id }}')" class="dropdown-item">Pending</a>
-                                        <a href="javascript:void(0)" onclick="changeStatus('completed','{{ $r->id }}')" class="dropdown-item">Confirm</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('in-Progress','{{ $r->id }}')" class="dropdown-item">{{ __('translation.In-Progress') }}</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('pending','{{ $r->id }}')" class="dropdown-item">{{ __('translation.Pending')}}</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('completed','{{ $r->id }}')" class="dropdown-item">{{ __('translation.Confirm')}}</a>
                                     </div>
                                 </div>
                             </td>

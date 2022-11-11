@@ -79,5 +79,9 @@ return [
     'image' => 'Image',
     'Are you sure to delete ?' => 'Are you sure to delete ?',
     'Confirm Delete' => 'Confirm Delete',
-
+    'Registered Participants' => 'Registered Participants',
+    'Confirmed Participants' => 'Confirmed Participants',
+    'Reservation Status' => 'Reservation Status',
+    'In-Progress' => 'In-Progress',
+    'Pending' => 'Pending',
 ];

@@ -78,5 +78,10 @@ return [
     'Edit Ticket' => '티켓 수정',
     'image' => '영상',
     'Are you sure to delete ?' => '삭제하시겠습니까?',
-    'Confirm Delete' => '삭제 확인'
+    'Confirm Delete' => '삭제 확인',
+    'Registered Participants' => '등록된 참가자',
+    'Confirmed Participants' => '확인된 참가자',
+    'Reservation Status' => '예약현황',
+    'In-Progress' => '진행 중',
+    'Pending' => '보류 중',
 ];
