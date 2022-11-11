@@ -165,7 +165,7 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <div id="toHide1" class="mb-2 justify-content-center align-items-center preview-img">
+            <div id="toHide1" class="mb-2 preview-img">
                 <div class="display-img h-100" id='toHide'>
                     <img class="img-fluid img-block-" src="{{ $ticket->ticketImage() }}" data-original-src="{{ $ticket->ticketImage() }}" id="multi_index_${index}" data-index="${index}">
                     <a type="button" class="text-danger del-icon" onclick="delete_Ticket_image('{{ $ticket->ticketImage() }}')">
