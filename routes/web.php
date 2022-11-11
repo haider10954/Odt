@@ -85,6 +85,8 @@ Route::prefix('web')->group(function(){
     });
 });
 
+Route::get('/send-mail' ,[UserTicketController::class, 'send_mail'])->name('send_mail');
+
 
 Auth::routes();
 
