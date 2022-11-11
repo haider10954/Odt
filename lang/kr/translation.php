@@ -3,7 +3,7 @@
 return [
     'Login' => '로그인',
     'Email Address' => '이메일주소',
-    'Password' => '비밀번호', 
+    'Password' => '비밀번호',
     'Forget Password' => '비밀번호 찾기',
     'Signup' => '회원가입',
     'Name' => '이름',
@@ -14,7 +14,7 @@ return [
     'My Page' => '마이페이지',
     'Logout' => '로그아웃',
     'Meeting in attendace' => '참석자',
-    'Reading' => '독서', 
+    'Reading' => '독서',
     'Drawing' => '드로잉',
     'Sci-Fi Fiction, Movie and Coffee Lovers' => '공상 과학 소설, 영화 그리고 커피를 좋아하는 사람들',
     'Seoul/Gyeonggi Office' => '서울/경기',
@@ -23,7 +23,7 @@ return [
     '30s' => '30대',
     'Scedule' => '일정',
     'Board' => '게시판',
-    'Number' => '인원', 
+    'Number' => '인원',
     'Detail' => '자세히',
     'Notice' => '공지사항',
     'Encounters so far' => '모인 횟수',
@@ -53,5 +53,10 @@ return [
     'Sign Up' => '가입하기',
     'Email or password is invalid' => '이메일 또는 비밀번호가 잘못되었습니다',
     'Reset Password' => '암호를 재설정',
-    'Send Password Reset Link' => '비밀번호 재설정 링크 보내기'
+    'Send Password Reset Link' => '비밀번호 재설정 링크 보내기',
+    'Ticket Management' => '티켓 관리',
+    'Library Management' => '도서관 관리',
+    'Member Management' => '회원 관리',
+    'Settings' => '설정'
+
 ];

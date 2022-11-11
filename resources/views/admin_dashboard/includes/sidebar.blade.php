@@ -9,27 +9,27 @@
                             <li >
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="bx bx-home-circle"></i>
-                                    <span key="t-dashboards">HOME</span>
+                                    <span key="t-dashboards">{{ __('translation.Home')}}</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('ticket-management') }}" class="has-arrow waves-effect">
                                     <i class="bx bx-layout"></i>
-                                    <span key="t-layouts">Ticket Management</span>
+                                    <span key="t-layouts">{{ __('translation.Ticket Management') }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('library-management')}}" class="has-arrow waves-effect">
                                     <i class="fa fa-file"></i>
-                                    <span key="t-file-manager">Library Management</span>
+                                    <span key="t-file-manager">{{ __('translation.Library Management')}}</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('member-management')}}" class="has-arrow waves-effect">
                                     <i class="fa fa-users"></i>
-                                    <span key="t-file-manager">Member Management</span>
+                                    <span key="t-file-manager">{{ __('translation.Member Management')}}</span>
                                 </a>
                             </li>
 
@@ -37,7 +37,7 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="bx bx-cog"></i>
-                                    <span key="t-ecommerce">Settings</span>
+                                    <span key="t-ecommerce">{{ __('translation.Settings')}}</span>
                                 </a>
                             </li>
                         </ul>
