@@ -1,47 +1,46 @@
-@extends('layouts.app')
+@extends('web.layouts.web_layout')
+
+@section('title','Odt - '.__('translation.Login'))
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<div class="auth-wrapper">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <div class="auth-form-container">
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+         <a href="{{ route('web_index') }}" class="mb-4 text-center heading">odt.</a>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+        <form method="POST" action="{{ route('password.email') }}">
+            @csrf
+            <div class="auth-form">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <p class="font-weight-600">{{ __('translation.Reset Password') }}</p>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                @if (session('status'))
+                    <div class="alert alert-success mb-3" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+   
+                <div class="form-group mb-3">
+                    <input type="email" name="email" id="email" class="form-control rounded-0" value="{{ old('email') }}" placeholder="{{ __('translation.Email Address') }}">
+                    @error('email')
+                        <small class="text-danger d-block text-left">{{ $message }}</small>
+                    @enderror
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
+   
+                <button type="submit" class="btn w-100 btn-theme btn-warning rounded-0">{{ __('translation.Send Password Reset Link') }}</button>
+   
+                <p class="mt-4 text-muted text-center">
+   
+                   <a href="{{ route('password.request') }}" class="text-muted"><a href="{{ route('web_signup') }}" class="text-muted">{{ __('translation.Signup') }}</a>
+   
+                </p>
+   
             </div>
-        </div>
+        </form>
+
     </div>
-</div>
+
+ </div>
 @endsection

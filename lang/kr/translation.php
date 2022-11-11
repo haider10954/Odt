@@ -51,5 +51,7 @@ return [
     'Reservations' => '예약',
     'Menu' => '메뉴',
     'Sign Up' => '가입하기',
-    'Email or password is invalid' => '이메일 또는 비밀번호가 잘못되었습니다'
+    'Email or password is invalid' => '이메일 또는 비밀번호가 잘못되었습니다',
+    'Reset Password' => '암호를 재설정',
+    'Send Password Reset Link' => '비밀번호 재설정 링크 보내기'
 ];

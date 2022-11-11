@@ -51,5 +51,7 @@ return [
     'Reservations' => 'Reservations',
     'Menu' => 'Menu',
     'Sign Up' => 'Sign Up',
-    'Email or password is invalid' => 'Email or password is invalid'
+    'Email or password is invalid' => 'Email or password is invalid',
+    'Reset Password' => 'Reset Password',
+    'Send Password Reset Link' => 'Send Password Reset Link'
 ];
