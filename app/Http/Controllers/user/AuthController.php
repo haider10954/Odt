@@ -40,6 +40,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            if(session()->has('redirect_route') && !empty(session()->get('redirect_route'))){
+                $redirect_to = session()->get('redirect_route');
+                session()->forget('redirect_route');
+                return redirect()->route($redirect_to);
+            }
             return redirect()->route('web_tickets');
         } else {
             return redirect()->back()->with('message', __('translation.Email or password is invalid'));

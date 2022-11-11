@@ -22,9 +22,9 @@ class TicketController extends Controller
             'status' => 'pending'
         ]);
         if($addReservation){
-            return response()->json(['Success'=>'true','Msg'=>'Ticket Reserved Successfully']);
+            return response()->json(['Success'=>'true','Msg'=>__('Ticket Reserved Successfully')]);
         }else{
-            return response()->json(['Success'=>'false','Msg'=>'An Unknown Error Exist , Please try again']);
+            return response()->json(['Success'=>'false','Msg'=>__('An Unknown Error Exist , Please try again')]);
         }
     }
     public function reservations(){

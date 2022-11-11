@@ -6,7 +6,6 @@
 <div class="auth-wrapper">
 
     <div class="auth-form-container">
-
          <a href="{{ route('web_index') }}" class="mb-4 text-center heading">odt.</a>
 
         <form action="{{ route('web_auth_login') }}" method="POST">
