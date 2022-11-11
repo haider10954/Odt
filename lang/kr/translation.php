@@ -82,7 +82,7 @@ return [
     'Registered Participants' => '등록된 참가자',
     'Confirmed Participants' => '확인된 참가자',
     'Reservation Status' => '예약현황',
-    'in-Progress' => '진행 중',
+    'in-progress' => '진행 중',
     'pending' => '보류 중',
     'completed' => '완전한',
     'Search all books' => '모든 도서 검색',
