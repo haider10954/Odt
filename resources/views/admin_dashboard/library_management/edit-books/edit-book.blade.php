@@ -59,7 +59,7 @@
     <div class="col-lg-4 mt-4">
         <div id="toHide1" class="mb-2 justify-content-center align-items-center preview-img">
             <div class="display-img h-100" id='toHide'>
-                <img class="img-fluid img-block-" src="{{ $book->bookImage() }}" data-original-src="{{ $book->bookImage() }}" id="multi_index_${index}" data-index="${index}">
+                <img class="img-fluid h-100" src="{{ $book->bookImage() }}" data-original-src="{{ $book->bookImage() }}" id="multi_index_${index}" data-index="${index}">
                 <a type="button" class="text-danger del-icon-cover" onclick="delete_book_cover('{{ $book->bookImage() }}')">
                     <i class="fa fa-times font-18 "></i>
                 </a>
