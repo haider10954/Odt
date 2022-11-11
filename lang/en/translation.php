@@ -97,5 +97,10 @@ return [
     'Book Pages' => 'Book Pages',
     'Save' => 'Save',
     'User' => 'User',
-    'User Email' => 'User Email'
+    'User Email' => 'User Email',
+    'Welcome Back !' => 'Welcome Back !',
+    'Sign in to continue to ODT.' => 'Sign in to continue to ODT.',
+    'Log In' => 'Log In',
+    'Enter password' =>'Enter password',
+    'Enter your email address' => 'Enter your email address'
 ];

@@ -28,8 +28,8 @@
                             <div class="row">
                                 <div class="col-7">
                                     <div class="text-primary p-4">
-                                        <h5 class="text-primary">Welcome Back !</h5>
-                                        <p>Sign in to continue to ODT.</p>
+                                        <h5 class="text-primary">{{ __('translation.Welcome Back !')}}</h5>
+                                        <p>{{ __('translation.Sign in to continue to ODT.')}}</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
@@ -62,17 +62,17 @@
                                     @endif
                                     @csrf
                                     <div class="mb-3">
-                                        <label class="form-label" for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
+                                        <label class="form-label" for="email">{{ __('translation.Email Address')}}</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="{{ __('translation.Enter your email address')}}">
                                         @error('email')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">{{ __('translation.Password')}}</label>
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input type="password" class="form-control" name="password" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                                            <input type="password" class="form-control" name="password" placeholder="{{ __('translation.Enter password')}}" aria-label="Password" aria-describedby="password-addon">
                                             <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                             @error('password')
                                             <p class="text-danger">{{ $message }}</p>
@@ -80,30 +80,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="remember-check">
-                                        <label class="form-check-label" for="remember-check">
-                                            Remember me
-                                        </label>
-                                    </div>
-
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">{{ __('translation.Log In')}}</button>
                                     </div>
                                 </form>
                             </div>
 
                         </div>
                     </div>
-                    <div class="mt-5 text-center">
-
-                        <div>
-                            <p>© <script>
-                                    document.write(new Date().getFullYear())
-                                </script> ODT. Crafted with <i class="mdi mdi-heart text-danger"></i> by Microbeck</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

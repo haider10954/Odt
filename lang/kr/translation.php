@@ -97,5 +97,10 @@ return [
     'Book Pages' => '책 페이지',
     'Save' => '구하다',
     'User' => '사용자',
-    'User Email' => '사용자 이메일'
+    'User Email' => '사용자 이메일',
+    'Welcome Back !' => '다시 오신 것을 환영합니다!',
+    'Sign in to continue to ODT.' => 'ODT를 계속하려면 로그인하세요.',
+    'Log In' => '로그인',
+    'Enter password' =>'암호를 입력',
+    'Enter your email address' => '이메일 주소를 입력하세요'
 ];
