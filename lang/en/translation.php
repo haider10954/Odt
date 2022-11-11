@@ -106,4 +106,5 @@ return [
     'Submit' => 'Submit',
     'Already Uploaded Images' => 'Already Uploaded Images',
     'Edit Book' => 'Edit Book',
+    'Processing' => 'Processing'
 ];

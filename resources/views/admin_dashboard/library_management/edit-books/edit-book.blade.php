@@ -1,6 +1,6 @@
 @extends('admin_dashboard.Layout.layout')
 
-@section('title' , 'Add Books')
+@section('title' , 'Edit Books')
 @section('custom-style')
 <style>
     .display-img {

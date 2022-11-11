@@ -106,4 +106,5 @@ return [
     'Submit' => '제출하다',
     'Edit Book' => '도서 편집',
     'Already Uploaded Images' => '이미 업로드된 이미지',
+    'Processing' => '처리'
 ];
