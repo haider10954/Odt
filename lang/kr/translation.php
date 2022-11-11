@@ -57,6 +57,26 @@ return [
     'Ticket Management' => '티켓 관리',
     'Library Management' => '도서관 관리',
     'Member Management' => '회원 관리',
-    'Settings' => '설정'
-
+    'Settings' => '설정',
+    'Search Tickets' => '티켓 검색',
+    'Ticket ongoing' => '티켓 진행 중',
+    'Add Tickets' => '티켓 추가',
+    'Edit' => '편집하다',
+    'Delete' => '삭제',
+    'subject' => '주제',
+    'Total Number' => '총 수',
+    'Meet up date' => '미팅 날짜',
+    'Date of last meeting' => '마지막 회의 날짜',
+    'Number of gatherings' => '모임 수',
+    'Meet up til now' => '지금까지 만나보세요',
+    'Tag_1' => '태그 1',
+    'Tag_2' => '태그 2',
+    'Description' => '설명',
+    'Sub Description' => '하위 설명',
+    'Meeting Information' => '회의 정보',
+    'Add' => '추가하다',
+    'Edit Ticket' => '티켓 수정',
+    'image' => '영상',
+    'Are you sure to delete ?' => '삭제하시겠습니까?',
+    'Confirm Delete' => '삭제 확인'
 ];

@@ -134,14 +134,14 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Ticket Management</h4>
+            <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Ticket Management')}}</h4>
         </div>
     </div>
 
     <div class="col-12">
         <form class="app-search d-none d-lg-block">
             <div class="position-relative">
-                <input type="text" class="form-control" placeholder="Search Tickets" id="myInput">
+                <input type="text" class="form-control" placeholder="{{ __('translation.Search Tickets')}}" id="myInput">
                 <span class="fa fa-search"></span>
             </div>
         </form>
@@ -151,9 +151,9 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Ticket ongoing <span class="span-text"> {{ $ticket->count() }}</span>
+            <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Ticket ongoing') }} <span class="span-text"> {{ $ticket->count() }}</span>
                 <span style="padding-left: 30px;">
-                    <button type="button" class="button-add" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Tickets</button>
+                    <button type="button" class="button-add" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ __('translation.Add Tickets')}}</button>
                 </span>
             </h4>
         </div>
@@ -179,21 +179,21 @@
                     <img src="{{ $tickets->ticketImage() }}" class="Image" alt="Card image">
                 </div>
                 <div class="card-body description py-0 w-50">
-                    <span class="bold-text">Club name: {{ $tickets->club_name }}</span> <br>
-                    <span>Subjects : {{ $tickets->subject }} </span> <br>
-                    <span class="bold-text">Total number : {{ $tickets->number }}</span> <br>
-                    <span>Meet up date : {{  Carbon\Carbon::parse($tickets->meet_up_date)->format('Y-m-d') }}</span> <br>
-                    <span>Date of last meeting : {{ Carbon\Carbon::parse($tickets->date_last_meeting)->format('Y-m-d') }}</span> <br>
-                    <span>Number of gatherings : {{ $tickets->gatherings }}</span> <br>
-                    <span>Meet up til now: {{ $tickets->meetups }} (회)</span> <br>
-                    <span class="bold-text">Tag 1 : {{ implode(' , ',$tickets->tag_1) }}</span> <br>
-                    <span>Tag 2 : {{ implode(' , ',$tickets->tag_2) }} </span> <br>
-                    <span>Description : {{ Str::limit($tickets->description, 40) }}</span> <br>
-                    <span class="bold-text">Sub Description : {{ Str::limit($tickets->sub_description, 40) }}</span>
+                    <span class="bold-text">{{ __('translation.Club name') }}: {{ $tickets->club_name }}</span> <br>
+                    <span>{{ __('translation.subject') }} : {{ $tickets->subject }} </span> <br>
+                    <span class="bold-text">{{ __('translation.Total Number') }} : {{ $tickets->number }}</span> <br>
+                    <span>{{ __('translation.Meet up Date') }} : {{  Carbon\Carbon::parse($tickets->meet_up_date)->format('Y-m-d') }}</span> <br>
+                    <span>{{ __('translation.Date of last meeting') }} : {{ Carbon\Carbon::parse($tickets->date_last_meeting)->format('Y-m-d') }}</span> <br>
+                    <span>{{ __('translation.Number of gatherings') }} : {{ $tickets->gatherings }}</span> <br>
+                    <span>{{ __('translation.Meet up til now')}} : {{ $tickets->meetups }} (회)</span> <br>
+                    <span class="bold-text">{{ __('translation.Tag_1') }} : {{ implode(' , ',$tickets->tag_1) }}</span> <br>
+                    <span>{{ __('translation.Tag_2') }} : {{ implode(' , ',$tickets->tag_2) }} </span> <br>
+                    <span>{{ __('translation.Description') }} : {{ Str::limit($tickets->description, 40) }}</span> <br>
+                    <span class="bold-text">{{ __('translation.Sub Description') }} : {{ Str::limit($tickets->sub_description, 40) }}</span>
                     <div class="mb-2 mt-3 d-flex justify-content-center">
-                        <a class="button-reserve gap" href="{{ route('content-management' , $tickets->id)}}">Reservations</a>
-                        <a class="button-edit gap" href="{{ route('edit_ticket_form' , $tickets->id ) }}">Edit</a>
-                        <button class="button-delete gap" onclick="deleteModal('{{ $tickets -> id }}')">Delete</button>
+                        <a class="button-reserve gap" href="{{ route('content-management' , $tickets->id)}}">{{ __('translation.Reservations')}}</a>
+                        <a class="button-edit gap" href="{{ route('edit_ticket_form' , $tickets->id ) }}">{{ __('translation.Edit')}}</a>
+                        <button class="button-delete gap" onclick="deleteModal('{{ $tickets -> id }}')">{{ __('translation.Delete')}}</button>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" id="modal-content">
             <div class="modal-header" id="modal-header">
-                <h5 class="modal-title fw-bolder" id="exampleModalLabel">Meeting Information</h5>
+                <h5 class="modal-title fw-bolder" id="exampleModalLabel">{{ __('translation.Meeting Information')}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="prompt p-3"></div>
@@ -217,7 +217,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Club name</label>
+                                <label class="form-label">{{ __('translation.Club name')}}</label>
                                 <input type="text" class="form-control" name="club_name">
                                 @error('club_name')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -227,7 +227,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Total number</label>
+                                <label class="form-label">{{ __('translation.Total Number')}}</label>
                                 <input type="text" class="form-control" name="total_number">
                                 @error('total_number')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -237,7 +237,7 @@
 
                         <div class="col-lg-12">
                             <div class="form-group mb-2">
-                                <label class="form-label">Subjects</label>
+                                <label class="form-label">{{ __('translation.subject') }}</label>
                                 <input type="text" class="form-control" name="subject">
                                 @error('subject')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -247,7 +247,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Meet up date</label>
+                                <label class="form-label">{{ __('translation.Meet up Date')}}</label>
                                 <input type="date" class="form-control" name="meet_up_date">
                                 @error('meet_up_date')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -257,7 +257,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Date of Last meeting</label>
+                                <label class="form-label">{{ __('translation.Date of last meeting')}}</label>
                                 <input type="date" class="form-control" name="last_date">
                                 @error('last_date')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -267,7 +267,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Number of gatherings</label>
+                                <label class="form-label">{{ __('translation.Number of gatherings')}}</label>
                                 <input type="text" class="form-control" name="number_of_gathering">
                                 @error('number_of_gathering')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -277,7 +277,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Meet up til now</label>
+                                <label class="form-label">{{ __('translation.Meet up til now')}}</label>
                                 <input type="text" class="form-control" name="meet_now">
                                 @error('meet_now')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -287,7 +287,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Tag 1</label>
+                                <label class="form-label">{{ __('translation.Tag_1')}}</label>
                                 <input type="text" class="form-control" id="tags" data-role="tagsinput" name="tag_1">
                                 @error('tag_1')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -297,7 +297,7 @@
 
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
-                                <label class="form-label">Tag 2</label>
+                                <label class="form-label">{{ __('translation.Tag_2')}}</label>
                                 <input type="text" class="form-control" id="tags2" data-role="tagsinput" name="tag_2">
                                 @error('tag_2')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -307,7 +307,7 @@
 
                         <div class="col-lg-12">
                             <div class="form-group mb-2">
-                                <label class="form-label">Description</label>
+                                <label class="form-label">{{ __('translation.Description')}}</label>
                                 <textarea type="text" class="form-control" name="description" rows="2" style="resize: none;"> </textarea>
                                 @error('description')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -317,7 +317,7 @@
 
                         <div class="col-lg-12">
                             <div class="form-group mb-2">
-                                <label class="form-label">Sub Description </label>
+                                <label class="form-label">{{ __('translation.Sub Description')}}</label>
                                 <textarea type="text" class="form-control" name="sub_description" rows="2" style="resize: none;"> </textarea>
                                 @error('sub_description')
                                 <p style="color:#d02525;">{{$message}}</p>
@@ -327,15 +327,15 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group mb-2">
-                                <label class="form-label">Image </label>
+                                <label class="form-label">{{ __('translation.Meet up Date')}}</label>
                                 <input type="file" class="form-control" name="image" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="submitForm" type="button" class="button-add-modal">Add</button>
-                    <button type="button" class="button-delete-modal">Delete</button>
+                    <button id="submitForm" type="button" class="button-add-modal">{{ __('translation.Add') }}</button>
+                    <button type="button" class="button-delete-modal">{{ __('translation.Delete')}}</button>
                 </div>
             </form>
         </div>
