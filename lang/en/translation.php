@@ -106,5 +106,10 @@ return [
     'Submit' => 'Submit',
     'Already Uploaded Images' => 'Already Uploaded Images',
     'Edit Book' => 'Edit Book',
-    'Processing' => 'Processing'
+    'Processing' => 'Processing',
+    'Ticket Reserved Successfully' => 'Ticket Reserved Successfully',
+    'An Unknown Error Exist , Please try again' => 'An Unknown Error Exist , Please try again',
+    'Search all members' => 'Search all members' ,
+    'Total members' => 'Total members',
+    'Member Since' =>'Member Since'
 ];

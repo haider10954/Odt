@@ -106,5 +106,10 @@ return [
     'Submit' => '제출하다',
     'Edit Book' => '도서 편집',
     'Already Uploaded Images' => '이미 업로드된 이미지',
-    'Processing' => '처리'
+    'Processing' => '처리',
+    'Ticket Reserved Successfully' => '티켓이 성공적으로 예약되었습니다',
+    'An Unknown Error Exist , Please try again' => '알 수 없는 오류가 있습니다. 다시 시도하십시오.',
+    'Search all members' =>'모든 회원 검색',
+    'Total Members' => '총 회원' ,
+    'Member Since' => '회원 가입일'
 ];
