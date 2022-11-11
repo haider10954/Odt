@@ -165,7 +165,7 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <div id="toHide1" class="mb-2 justify-content-center align-items-center preview-img">
+            <div id="toHide1" class="mb-2 preview-img">
                 <div class="display-img h-100" id='toHide'>
                     <img class="img-fluid img-block-" src="{{ $ticket->ticketImage() }}" data-original-src="{{ $ticket->ticketImage() }}" id="multi_index_${index}" data-index="${index}">
                     <a type="button" class="text-danger del-icon" onclick="delete_Ticket_image('{{ $ticket->ticketImage() }}')">
@@ -176,7 +176,7 @@
         </div>
     </div>
     <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Edit</button>
+        <button type="submit" id="submitForm" class="btn btn-primary">Edit</button>
         <button type="button" class="btn btn-dark">Delete</button>
     </div>
 </form>
@@ -253,6 +253,8 @@
     }
 
     $("#ticketEditForm").on('submit', function(e) {
+        $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
+        $("#submitForm").attr('disabled', '');
         e.preventDefault();
         var formData = new FormData($("#ticketEditForm")[0]);
         $.ajax({
@@ -268,10 +270,20 @@
 
             },
             success: function(res) {
-                $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
-                setTimeout(function() {
-                    window.location.href = "{{ route('ticket-management') }}";
-                }, 3000);
+                if (res.success) {
+                    $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
+                    $('html, body').animate({
+                        scrollTop: $("html, body").offset().top
+                    }, 1000);
+                    setTimeout(function() {
+                        window.location.href = "{{ route('ticket-management') }}";
+                    }, 3000);
+                } else {
+                    $('.prompt').html('<div class="alert alert-danger mb-3">' + res.message + '</div>');
+                    $('html, body').animate({
+                        scrollTop: $("html, body").offset().top
+                    }, 1000);
+                }
             },
             error: function(e) {
                 console.log('error');
