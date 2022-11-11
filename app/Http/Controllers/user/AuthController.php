@@ -42,7 +42,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('web_tickets');
         } else {
-            return redirect()->back()->with('message', 'Email or password is invalid');
+            return redirect()->back()->with('message', __('translation.Email or password is invalid'));
         }
     }
 

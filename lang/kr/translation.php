@@ -50,5 +50,6 @@ return [
     'Home' => '홈',
     'Reservations' => '예약',
     'Menu' => '메뉴',
-    'Sign Up' => '가입하기'
+    'Sign Up' => '가입하기',
+    'Email or password is invalid' => '이메일 또는 비밀번호가 잘못되었습니다'
 ];

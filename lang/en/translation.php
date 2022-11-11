@@ -50,5 +50,6 @@ return [
     'Home' => 'Home',
     'Reservations' => 'Reservations',
     'Menu' => 'Menu',
-    'Sign Up' => 'Sign Up'
+    'Sign Up' => 'Sign Up',
+    'Email or password is invalid' => 'Email or password is invalid'
 ];
