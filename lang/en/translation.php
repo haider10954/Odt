@@ -3,7 +3,7 @@
 return [
     'Login' => 'Login',
     'Email Address' => 'Email Address',
-    'Password' => 'Password', 
+    'Password' => 'Password',
     'Forget Password' => 'Forget Password',
     'Signup' => 'Signup',
     'Name' => 'Name',
@@ -53,5 +53,9 @@ return [
     'Sign Up' => 'Sign Up',
     'Email or password is invalid' => 'Email or password is invalid',
     'Reset Password' => 'Reset Password',
-    'Send Password Reset Link' => 'Send Password Reset Link'
+    'Send Password Reset Link' => 'Send Password Reset Link',
+    'Ticket Management' => 'Ticket Management',
+    'Library Management' => 'Library Management',
+    'Member Management' => 'Member Management',
+    'Settings' => 'Settings'
 ];
