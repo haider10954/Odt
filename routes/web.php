@@ -61,6 +61,14 @@ Route::prefix('admin')->group(function () {
 Route::prefix('web')->group(function(){
     Route::view('/','web.index')->name('web_index');
 
+    Route::get('/tickets',[UserTicketController::class,'tickets'])->name('web_tickets');
+
+    Route::get('/library',[LibraryController::class,'reading'])->name('web_library');
+
+    Route::get('/drawing',[LibraryController::class,'drawing'])->name('web_drawing');
+
+    Route::get('/book-detail/{id}',[LibraryController::class,'book_detail'])->name('web_book_detail');
+
     Route::middleware('guest')->group(function () {
         Route::view('/signup','web.signup')->name('web_signup');
         Route::post('/auth-signup',[UserAuthController::class,'signup'])->name('web_auth_signup');
@@ -72,16 +80,9 @@ Route::prefix('web')->group(function(){
     Route::middleware('auth')->group(function () {
         Route::get('/logout' ,[UserAuthController::class, 'logout'])->name('web_auth_logout');
 
-        Route::get('/tickets',[UserTicketController::class,'tickets'])->name('web_tickets');
         Route::post('/reserve-ticket',[UserTicketController::class,'reserve_ticket'])->name('web_reserve_ticket');
 
         Route::get('/reservations',[UserTicketController::class,'reservations'])->name('web_reservations');
-
-        Route::get('/library',[LibraryController::class,'reading'])->name('web_library');
-
-        Route::get('/drawing',[LibraryController::class,'drawing'])->name('web_drawing');
-
-        Route::get('/book-detail/{id}',[LibraryController::class,'book_detail'])->name('web_book_detail');
     });
 });
 
