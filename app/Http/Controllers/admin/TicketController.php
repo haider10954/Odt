@@ -145,12 +145,12 @@ class TicketController extends Controller
         }
         if ($ticket) {
             return json_encode([
-                'error' => false,
+                'success' => true,
                 'message' => 'Ticket has been update successfully.'
             ]);
         } else {
             return json_encode([
-                'error' => false,
+                'success' => false,
                 'message' => 'Something went wrong Please try again.'
             ]);
         }
