@@ -125,7 +125,7 @@
 
                 <li>
 
-                    <a href="{{ __('web_library') }}"><span>{{ __('translation.Library') }}</span></a>
+                    <a href="{{ route('web_library') }}"><span>{{ __('translation.Library') }}</span></a>
 
                 </li>
 
@@ -166,7 +166,7 @@
 
                     <li class="lavel-1"><a href="{{ route('web_tickets') }}"><span>{{ __('translation.Ticketing') }}</span></a></li>
 
-                    <li class="lavel-1"><a href="{{ __('web_library') }}"><span>{{ __('translation.Library') }}</span></a></li>
+                    <li class="lavel-1"><a href="{{ route('web_library') }}"><span>{{ __('translation.Library') }}</span></a></li>
 
                     <li class="lavel-1"><a href="{{ route('web_reservations') }}"><span>{{ __('translation.My Page') }}</span></a></li>
 
