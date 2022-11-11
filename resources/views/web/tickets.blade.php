@@ -157,7 +157,7 @@
         $('#confirmReserveTicketId').val($(this).attr('data-id'));
     });
     $('#confirmReservation').on('click', function() {
-        $("#confirmReservation").html('<i class="fa fa-spinner fa-spin"></i> Processing');
+        $("#confirmReservation").html('<i class="fa fa-spinner fa-spin"></i> {{__("translation.Processing")}}');
 
         $("#confirmReservation").attr('disabled', '');
         $.ajax({
@@ -198,7 +198,7 @@
 
                     setTimeout(function() {
 
-                        $("#confirmReservation").html('Confirm');
+                        $("#confirmReservation").html('{{ __("Confirm") }}');
 
                         $("#confirmReservation").removeAttr('disabled');
 

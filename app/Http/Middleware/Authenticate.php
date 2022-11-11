@@ -17,6 +17,7 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             if($request->segment(1) == 'web')
             {
+                session()->put('redirect_route',($request->route()->getName()));
                 return route('web_login');
             }
             return route('admin-login');
