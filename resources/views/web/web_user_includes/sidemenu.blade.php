@@ -50,8 +50,8 @@
                             <p class="mb-0">{{ \Str::ucfirst(auth()->user()->name) }}</p>
                             <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
                         @else
-                            <p class="mb-0">{{ \Str::ucfirst('User') }}</p>
-                            <small class="d-block text-muted mb-0">{{ 'User email' }}</small>
+                            <p class="mb-0">{{ __('translation.User') }}</p>
+                            <small class="d-block text-muted mb-0">{{ __('translation.User email') }}</small>
                         @endif
     
                     </div>
