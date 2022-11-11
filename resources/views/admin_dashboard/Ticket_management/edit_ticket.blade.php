@@ -36,7 +36,7 @@
         <div class="card-body">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18 bold-text">Edit Ticket
+                    <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Edit Ticket') }}
                     </h4>
                 </div>
             </div>
@@ -50,7 +50,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Club name</label>
+                <label class="form-label">{{ __('translation.Club name')}}</label>
                 <input type="text" class="form-control" name="club_name" value="{{ $ticket->club_name }}">
                 @error('club_name')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -60,7 +60,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Total number</label>
+                <label class="form-label">{{ __('translation.Total Number')}}</label>
                 <input type="text" class="form-control" name="total_number" value="{{ $ticket->number }}">
                 @error('total_number')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -70,7 +70,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Subjects</label>
+                <label class="form-label">{{ __('translation.subject')}}</label>
                 <input type="text" class="form-control" name="subject" value="{{ $ticket->subject }}">
                 @error('subject')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -80,7 +80,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Meet up date</label>
+                <label class="form-label">{{ __('translation.Meet up Date')}}</label>
                 <input type="date" class="form-control" name="meet_up_date" value="{{ Carbon\Carbon::parse($ticket->meet_up_date)->format('Y-m-d')}}">
                 @error('meet_up_date')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -90,7 +90,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Date of Last meeting</label>
+                <label class="form-label">{{ __('translation.Date of last meeting')}}</label>
                 <input type="date" class="form-control" name="last_date" value="{{ Carbon\Carbon::parse($ticket->date_last_meeting)->format('Y-m-d')}}">
                 @error('last_date')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -100,7 +100,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Number of gatherings</label>
+                <label class="form-label">{{ __('translation.Number of gatherings')}}</label>
                 <input type="text" class="form-control" name="number_of_gathering" value="{{ $ticket->gatherings }}">
                 @error('number_of_gathering')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -110,7 +110,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Meet up til now</label>
+                <label class="form-label">{{ __('translation.Meet up til now')}}</label>
                 <input type="text" class="form-control" name="meet_now" value="{{ $ticket->meetups }}">
                 @error('meet_now')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -120,7 +120,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Tag 1</label>
+                <label class="form-label">{{ __('translation.Tag_1')}}</label>
                 <input type="text" class="form-control" id="tags" data-role="tagsinput" name="tag_1" value="{{ $ticket->getTagsJsonString('tag_1') }}">
                 @error('tag_1')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -130,7 +130,7 @@
 
         <div class="col-lg-6">
             <div class="form-group mb-2">
-                <label class="form-label">Tag 2</label>
+                <label class="form-label">{{ __('translation.Tag_2')}}</label>
                 <input type="text" class="form-control" id="tags2" data-role="tagsinput" value="{{ $ticket->getTagsJsonString('tag_2') }} " name="tag_2">
                 @error('tag_2')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -140,7 +140,7 @@
 
         <div class="col-lg-12">
             <div class="form-group mb-2">
-                <label class="form-label">Description</label>
+                <label class="form-label">{{ __('translation.Description')}}</label>
                 <textarea type="text" class="form-control" name="description" rows="2" style="resize: none;">{{ $ticket->description }}</textarea>
                 @error('description')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -150,7 +150,7 @@
 
         <div class="col-lg-12">
             <div class="form-group mb-2">
-                <label class="form-label">Sub Description </label>
+                <label class="form-label">{{ __('translation.Sub Description')}}</label>
                 <textarea type="text" class="form-control" name="sub_description" rows="2" style="resize: none;">{{ $ticket->sub_description}}</textarea>
                 @error('sub_description')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -160,7 +160,7 @@
         </div>
         <div class="col-lg-12">
             <div class="form-group mb-2">
-                <label class="form-label">Image </label>
+                <label class="form-label">{{ __('translation.image')}}</label>
                 <input type="file" class="form-control" name="image" />
             </div>
         </div>
@@ -176,8 +176,8 @@
         </div>
     </div>
     <div class="mb-3">
-        <button type="submit" id="submitForm" class="btn btn-primary">Edit</button>
-        <button type="button" class="btn btn-dark">Delete</button>
+        <button type="submit" id="submitForm" class="btn btn-primary">{{ __('translation.Edit')}}</button>
+        <button type="button" class="btn btn-dark">{{ __('translation.Delete')}}</button>
     </div>
 </form>
 
@@ -187,21 +187,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('translation.Confirm Delete')}}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="prompt"></div>
-                        <p>Are you sure to delete ? </p>
+                        <p>{{ __('translation.Are you sure to delete ?')  }}</p>
                         <input id="del_id1" type="hidden" name="id">
                         <input type="hidden" id="delImg1" name="del_photo">
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger remove-image-preview" onclick="deleteCoverImage()">Delete</button>
+                        <button type="button" class="btn btn-danger remove-image-preview" onclick="deleteCoverImage()">{{ __('translation.Delete')}}</button>
                     </div>
                 </form>
             </div>
