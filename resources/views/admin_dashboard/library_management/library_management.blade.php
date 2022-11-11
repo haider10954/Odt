@@ -132,14 +132,14 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Library Management</h4>
+            <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Library Management')}}</h4>
         </div>
     </div>
 
     <div class="col-12">
         <form class="app-search d-none d-lg-block">
             <div class="position-relative">
-                <input type="text" class="form-control" placeholder="Search all books" id="myInput" onkeyup="myFunction()">
+                <input type="text" class="form-control" placeholder="{{ __('translation.Search all books')}}" id="myInput" onkeyup="myFunction()">
                 <span class="fa fa-search"></span>
             </div>
         </form>
@@ -151,8 +151,8 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content d-flex justify-content-between">
-                <p class="heading mb-0">In-progress content : <span> {{ $book->total() }} </span></p>
-                <a class="btn btn-primary" href="{{ route('add-book-form')}}"> Add Book </a>
+                <p class="heading mb-0">{{ __('translation.In-progress content') }} : <span> {{ $book->total() }} </span></p>
+                <a class="btn btn-primary" href="{{ route('add-book-form')}}"> {{ __('translation.Add Book') }} </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -160,8 +160,8 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th class="align-middle">Number</th>
-                                <th colspan="2" class="align-middle">Title</th>
+                                <th class="align-middle">{{ __('translation.Number')}}</th>
+                                <th colspan="2" class="align-middle">{{ __('translation.title')}}</th>
                             </tr>
                         </thead>
                         <tbody>
