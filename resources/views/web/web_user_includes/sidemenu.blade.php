@@ -46,9 +46,13 @@
                     <img src="{{ asset('web_assets/img/user-1.png') }}" height="48" style="margin-right: 20px">
     
                     <div class="sidemenu-footer-content">
-    
-                        <p class="mb-0">{{ \Str::ucfirst(auth()->user()->name) }}</p>
-                        <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
+                        @if (auth()->check())
+                            <p class="mb-0">{{ \Str::ucfirst(auth()->user()->name) }}</p>
+                            <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
+                        @else
+                            <p class="mb-0">{{ \Str::ucfirst('User') }}</p>
+                            <small class="d-block text-muted mb-0">{{ 'User email' }}</small>
+                        @endif
     
                     </div>
     

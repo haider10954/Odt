@@ -105,7 +105,11 @@
                         <div class="ticket_item_content-footer">
                             <div class="my-1">
                                 <p class="mb-2 font-size-12">{{ $item->description }}</p>
-                                <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#reservationModal" class="btn btn-warning btn-theme-sm w-100 applyBtn" {{ in_array($item->id,$reservation) ? 'disabled' : ''}}>{{ in_array($item->id,$reservation) ? __('Reserved') : __('Apply') }}</button>
+                                @if (auth()->check())
+                                    <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#reservationModal" class="btn btn-warning btn-theme-sm w-100 applyBtn" {{ in_array($item->id,$reservation) ? 'disabled' : ''}}>{{ in_array($item->id,$reservation) ? __('Reserved') : __('Apply') }}</button>
+                                @else
+                                    <a href="{{ route('web_login') }}" class="btn btn-warning btn-theme-sm w-100 text-dark">{{ __('Apply') }}</a>
+                                @endif
                             </div>
                         </div>
                     </div>

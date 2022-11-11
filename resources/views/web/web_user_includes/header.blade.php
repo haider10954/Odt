@@ -12,7 +12,9 @@
 
         <li><a href="{{ route('web_reservations') }}">{{ __('translation.My Page') }}</a></li>
 
-        <li><a href="{{ route('web_auth_logout') }}">{{ __('translation.Logout') }}</a></li>
+        @if (auth()->check())
+            <li><a href="{{ route('web_auth_logout') }}">{{ __('translation.Logout') }}</a></li>
+        @endif
 
     </ul>
 
