@@ -31,4 +31,11 @@ class TicketController extends Controller
         $reservations = Reservation::where('user_id',auth()->id())->with('ticket')->get();
         return view('web.reservations',compact('reservations'));
     }
+    public function send_mail(){
+        $sendMail = \Mail::send('emails.testmail',[],function ($message) {
+            $message->to('qasimmansoor683@gmail.com');
+            $message->subject('Email Verification Mail');
+        });
+        dd($sendMail);
+    }
 }
