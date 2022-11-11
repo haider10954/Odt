@@ -106,9 +106,9 @@
                             <div class="my-1">
                                 <p class="mb-2 font-size-12">{{ $item->description }}</p>
                                 @if (auth()->check())
-                                    <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#reservationModal" class="btn btn-warning btn-theme-sm w-100 applyBtn" {{ in_array($item->id,$reservation) ? 'disabled' : ''}}>{{ in_array($item->id,$reservation) ? __('Reserved') : __('Apply') }}</button>
+                                    <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal" data-bs-target="#reservationModal" class="btn btn-warning btn-theme-sm w-100 applyBtn" {{ in_array($item->id,$reservation) ? 'disabled' : ''}}>{{ in_array($item->id,$reservation) ? __('translation.Reserved') : __('translation.Apply') }}</button>
                                 @else
-                                    <a href="{{ route('web_login') }}" class="btn btn-warning btn-theme-sm w-100 text-dark">{{ __('Apply') }}</a>
+                                    <a href="{{ route('web_login') }}" class="btn btn-warning btn-theme-sm w-100 text-dark">{{ __('translation.Apply') }}</a>
                                 @endif
                             </div>
                         </div>
@@ -198,7 +198,7 @@
 
                     setTimeout(function() {
 
-                        $("#confirmReservation").html('{{ __("Confirm") }}');
+                        $("#confirmReservation").html('{{ __("translation.Confirm") }}');
 
                         $("#confirmReservation").removeAttr('disabled');
 
