@@ -125,14 +125,14 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Member Management</h4>
+            <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Member Management')}}</h4>
         </div>
     </div>
 
     <div class="col-12">
         <form class="app-search d-none d-lg-block">
             <div class="position-relative">
-                <input type="text" class="form-control py-4" placeholder="Search all members" id="myInput" onkeyup="myFunction()">
+                <input type="text" class="form-control py-4" placeholder="{{ __('translation.Search all members')}}" id="myInput" onkeyup="myFunction()">
                 <span class="fa fa-search"></span>
             </div>
         </form>
@@ -150,7 +150,7 @@
     <div class="col-lg-12">
         <div class="card card-content">
             <div class="card-header header-content">
-                <p class="heading">Total members : <span> {{ $user->total() }} </span></p>
+                <p class="heading">{{ __('translation.Total Members') }} : <span> {{ $user->total() }} </span></p>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -158,12 +158,12 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th class="align-middle">Number</th>
-                                <th class="align-middle">Name</th>
+                                <th class="align-middle">{{ __('translation.Number') }}</th>
+                                <th class="align-middle">{{ __('translation.Name')}}</th>
                                 <th class="align-middle">Id</th>
-                                <th class="align-middle">Phone Number</th>
-                                <th class="align-middle">Member Since</th>
-                                <th class="align-middle">Email</th>
+                                <th class="align-middle">{{ __('translation.Mobile Number')}}</th>
+                                <th class="align-middle">{{ __('translation.Member Since')}}</th>
+                                <th class="align-middle">{{ __('translation.Email Address')}}</th>
                                 <th class="align-middle"></th>
                             </tr>
                         </thead>
@@ -201,7 +201,7 @@
                                             <i class="mdi mdi-dots-vertical"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0)" onclick="delete_record( '{{ $u->id }}')" class="dropdown-item text-danger"><span><i class="fa fa-trash pe-2"></i></span>Delete</a>
+                                            <a href="javascript:void(0)" onclick="delete_record( '{{ $u->id }}')" class="dropdown-item text-danger"><span><i class="fa fa-trash pe-2"></i></span>{{ __('translation.Delete')}}</a>
                                         </div>
                                 </td>
                             </tr>
@@ -222,19 +222,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('translation.Confirm Delete')}}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post" action="{{ route('delete_user')}}">
                     @csrf
                     <div class="modal-body">
-                        <p>Are you sure to delete ? </p>
+                        <p>{{ __('translation.Are you sure to delete ?')}}</p>
                         <input id="del_id" type="hidden" name="id">
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('translation.Save')}}</button>
                     </div>
                 </form>
             </div>

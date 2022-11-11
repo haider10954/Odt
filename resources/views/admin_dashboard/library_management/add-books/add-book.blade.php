@@ -35,7 +35,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Add Book</h4>
+            <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Add Book')}}</h4>
         </div>
     </div>
 </div>
@@ -43,14 +43,14 @@
 <div class="row" id="onTop">
     <div class="col-lg-4 preview-img mt-4">
         <div id="main_image_view" class="h-100">
-            <p class="d-flex align-items-center h-100 justify-content-center fw-bold fs-4">Preview Image</p>
+            <p class="d-flex align-items-center h-100 justify-content-center fw-bold fs-4">{{ __('translation.Preview Image')}}</p>
         </div>
     </div>
     <div class="col-lg-8">
         <form enctype="multipart/form-data" id="bookForm">
             @csrf
             <div class="form-group mb-2">
-                <label class="form-label">Book Title</label>
+                <label class="form-label">{{ __('translation.Book Title')}}</label>
                 <input type="text" class="form-control" name="book_title">
                 @error('book_title')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Description</label>
+                <label class="form-label">{{ __('translation.Book Description') }}</label>
                 <input type="text" class="form-control" name="book_description">
                 @error('book_description')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -66,7 +66,7 @@
             </div>
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Category</label>
+                <label class="form-label">{{ __('translation.Book Category')}}</label>
                 <select type="text" class="form-control" name="category">
                     <option>Select Category</option>
                     <option value="reading">Reading</option>
@@ -78,13 +78,13 @@
             </div>
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Cover</label>
+                <label class="form-label">{{ __('translation.Book Cover')}}</label>
                 <input type="file" class="form-control" name="image" id="main_picture" />
             </div>
 
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Pages</label>
+                <label class="form-label">{{ __('translation.Book Pages')}}</label>
                 <input type="file" class="form-control" name="book_pages[]" id="additional_picture" multiple>
                 @error('book_pages')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -93,7 +93,7 @@
             <div class="row mb-3" id="other_images_preview">
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-dark" id="submitForm">Add Book</button>
+                <button type="submit" class="btn btn-dark" id="submitForm">{{ __('translation.Add Book')}}</button>
             </div>
         </form>
     </div>

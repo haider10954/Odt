@@ -1,6 +1,6 @@
 @extends('admin_dashboard.Layout.layout')
 
-@section('title' , 'Add Books')
+@section('title' , 'Edit Books')
 @section('custom-style')
 <style>
     .display-img {
@@ -40,8 +40,8 @@
         border-radius: 5px;
         border: 1px solid #bdbdbd;
     }
-    #toHide1
-    {
+
+    #toHide1 {
         display: flex;
     }
 </style>
@@ -50,7 +50,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18 bold-text">Edit Book</h4>
+            <h4 class="mb-sm-0 font-size-18 bold-text">{{ __('translation.Edit Book')}}</h4>
         </div>
     </div>
 </div>
@@ -59,7 +59,7 @@
     <div class="col-lg-4 mt-4">
         <div id="toHide1" class="mb-2 justify-content-center align-items-center preview-img">
             <div class="display-img h-100" id='toHide'>
-                <img class="img-fluid img-block-" src="{{ $book->bookImage() }}" data-original-src="{{ $book->bookImage() }}" id="multi_index_${index}" data-index="${index}">
+                <img class="img-fluid h-100" src="{{ $book->bookImage() }}" data-original-src="{{ $book->bookImage() }}" id="multi_index_${index}" data-index="${index}">
                 <a type="button" class="text-danger del-icon-cover" onclick="delete_book_cover('{{ $book->bookImage() }}')">
                     <i class="fa fa-times font-18 "></i>
                 </a>
@@ -75,7 +75,7 @@
             <p class="alert alert-danger">{{ Session::get('msg') }}</p>
             @endif
             <div class="form-group mb-2">
-                <label class="form-label">Book Title</label>
+                <label class="form-label">{{ __('translation.Book Title')}}</label>
                 <input type="text" class="form-control" name="book_title" value="{{ $book->book_title}}">
                 @error('book_title')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -83,11 +83,11 @@
             </div>
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Category</label>
+                <label class="form-label">{{ __('translation.Book Category')}}</label>
                 <select type="text" class="form-control" name="category">
                     <option>Select Category</option>
-                    <option value="reading" {{ $book->category == 'reading' ? 'selected' : ' ' }}>Reading</option>
-                    <option value="drawing" {{ $book->category == 'drawing' ? 'selected' : ' ' }}>Drawing</option>
+                    <option value="reading" {{ $book->category == 'reading' ? 'selected' : ' ' }}>{{ __('translation.Reading') }}</option>
+                    <option value="drawing" {{ $book->category == 'drawing' ? 'selected' : ' ' }}>{{ __('translation.Drawing')}}</option>
                 </select>
                 @error('category')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Description</label>
+                <label class="form-label">{{ __('translation.Book Description')}}</label>
                 <input type="text" class="form-control" name="book_description" value="{{ $book->description}}">
                 @error('book_description')
                 <p style="color:#d02525;">{{$message}}</p>
@@ -103,20 +103,20 @@
             </div>
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Cover</label>
+                <label class="form-label">{{ __('translation.Book Cover')}}</label>
                 <input type="file" class="form-control" name="image" id="main_picture" />
             </div>
 
 
             <div class="form-group mb-2">
-                <label class="form-label">Book Pages</label>
+                <label class="form-label">{{ __('translation.Book Pages')}}</label>
                 <input type="file" class="form-control" name="book_pages[]" id="additional_picture" multiple>
                 @error('book_pages')
                 <p style="color:#d02525;">{{$message}}</p>
                 @enderror
             </div>
             <div class="row mb-3 align-items-start">
-                <h4 class="my-4">Already Uploaded Images</h4>
+                <h4 class="my-4">{{ __('translation.Already Uploaded Images')}}</h4>
                 @foreach ($book->bookPageImageList() as $book_page)
                 <div class="col-3 mb-2 d-flex align-items-end image-preview-box" data-file="{{ $book_page }}">
                     <div class="display-img">
@@ -131,7 +131,7 @@
             <div class="row mb-3" id="other_images_preview">
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" class="btn btn-dark">{{ __('translation.Submit')}}</button>
             </div>
         </form>
     </div>
@@ -143,21 +143,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('translation.Confirm Delete')}}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="prompt"></div>
-                        <p>Are you sure to delete ? </p>
+                        <p>{{ __('translation.Are you sure to delete ?') }} </p>
                         <input id="del_id" type="hidden" name="id">
                         <input type="hidden" id="delImg" name="del_photo">
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger remove-image-preview" onclick="deleteImages()">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
+                        <button type="submit" class="btn btn-danger remove-image-preview" onclick="deleteImages()">{{ __('translation.Delete')}}</button>
                     </div>
                 </form>
             </div>
@@ -172,21 +172,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('translation.Confirm Delete')}}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="prompt"></div>
-                        <p>Are you sure to delete ? </p>
+                        <p>{{ __('translation.Are you sure to delete ?') }} </p>
                         <input id="del_id1" type="hidden" name="id">
                         <input type="hidden" id="delImg1" name="del_photo">
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger remove-image-preview" onclick="deleteCoverImage()">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
+                        <button type="button" class="btn btn-danger remove-image-preview" onclick="deleteCoverImage()">{{ __('translation.Delete')}}</button>
                     </div>
                 </form>
             </div>

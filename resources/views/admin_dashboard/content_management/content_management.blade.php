@@ -190,8 +190,8 @@
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:void(0)" onclick="changeStatus('in-Progress','{{ $r->id }}')" class="dropdown-item">{{ __('translation.In-Progress') }}</a>
-                                        <a href="javascript:void(0)" onclick="changeStatus('pending','{{ $r->id }}')" class="dropdown-item">{{ __('translation.Pending')}}</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('in-Progress','{{ $r->id }}')" class="dropdown-item">{{ __('translation.in-Progress') }}</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('pending','{{ $r->id }}')" class="dropdown-item">{{ __('translation.pending')}}</a>
                                         <a href="javascript:void(0)" onclick="changeStatus('completed','{{ $r->id }}')" class="dropdown-item">{{ __('translation.Confirm')}}</a>
                                     </div>
                                 </div>

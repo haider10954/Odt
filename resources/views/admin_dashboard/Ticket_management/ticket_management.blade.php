@@ -349,19 +349,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Delete</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('translation.Confirm Delete')}}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form method="post" action="{{ route('delete-ticket')}}">
                     @csrf
                     <div class="modal-body">
-                        <p>Are you sure to delete ? </p>
+                        <p>{{ __('translation.Are you sure to delete ?') }} </p>
                         <input id="del_id" type="hidden" name="id">
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('translation.Close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('translation.Save')}}</button>
                     </div>
                 </form>
             </div>
