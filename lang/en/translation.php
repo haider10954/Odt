@@ -102,5 +102,8 @@ return [
     'Sign in to continue to ODT.' => 'Sign in to continue to ODT.',
     'Log In' => 'Log In',
     'Enter password' =>'Enter password',
-    'Enter your email address' => 'Enter your email address'
+    'Enter your email address' => 'Enter your email address',
+    'Submit' => 'Submit',
+    'Already Uploaded Images' => 'Already Uploaded Images',
+    'Edit Book' => 'Edit Book',
 ];

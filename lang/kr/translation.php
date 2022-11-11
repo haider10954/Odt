@@ -102,5 +102,8 @@ return [
     'Sign in to continue to ODT.' => 'ODT를 계속하려면 로그인하세요.',
     'Log In' => '로그인',
     'Enter password' =>'암호를 입력',
-    'Enter your email address' => '이메일 주소를 입력하세요'
+    'Enter your email address' => '이메일 주소를 입력하세요',
+    'Submit' => '제출하다',
+    'Edit Book' => '도서 편집',
+    'Already Uploaded Images' => '이미 업로드된 이미지',
 ];
