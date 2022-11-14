@@ -69,12 +69,12 @@ class TicketController extends Controller
         if ($ticket) {
             return json_encode([
                 'error' => false,
-                'message' => 'Ticket has been added successfully.'
+                'message' => __('translation.Ticket has been added successfully')
             ]);
         } else {
             return json_encode([
                 'error' => false,
-                'message' => 'Something went wrong Please try again.'
+                'message' => __('translation.Something went wrong Please try again.')
             ]);
         }
     }
@@ -83,9 +83,9 @@ class TicketController extends Controller
     {
         $ticket = Ticket::where('id', $request['id'])->delete();
         if ($ticket) {
-            return redirect()->back()->with('msg', 'Ticket has been deleted Successfully.');
+            return redirect()->back()->with('msg', __('translation.Ticket has been deleted Successfully'));
         } else {
-            return redirect()->back()->with('error', 'Something went wrong, please try again');
+            return redirect()->back()->with('error', __('translation.Something went wrong Please try again.'));
         }
     }
 
@@ -146,12 +146,12 @@ class TicketController extends Controller
         if ($ticket) {
             return json_encode([
                 'success' => true,
-                'message' => 'Ticket has been update successfully.'
+                'message' => __('translation.Ticket has been update successfully.')
             ]);
         } else {
             return json_encode([
                 'success' => false,
-                'message' => 'Something went wrong Please try again.'
+                'message' => __('translation.Something went wrong Please try again.')
             ]);
         }
     }
@@ -174,13 +174,13 @@ class TicketController extends Controller
         if ($ticket) {
             return response()->json([
                 'success' => true,
-                'message' => 'Ticket image deleted Successfully'
+                'message' => __('translation.Ticket image deleted Successfully')
             ]);
         } else {
 
             return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong, Please try again'
+                'message' => __('translation.Something went wrong Please try again.')
             ]);
         }
     }
@@ -196,13 +196,13 @@ class TicketController extends Controller
         if ($ticket_status) {
             return response()->json([
                 'success' => true,
-                'message' => 'Ticket Reservation Status Updated Successfully'
+                'message' => __('translation.Ticket Reservation Status Updated Successfully')
             ]);
         } else {
 
             return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong, Please try again'
+                'message' => __('translation.Something went wrong Please try again.')
             ]);
         }
     }
