@@ -366,13 +366,6 @@
     }
     $('#submitForm').on('click', function() {
 
-        $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
-
-        $('#exampleModal').animate({
-            scrollTop: 0
-        }, '300');;
-        $("#submitForm").attr('disabled', '');
-
         var formData = new FormData($("#ticketForm")[0]);
         $.ajax({
             type: "POST",
@@ -384,15 +377,21 @@
             cache: false,
             mimeType: "multipart/form-data",
             beforeSend: function() {
-
+                $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
+                $(".error-message").hide();
             },
             success: function(res) {
+                $("#submitForm").html('<class="btn btn-dark">도서 추가</>');
                 $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
                 setTimeout(function() {
                     window.location.href = "{{ route('ticket-management') }}";
                 }, 3000);
+                $('#exampleModal').animate({
+                    scrollTop: 0
+                }, '300');;
             },
             error: function(e) {
+                $("#submitForm").html('<class="btn btn-dark">도서 추가</>');
                 if (e.responseJSON.errors['club_name']) {
                     $('.error-club-name').html('<span class=" error-message text-danger">' + e.responseJSON.errors['club_name'][0] + '</span>');
                 }
