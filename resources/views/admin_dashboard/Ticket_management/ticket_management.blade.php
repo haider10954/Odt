@@ -182,7 +182,7 @@
                     <span class="bold-text">{{ __('translation.Club name') }}: {{ $tickets->club_name }}</span> <br>
                     <span>{{ __('translation.subject') }} : {{ $tickets->subject }} </span> <br>
                     <span class="bold-text">{{ __('translation.Total Number') }} : {{ $tickets->number }}</span> <br>
-                    <span>{{ __('translation.Meet up Date') }} : {{  Carbon\Carbon::parse($tickets->meet_up_date)->format('Y-m-d') }}</span> <br>
+                    <span>{{ __('translation.Meet up Date') }} : {{ Carbon\Carbon::parse($tickets->meet_up_date)->format('Y-m-d') }}</span> <br>
                     <span>{{ __('translation.Date of last meeting') }} : {{ Carbon\Carbon::parse($tickets->date_last_meeting)->format('Y-m-d') }}</span> <br>
                     <span>{{ __('translation.Number of gatherings') }} : {{ $tickets->gatherings }}</span> <br>
                     <span>{{ __('translation.Meet up til now')}} : {{ $tickets->meetups }} (회)</span> <br>
@@ -219,9 +219,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Club name')}}</label>
                                 <input type="text" class="form-control" name="club_name">
-                                @error('club_name')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-club-name"></div>
                             </div>
                         </div>
 
@@ -229,9 +227,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Total Number')}}</label>
                                 <input type="text" class="form-control" name="total_number">
-                                @error('total_number')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-total-number"></div>
                             </div>
                         </div>
 
@@ -239,9 +235,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.subject') }}</label>
                                 <input type="text" class="form-control" name="subject">
-                                @error('subject')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-subject"></div>
                             </div>
                         </div>
 
@@ -249,9 +243,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Meet up Date')}}</label>
                                 <input type="date" class="form-control" name="meet_up_date">
-                                @error('meet_up_date')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-meet-up-date"></div>
                             </div>
                         </div>
 
@@ -259,9 +251,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Date of last meeting')}}</label>
                                 <input type="date" class="form-control" name="last_date">
-                                @error('last_date')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-last-date"></div>
                             </div>
                         </div>
 
@@ -269,9 +259,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Number of gatherings')}}</label>
                                 <input type="text" class="form-control" name="number_of_gathering">
-                                @error('number_of_gathering')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-number-of-gathering"></div>
                             </div>
                         </div>
 
@@ -279,9 +267,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Meet up til now')}}</label>
                                 <input type="text" class="form-control" name="meet_now">
-                                @error('meet_now')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-meet-now"></div>
                             </div>
                         </div>
 
@@ -289,9 +275,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Tag_1')}}</label>
                                 <input type="text" class="form-control" id="tags" data-role="tagsinput" name="tag_1">
-                                @error('tag_1')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-tag-1"></div>
                             </div>
                         </div>
 
@@ -299,9 +283,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Tag_2')}}</label>
                                 <input type="text" class="form-control" id="tags2" data-role="tagsinput" name="tag_2">
-                                @error('tag_2')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-tag-2"></div>
                             </div>
                         </div>
 
@@ -309,9 +291,7 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Description')}}</label>
                                 <textarea type="text" class="form-control" name="description" rows="2" style="resize: none;"> </textarea>
-                                @error('description')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
+                                <div class="error-description"></div>
                             </div>
                         </div>
 
@@ -319,16 +299,14 @@
                             <div class="form-group mb-2">
                                 <label class="form-label">{{ __('translation.Sub Description')}}</label>
                                 <textarea type="text" class="form-control" name="sub_description" rows="2" style="resize: none;"> </textarea>
-                                @error('sub_description')
-                                <p style="color:#d02525;">{{$message}}</p>
-                                @enderror
-
+                                <div class="error-sub-description"></div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group mb-2">
-                                <label class="form-label">{{ __('translation.Meet up Date')}}</label>
+                                <label class="form-label">{{ __('translation.image')}}</label>
                                 <input type="file" class="form-control" name="image" />
+                                <div class="error-image"></div>
                             </div>
                         </div>
                     </div>
@@ -390,7 +368,9 @@
 
         $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
 
-        $('#exampleModal').animate({scrollTop:0}, '300');;
+        $('#exampleModal').animate({
+            scrollTop: 0
+        }, '300');;
         $("#submitForm").attr('disabled', '');
 
         var formData = new FormData($("#ticketForm")[0]);
@@ -413,7 +393,42 @@
                 }, 3000);
             },
             error: function(e) {
-                console.log('error');
+                if (e.responseJSON.errors['club_name']) {
+                    $('.error-club-name').html('<span class=" error-message text-danger">' + e.responseJSON.errors['club_name'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['total_number']) {
+                    $('.error-total-number').html('<span class=" error-message text-danger">' + e.responseJSON.errors['total_number'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['subject']) {
+                    $('.error-subject').html('<span class=" error-message text-danger">' + e.responseJSON.errors['subject'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['meet_up_date']) {
+                    $('.error-meet-up-date').html('<span class=" error-message text-danger">' + e.responseJSON.errors['meet_up_date'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['last_date']) {
+                    $('.error-last-date').html('<span class=" error-message text-danger">' + e.responseJSON.errors['last_date'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['number_of_gathering']) {
+                    $('.error-number-of-gathering').html('<span class=" error-message text-danger">' + e.responseJSON.errors['number_of_gathering'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['meet_now']) {
+                    $('.error-meet-now').html('<span class=" error-message text-danger">' + e.responseJSON.errors['meet_now'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['tag_1']) {
+                    $('.error-tag-1').html('<span class=" error-message text-danger">' + e.responseJSON.errors['tag_1'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['tag_2']) {
+                    $('.error-tag-2').html('<span class=" error-message text-danger">' + e.responseJSON.errors['tag_2'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['description']) {
+                    $('.error-description').html('<span class=" error-message text-danger">' + e.responseJSON.errors['description'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['sub_description']) {
+                    $('.error-sub-description').html('<span class=" error-message text-danger">' + e.responseJSON.errors['sub_description'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['image']) {
+                    $('.error-image').html('<span class=" error-message text-danger">' + e.responseJSON.errors['image'][0] + '</span>');
+                }
             }
 
         });
