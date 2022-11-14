@@ -63,12 +63,12 @@ class BookController extends Controller
         if ($book) {
             return json_encode([
                 'error' => false,
-                'message' => 'Book has been added successfully.'
+                'message' => __('translation.Book has been added successfully.')
             ]);
         } else {
             return json_encode([
                 'error' => true,
-                'message' => 'Something went wrong Please try again.'
+                'message' => __('translation.Something went wrong Please try again.')
             ]);
         }
     }
@@ -107,7 +107,7 @@ class BookController extends Controller
         if ($book) {
             return redirect()->route('library-management');
         } else {
-            return redirect()->back()->with('msg', 'Something went wrong. Please try again');
+            return redirect()->back()->with('msg', __('translation.Something went wrong Please try again.'));
         }
     }
 
@@ -133,13 +133,13 @@ class BookController extends Controller
         if ($book) {
             return response()->json([
                 'success' => true,
-                'message' => 'Book page image deleted Successfully'
+                'message' => __('translation.Book page image deleted Successfully')
             ]);
         } else {
 
             return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong, Please try again'
+                'message' => __('translation.Something went wrong Please try again.')
             ]);
         }
     }
@@ -162,13 +162,13 @@ class BookController extends Controller
         if ($book) {
             return response()->json([
                 'success' => true,
-                'message' => 'Book cover image deleted Successfully'
+                'message' => __('translation.Book cover image deleted Successfully')
             ]);
         } else {
 
             return response()->json([
                 'success' => false,
-                'message' => 'Something went wrong, Please try again'
+                'message' => __('translation.Something went wrong Please try again.')
             ]);
         }
     }
