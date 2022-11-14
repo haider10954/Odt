@@ -35,12 +35,14 @@ class BookController extends Controller
     }
     public function add_book(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
             'book_title' => 'required',
             'book_description' => 'required',
             'category' => 'required',
-            'image.*' => 'required|mimes:jpeg,png,jpg',
-            'book_pages.*' => 'required|mimes:jpeg,png,jpg'
+            'image' => 'required|mimes:jpeg,png,jpg',
+            'book_pages' => 'required|array',
+            'book_pages.*' => 'mimes:jpeg,png,jpg',
         ]);
         $book_cover = $this->upload_files($request['image']);
         $book_pages = [];
