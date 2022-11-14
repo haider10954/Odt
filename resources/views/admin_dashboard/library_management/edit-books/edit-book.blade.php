@@ -157,7 +157,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
-                        <button type="submit" class="btn btn-danger remove-image-preview" onclick="deleteImages()">{{ __('translation.Delete')}}</button>
+                        <button type="button" class="btn btn-danger remove-image-preview" onclick="deleteImages()">{{ __('translation.Delete')}}</button>
                     </div>
                 </form>
             </div>
@@ -236,6 +236,7 @@
                     $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
                     setTimeout(function() {
                         delModal.hide();
+                        location.reload();
                     }, 2000);
                 } else {
                     $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
