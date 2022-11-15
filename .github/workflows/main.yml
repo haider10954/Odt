@@ -17,4 +17,4 @@ jobs:
           server: www.repilus.com
           username: scinjae111
           password: ${{ secrets.FTP_PASSWORD }}
-          timeout: 999999
+          timeout: 99999
