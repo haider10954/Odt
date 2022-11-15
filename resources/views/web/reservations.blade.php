@@ -43,7 +43,13 @@
                             </td>
                             <td>{{ \Carbon\Carbon::parse($item->ticket->meet_up_date)->format('d M, Y') }}</td>
                             <td>
-                                <span class="badge bg-{{ $item->getStatus() }}">{{ __('translation.'.$item->status) }}</span>
+                                <span class="badge bg-{{ $item->getStatus() }}">
+                                @if ($item->status == 'pending')
+                                    {{ __('Waiting for approval') }}
+                                @else
+                                    {{ __('Approved') }}
+                                @endif
+                                </span>
                             </td>
                             <td>
                                 <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#ticket_info"
