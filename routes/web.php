@@ -61,7 +61,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('web')->group(function(){
     Route::view('/','web.index')->name('web_index');
 
-    Route::get('/tickets',[UserTicketController::class,'tickets'])->name('web_tickets');
+    Route::get('/tickets/{tag?}',[UserTicketController::class,'tickets'])->name('web_tickets');
 
     Route::get('/library',[LibraryController::class,'reading'])->name('web_library');
 

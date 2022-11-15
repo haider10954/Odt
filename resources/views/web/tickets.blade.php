@@ -17,10 +17,9 @@
 <div class="content-tags mb-5">
     <p>“ {{ __('translation.Sci-Fi Fiction, Movie and Coffee Lovers') }} ”</p>
     <div class="tags">
-        <span class="mx-2 badge-tag">{{ __('translation.Seoul/Gyeonggi Office') }}</span>
-        <span class="mx-2 badge-tag">{{ __('translation.workers meet') }}</span>
-        <span class="mx-2 badge-tag">{{ __('translation.regularly in their') }}</span>
-        <span class="mx-2 badge-tag">{{ __('translation.30s') }}</span>
+        @foreach ($latest_tags as $item)
+        <a href="{{ route('web_tickets',$item->name) }}"><span class="mx-2 badge-tag">{{ $item->name }}</span></a>
+        @endforeach
     </div>
 </div>
 
