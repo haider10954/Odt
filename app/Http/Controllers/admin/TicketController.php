@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reservation;
+use App\Models\Tag;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -50,8 +51,23 @@ class TicketController extends Controller
             'image' => 'required|mimes:jpeg,png,jpg',
         ]);
         $file = $this->upload_files($request['image']);
+        $tags = Tag::pluck('name')->toArray();
         $tag1 = collect(json_decode($request->tag_1))->pluck('value');
         $tag2 = collect(json_decode($request->tag_2))->pluck('value');
+        foreach ($tag1 as $v) {
+            if (!in_array($v, $tags)) {
+                Tag::create([
+                    'name' => $v
+                ]);
+            }
+        }
+        foreach ($tag2 as $val) {
+            if (!in_array($val, $tags)) {
+                Tag::create([
+                    'name' => $val
+                ]);
+            }
+        }
         $ticket = Ticket::create([
             'club_name' => $request['club_name'],
             'number' => $request['total_number'],
