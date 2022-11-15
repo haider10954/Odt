@@ -74,7 +74,7 @@
                         <div class="ticket_item_content-footer">
                             <div class="my-1">
                                 <p class="mb-0 font-size-12">{{ $item->sub_description }}</p>
-                                <h4 class="mb-0">{{ $item->gatherings }}</h4>
+                                <h4 class="mb-0">{{ $item->gatherings }} 명</h4>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         <div class="ticket_item_content_body">
                             <div class="ticket-item-detail mt-2">
                                 <div class="w-50 mb-2">
-                                    <h4 class="mb-0">{{ $item->meetups }} 도I</h4>
+                                    <h4 class="mb-0">{{ $item->meetups }} 회</h4>
                                     <p class="mb-0">{{ __('translation.Encounters so far') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
@@ -93,7 +93,7 @@
                                     <p class="mb-0">{{ __('translation.Last meeting date') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">
-                                    <h4 class="mb-0">12도</h4>
+                                    <h4 class="mb-0">12명</h4>
                                     <p class="mb-0">{{ __('translation.Sillim Drawing') }}</p>
                                 </div>
                                 <div class="w-50 mb-2">

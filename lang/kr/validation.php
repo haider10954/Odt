@@ -168,6 +168,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => '이름',
+        'email' => '이메일',
+        'password' => '비밀번호',
+        'phone' => '핸드폰',
+        'password_confirmation' => '비밀번호 확인'
+    ],
 
 ];

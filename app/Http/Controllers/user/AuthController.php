@@ -17,13 +17,13 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
-            'number' =>  'required|max:15|min:6',
+            'phone' =>  'required|max:15|min:6',
             'password_confirmation' => 'required|min:6'
         ]);
         $signup = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'mobile' => $request->number,
+            'mobile' => $request->phone,
             'password' => Hash::make($request->password)
         ]);
         if ($signup) {

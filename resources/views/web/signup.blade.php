@@ -35,7 +35,7 @@
 
                     <div class="form-group mb-3">
 
-                        <input type="text" name="number" class="form-control rounded-0" placeholder="{{ __('translation.Mobile Number') }}" value="{{ old('number') }}">
+                        <input type="number" name="phone" class="form-control rounded-0" placeholder="{{ __('translation.Mobile Number') }}" value="{{ old('number') }}">
                         @error('email')
                             <small class="text-danger text-left d-block">{{ $message }}</small>
                         @enderror

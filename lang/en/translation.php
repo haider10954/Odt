@@ -111,5 +111,7 @@ return [
     'An Unknown Error Exist , Please try again' => 'An Unknown Error Exist , Please try again',
     'Search all members' => 'Search all members' ,
     'Total members' => 'Total members',
-    'Member Since' =>'Member Since'
+    'Member Since' =>'Member Since',
+    'No Book Found' => 'No Book Found',
+    'No User Found' => 'No User Found'
 ];

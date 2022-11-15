@@ -31,10 +31,10 @@ return [
     'Sillim Drawing' => '신림드로잉 클럽',
     'No Tickets Found' => '아직 티켓이 없습니다',
     'Confirm Reservation' => '예약확정',
-    'Are you sure you want to reserve this ticket' => '이 티켓을 예약하시겠습니까?',
+    'Are you sure you want to reserve this ticket' => '이 모임에 참여 예약하시겠습니까',
     'Close' => '닫기',
     'Confirm' => '확인',
-    'Reserved' => '예약완료',
+    'Reserved' => '예약확정',
     'Apply' => '신청하기',
     'Tickets' => '티켓',
     'No Books Found' => '아직 책이 없습니다',
@@ -83,8 +83,8 @@ return [
     'Confirmed Participants' => '확인된 참가자',
     'Reservation Status' => '예약현황',
     'in-progress' => '진행 중',
-    'pending' => '보류 중',
-    'completed' => '완전한',
+    'pending' => '승인대기중',
+    'completed' => '승인완료',
     'Search all books' => '모든 도서 검색',
     'In-progress content' => '진행 중인 콘텐츠',
     'Add Book' => '도서 추가',
@@ -111,5 +111,7 @@ return [
     'An Unknown Error Exist , Please try again' => '알 수 없는 오류가 있습니다. 다시 시도하십시오.',
     'Search all members' =>'모든 회원 검색',
     'Total Members' => '총 회원' ,
-    'Member Since' => '회원 가입일'
+    'Member Since' => '회원 가입일',
+    'No Book Found' => '책을 찾을 수 없습니다',
+    'No User Found' => '사용자를 찾을 수 없음'
 ];
