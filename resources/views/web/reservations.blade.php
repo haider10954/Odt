@@ -69,7 +69,7 @@
 
 @section('modals')
     <div class="modal fade" id="ticket_info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body" style="padding: 0;border-radius: 10px;">
                     <div class="ticket_item ticket_detail" style="width:100%;padding:0;">
