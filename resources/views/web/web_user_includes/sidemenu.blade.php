@@ -49,7 +49,7 @@
                         <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
                         @else
                         <p class="mb-0">{{ __('translation.User') }}</p>
-                        <small class="d-block text-muted mb-0">{{ __('translation.User Email'') }}</small>
+                        <small class="d-block text-muted mb-0">{{ __('translation.User Email') }}</small>
                         @endif
 
                     </div>
