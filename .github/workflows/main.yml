@@ -14,8 +14,8 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: becktesting.site
-          username: shoopkeper@becktesting.site
+          server: www.repilus.com
+          username: scinjae111
           password: ${{ secrets.FTP_PASSWORD }}
           timeout: 999999
           server-dir: "./www/"
