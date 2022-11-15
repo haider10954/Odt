@@ -16,7 +16,7 @@ class TicketController extends Controller
         $ticket = Ticket::where('id', $id)->first();
         $reserve = Reservation::paginate(5);
         $confirmed_reservations = Reservation::where('status', 'completed')->count();
-        $user = User::get();
+        $user = Reservation::where('ticket_id', $id)->get();
         return view('admin_dashboard.content_management.content_management', compact('ticket', 'reserve', 'user', 'confirmed_reservations'));
     }
     public function ticket_listings()

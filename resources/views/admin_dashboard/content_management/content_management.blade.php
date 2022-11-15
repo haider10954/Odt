@@ -161,7 +161,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($reserve as $r)
+                        @foreach ($user as $r)
                         <tr>
                             <td>
                                 <div class="form-check font-size-16">
