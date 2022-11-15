@@ -165,6 +165,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($book->count() > 0)
                             @foreach ($book as $books)
                             <tr>
                                 <td>
@@ -200,6 +201,11 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="7" class="text-center fw-bold">{{ __('translation.No Book Found') }}</td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
