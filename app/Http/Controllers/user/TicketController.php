@@ -6,14 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\Reservation;
+use App\Models\Tag;
 
 class TicketController extends Controller
 {
     //
-    public function tickets(){
-        $tickets = Ticket::paginate(5);
+    public function tickets($tag = NULL){
+        if(empty($tag)){
+            $tickets = Ticket::paginate(5);
+        }else{
+            $tickets = Ticket::where('tag_1','like','%'.'"'.$tag.'"'.'%')->orWhere('tag_2','like','%'.'"'.$tag.'"'.'%')->paginate(5);
+        }
         $reservation = Reservation::select('ticket_id')->where('user_id',auth()->id())->pluck('ticket_id')->toArray();
-        return view('web.tickets',compact('tickets','reservation'));
+        $latest_tags = Tag::latest()->take(4)->get();
+        return view('web.tickets',compact('tickets','reservation','latest_tags'));
     }
     public function reserve_ticket(Request $request){
         $addReservation = Reservation::create([

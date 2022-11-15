@@ -45,15 +45,19 @@
                             <td>
                                 <span class="badge bg-{{ $item->getStatus() }}">
                                 @if ($item->status == 'pending')
-                                    {{ __('Waiting for approval') }}
+                                    {{ __('translation.Waiting for approval') }}
                                 @else
-                                    {{ __('Approved') }}
+                                    {{ __('translation.Approved') }}
                                 @endif
                                 </span>
                             </td>
                             <td>
+                                @php
+                                $tag1_string = implode('||',$item->ticket->tag_1);
+                                $tag2_string = implode('||',$item->ticket->tag_2);    
+                                @endphp
                                 <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#ticket_info"
-                                    class="btn btn-light btn-table-theme">{{ __('translation.TICKET INFO') }}</a>
+                                    class="btn btn-dark text-white btn-table-theme ticket_info_btn" data-club-name="{{ $item->ticket->club_name }}" data-subject="{{ $item->ticket->subject }}" data-sub-description="{{ $item->ticket->sub_description }}" data-gatherings="{{ $item->ticket->gatherings.' 명' }}" data-meet-up-date="{{\Carbon\Carbon::parse($item->ticket->meet_up_date)->format('d M, Y')}}" data-meetups="{{ $item->ticket->meetups.' 회' }}" data-date-last-meeting="{{\Carbon\Carbon::parse($item->ticket->date_last_meeting)->format('d M, Y')}}" data-description="{{ $item->ticket->description }}" data-tag-1="{{ $tag1_string }}" data-tag-2="{{ $tag2_string }}">{{ __('translation.TICKET INFO') }}</a>
                             </td>
                         </tr>
                     @endforeach
@@ -79,66 +83,52 @@
                                 <div class="d-flex">
                                     <div class="left-content mx-2">
                                         <div class="ticket_item_content_header">
-                                            <h4 class="mb-2">Text and waves</h4>
-                                            <p class="mb-0">Ticket/Science Fiction</p>
+                                            <h4 class="mb-2 club_name"></h4>
+                                            <p class="mb-0 subject"></p>
                                         </div>
                                         <div class="ticket_item_content_body">
-                                            <div class="ticket_tags">
-                                                <span class="ticket_tag">SF</span>
-                                                <span class="ticket_tag">meet regularly</span>
-                                                <span class="ticket_tag">Seoul/Gyeonggi</span>
-                                                <span class="ticket_tag">Office workers</span>
-                                                <span class="ticket_tag">30's</span>
-                                            </div>
-                                            <div class="ticket_tags my-2">
-                                                <span class="ticket_tag">SF</span>
-                                                <span class="ticket_tag">meet regularly</span>
-                                                <span class="ticket_tag">Seoul/Gyeonggi</span>
-                                                <span class="ticket_tag">office</span>
-                                                <span class="ticket_tag">office workers</span>
-                                            </div>
+                                            <div class="ticket_tags tag_1_div"></div>
+                                            <div class="ticket_tags tag_2_div my-2"></div>
                                         </div>
 
                                         <div class="ticket_item_content-footer">
                                             <div class="my-1">
-                                                <p class="mb-0 font-size-12">Sillim Drawing Club
-                                                    writing and waves</p>
-                                                <h4 class="mb-0">19 degrees</h4>
+                                                <p class="mb-0 font-size-12 sub_description"></p>
+                                                <h4 class="mb-0 gatherings"></h4>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="right-content mx-2">
                                         <div class="ticket_item_content_header">
-                                            <h4 class="mb-2">07 Nov, 2022</h4>
+                                            <h4 class="mb-2 meet_up_date"></h4>
                                         </div>
                                         <div class="ticket_item_content_body">
                                             <div class="ticket-item-detail mt-2">
                                                 <div class="w-50 mb-2">
-                                                    <h4 class="mb-0">4 도I</h4>
-                                                    <p class="mb-0">모인 횟수</p>
+                                                    <h4 class="mb-0 meetups"></h4>
+                                                    <p class="mb-0">{{ __('translation.Encounters so far') }}</p>
                                                 </div>
                                                 <div class="w-50 mb-2">
-                                                    <h4 class="mb-0">24 Nov, 2022</h4>
-                                                    <p class="mb-0">최근 모임날짜</p>
+                                                    <h4 class="mb-0 date_last_meeting"></h4>
+                                                    <p class="mb-0">{{ __('translation.Last meeting date') }}</p>
                                                 </div>
                                                 <div class="w-50 mb-2">
                                                     <h4 class="mb-0">12도</h4>
-                                                    <p class="mb-0">신림드로잉 클럽</p>
+                                                    <p class="mb-0">{{ __('translation.Sillim Drawing') }}</p>
                                                 </div>
                                                 <div class="w-50 mb-2">
                                                     <h4 class="mb-0">80%</h4>
-                                                    <p class="mb-0">Text and waves</p>
+                                                    <p class="mb-0 club_name"></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="ticket_item_content-footer">
                                             <div class="my-1">
-                                                <p class="mb-2 font-size-12">People who like science fiction, movies and
-                                                    coffee.</p>
+                                                <p class="mb-2 font-size-12 description"></p>
                                                 <button type="button" data-id="1" data-bs-toggle="modal"
                                                     data-bs-target="#reservationModal"
                                                     class="btn btn-warning btn-theme-sm w-100 applyBtn"
-                                                    disabled="">Reserved</button>
+                                                    disabled="">{{__('translation.Reserved')}}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -150,4 +140,31 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom-script')
+<script>
+    $('.ticket_info_btn').on('click',function(){
+        var tags1 = [];
+        tags1 = $(this).attr('data-tag-1').split("||");
+        $('.tag_1_div').html('');
+        tags1.forEach(element => {
+            $('.tag_1_div').append('<span class="ticket_tag mr-1">'+element+'</span>');
+        });
+        var tags2 = [];
+        tags2 = $(this).attr('data-tag-2').split("||");
+        $('.tag_2_div').html('');
+        tags1.forEach(element => {
+            $('.tag_2_div').append('<span class="ticket_tag mr-1">'+element+'</span>');
+        });
+        $('.club_name').text($(this).attr('data-club-name'));
+        $('.subject').text($(this).attr('data-subject'));
+        $('.sub_description').text($(this).attr('data-sub-description'));
+        $('.gatherings').text($(this).attr('data-gatherings'));
+        $('.meet_up_date').text($(this).attr('data-meet-up-date'));
+        $('.meetups').text($(this).attr('data-meetups'));
+        $('.date_last_meeting').text($(this).attr('data-date-last-meeting'));
+        $('.description').text($(this).attr('data-description'));
+    });
+</script>
 @endsection
