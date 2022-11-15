@@ -109,7 +109,7 @@ return [
     'Processing' => '처리',
     'Ticket Reserved Successfully' => '티켓이 성공적으로 예약되었습니다',
     'An Unknown Error Exist , Please try again' => '알 수 없는 오류가 있습니다. 다시 시도하십시오.',
-    'Total Members' => '총 회원' ,
+    'Total Members' => '총 회원',
     'Member Since' => '회원 가입일',
     'No Book Found' => '책을 찾을 수 없습니다',
     'No User Found' => '사용자를 찾을 수 없음',
@@ -124,5 +124,6 @@ return [
     'Book page image deleted Successfully' => '도서 페이지 이미지가 성공적으로 삭제되었습니다.',
     'Book cover image deleted Successfully' => '책 표지 이미지가 삭제되었습니다.',
     'Waiting for approval' => '승인대기',
-    'Approved' => '승인완료'
+    'Approved' => '승인완료',
+    'Search all members' => '모든 회원 검색'
 ];
