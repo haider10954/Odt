@@ -111,7 +111,16 @@ return [
     'An Unknown Error Exist , Please try again' => '알 수 없는 오류가 있습니다. 다시 시도하십시오.',
     'Total Members' => '총 회원' ,
     'Member Since' => '회원 가입일',
-    'Member Since' => '회원 가입일',
     'No Book Found' => '책을 찾을 수 없습니다',
-    'No User Found' => '사용자를 찾을 수 없음'
+    'No User Found' => '사용자를 찾을 수 없음',
+    'Ticket has been added successfully' => '티켓이 성공적으로 추가되었습니다',
+    'Something went wrong Please try again.' => '문제가 발생했습니다. 다시 시도하십시오.',
+    'Ticket has been deleted Successfully' => '티켓이 성공적으로 삭제되었습니다',
+    'Ticket has been update successfully.' => '티켓이 성공적으로 업데이트되었습니다.',
+    'Ticket image deleted Successfully' => '티켓 이미지가 성공적으로 삭제되었습니다.',
+    'Ticket Reservation Status Updated Successfully' => '티켓 예약 상태가 성공적으로 업데이트되었습니다',
+    'User has been removed successfully ' => '사용자가 성공적으로 제거되었습니다.',
+    'Book has been added successfully.' => '책이 성공적으로 추가되었습니다.',
+    'Book page image deleted Successfully' => '도서 페이지 이미지가 성공적으로 삭제되었습니다.',
+    'Book cover image deleted Successfully' => '책 표지 이미지가 삭제되었습니다.',
 ];

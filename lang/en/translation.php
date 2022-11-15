@@ -113,5 +113,15 @@ return [
     'Total members' => 'Total members',
     'Member Since' =>'Member Since',
     'No Book Found' => 'No Book Found',
-    'No User Found' => 'No User Found'
+    'No User Found' => 'No User Found',
+    'Ticket has been added successfully' => 'Ticket has been added successfully',
+    'Something went wrong Please try again.' => 'Something went wrong Please try again.',
+    'Ticket has been deleted Successfully' => 'Ticket has been deleted Successfully',
+    'Ticket has been update successfully.' => 'Ticket has been update successfully.',
+    'Ticket image deleted Successfully' => 'Ticket image deleted Successfully',
+    'Ticket Reservation Status Updated Successfully' => 'Ticket Reservation Status Updated Successfully',
+    'User has been removed successfully ' => 'User has been removed successfully ',
+    'Book has been added successfully.' => 'Book has been added successfully.',
+    'Book page image deleted Successfully' => 'Book page image deleted Successfully',
+    'Book cover image deleted Successfully' => 'Book cover image deleted Successfully'
 ];
