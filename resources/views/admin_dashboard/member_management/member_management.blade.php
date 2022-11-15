@@ -233,7 +233,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
                         <button type="submit" class="btn btn-primary">{{ __('translation.Save')}}</button>
                     </div>
                 </form>
