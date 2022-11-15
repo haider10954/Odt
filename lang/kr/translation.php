@@ -123,4 +123,6 @@ return [
     'Book has been added successfully.' => '책이 성공적으로 추가되었습니다.',
     'Book page image deleted Successfully' => '도서 페이지 이미지가 성공적으로 삭제되었습니다.',
     'Book cover image deleted Successfully' => '책 표지 이미지가 삭제되었습니다.',
+    'Waiting for approval' => '승인대기',
+    'Approved' => '승인완료'
 ];

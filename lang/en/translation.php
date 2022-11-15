@@ -123,5 +123,7 @@ return [
     'User has been removed successfully ' => 'User has been removed successfully ',
     'Book has been added successfully.' => 'Book has been added successfully.',
     'Book page image deleted Successfully' => 'Book page image deleted Successfully',
-    'Book cover image deleted Successfully' => 'Book cover image deleted Successfully'
+    'Book cover image deleted Successfully' => 'Book cover image deleted Successfully',
+    'Waiting for approval' => 'Waiting for approval',
+    'Approved' => 'Approved'
 ];
