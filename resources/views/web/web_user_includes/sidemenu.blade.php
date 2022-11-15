@@ -24,9 +24,7 @@
                 <li><a href="{{ route('web_tickets') }}">{{ __('translation.Ticketing') }}</a></li>
 
                 <li>
-                    <a href="javascript:void(0)"
-                        class="d-flex align-items-center justify-content-between submenu-toggle"><span>{{ __('translation.Library') }}</span> <i
-                            class="fa fa-angle-down"></i></a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center justify-content-between submenu-toggle"><span>{{ __('translation.Library') }}</span> <i class="fa fa-angle-down"></i></a>
 
                     <ul class="submenu mt-3 mb-0" style="display: none;">
                         <li><a href="{{ route('web_library') }}">{{ __('translation.Reading') }}</a></li>
@@ -44,18 +42,18 @@
                 <div class="d-flex align-items-center">
 
                     <img src="{{ asset('web_assets/img/user-1.png') }}" height="48" style="margin-right: 20px">
-    
+
                     <div class="sidemenu-footer-content">
                         @if (auth()->check())
-                            <p class="mb-0">{{ \Str::ucfirst(auth()->user()->name) }}</p>
-                            <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
+                        <p class="mb-0">{{ \Str::ucfirst(auth()->user()->name) }}</p>
+                        <small class="d-block text-muted mb-0">{{ auth()->user()->email }}</small>
                         @else
-                            <p class="mb-0">{{ __('translation.User') }}</p>
-                            <small class="d-block text-muted mb-0">{{ __('translation.User email') }}</small>
+                        <p class="mb-0">{{ __('translation.User') }}</p>
+                        <small class="d-block text-muted mb-0">{{ __('translation.User Email'') }}</small>
                         @endif
-    
+
                     </div>
-    
+
                 </div>
             </a>
 
