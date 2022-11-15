@@ -18,4 +18,4 @@ jobs:
           username: shoopkeper@becktesting.site
           password: ${{ secrets.FTP_PASSWORD }}
           timeout: 999999
-          server-dir:"./www/"
+          server-dir: "./www/"
