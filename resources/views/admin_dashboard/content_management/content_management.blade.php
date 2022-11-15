@@ -161,7 +161,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($reserve as $r)
+                        @if ($user->count() > 0)
+                        @foreach ($user as $r)
                         <tr>
                             <td>
                                 <div class="form-check font-size-16">
@@ -190,7 +191,7 @@
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:void(0)" onclick="changeStatus('in-Progress','{{ $r->id }}')" class="dropdown-item">{{ __('translation.in-Progress') }}</a>
+                                        <a href="javascript:void(0)" onclick="changeStatus('in-progress','{{ $r->id }}')" class="dropdown-item">{{ __('translation.in-progress') }}</a>
                                         <a href="javascript:void(0)" onclick="changeStatus('pending','{{ $r->id }}')" class="dropdown-item">{{ __('translation.pending')}}</a>
                                         <a href="javascript:void(0)" onclick="changeStatus('completed','{{ $r->id }}')" class="dropdown-item">{{ __('translation.Confirm')}}</a>
                                     </div>
@@ -198,6 +199,11 @@
                             </td>
                         </tr>
                         @endforeach
+                        @else
+                        <tr>
+                            <td colspan="7" class="text-center fw-bold">{{ __('translation.No Reservations Found') }}</td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
                 <!-- end table-responsive -->

@@ -47,48 +47,41 @@
         </div>
     </div>
     <div class="col-lg-8">
-        <form enctype="multipart/form-data" id="bookForm">
+        <form id="bookForm">
             @csrf
             <div class="form-group mb-2">
                 <label class="form-label">{{ __('translation.Book Title')}}</label>
                 <input type="text" class="form-control" name="book_title">
-                @error('book_title')
-                <p style="color:#d02525;">{{$message}}</p>
-                @enderror
+                <div class="error-book-title"></div>
             </div>
 
             <div class="form-group mb-2">
                 <label class="form-label">{{ __('translation.Book Description') }}</label>
                 <input type="text" class="form-control" name="book_description">
-                @error('book_description')
-                <p style="color:#d02525;">{{$message}}</p>
-                @enderror
+                <div class="error-book-description"></div>
             </div>
 
             <div class="form-group mb-2">
                 <label class="form-label">{{ __('translation.Book Category')}}</label>
-                <select type="text" class="form-control" name="category">
-                    <option>Select Category</option>
-                    <option value="reading">Reading</option>
-                    <option value="drawing">Drawing</option>
+                <select type="text" class="form-control" name="category" autocomplete="off">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="reading">{{ __('translation.Reading') }}</option>
+                    <option value="drawing">{{ __('translation.Drawing')}}</option>
                 </select>
-                @error('category')
-                <p style="color:#d02525;">{{$message}}</p>
-                @enderror
+                <div class="error-book-category"></div>
             </div>
 
             <div class="form-group mb-2">
                 <label class="form-label">{{ __('translation.Book Cover')}}</label>
                 <input type="file" class="form-control" name="image" id="main_picture" />
+                <div class="error-book-cover-image"></div>
             </div>
 
 
             <div class="form-group mb-2">
                 <label class="form-label">{{ __('translation.Book Pages')}}</label>
                 <input type="file" class="form-control" name="book_pages[]" id="additional_picture" multiple>
-                @error('book_pages')
-                <p style="color:#d02525;">{{$message}}</p>
-                @enderror
+                <div class="error-book-page"></div>
             </div>
             <div class="row mb-3" id="other_images_preview">
             </div>
@@ -105,32 +98,30 @@
 <script src="{{ asset('assets/js/book.js') }}"></script>
 <script>
     $("#bookForm").on('submit', function(e) {
-        $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
-        $("#submitForm").attr('disabled', '');
         e.preventDefault();
         var formData = new FormData($("#bookForm")[0]);
         $.ajax({
             type: "POST",
             url: "{{ route('add-book') }}",
             dataType: 'json',
-            data: formData,
             contentType: false,
             processData: false,
             cache: false,
+            data: formData,
             mimeType: "multipart/form-data",
             beforeSend: function() {
-
+                $("#submitForm").html('<i class="fa fa-spinner fa-spin"></i>');
+                $(".error-message").hide();
             },
             success: function(res) {
-                if (res.error)
-                {
+
+                $("#submitForm").html('<class="btn btn-dark">도서 추가</>');
+                if (res.error) {
                     $('.prompt').html('<div class="alert alert-danger mb-3">' + res.message + '</div>');
                     $('html, body').animate({
                         scrollTop: $("html, body").offset().top
                     }, 1000);
-                }
-                else
-                {
+                } else {
                     $('.prompt').html('<div class="alert alert-success mb-3">' + res.message + '</div>');
                     $('html, body').animate({
                         scrollTop: $("html, body").offset().top
@@ -141,9 +132,23 @@
                 }
             },
             error: function(e) {
-                console.log('error');
+                $("#submitForm").html('<class="btn btn-dark">도서 추가</>');
+                if (e.responseJSON.errors['book_title']) {
+                    $('.error-book-title').html('<span class=" error-message text-danger">' + e.responseJSON.errors['book_title'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['book_description']) {
+                    $('.error-book-description').html('<span class=" error-message text-danger">' + e.responseJSON.errors['book_description'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['category']) {
+                    $('.error-book-category').html('<span class=" error-message text-danger">' + e.responseJSON.errors['category'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['image']) {
+                    $('.error-book-cover-image').html('<span class=" error-message text-danger">' + e.responseJSON.errors['image'][0] + '</span>');
+                }
+                if (e.responseJSON.errors['book_pages']) {
+                    $('.error-book-page').html('<span class=" error-message text-danger">' + e.responseJSON.errors['book_pages'][0] + '</span>');
+                }
             }
-
         });
     });
 

@@ -92,7 +92,7 @@ return [
     'Preview Image' => 'Preview Image',
     'Book Title' => 'Book Title',
     'Book Description' => 'Book Description',
-    'Book Category' =>'Book Category',
+    'Book Category' => 'Book Category',
     'Book Cover' => 'Book Cover',
     'Book Pages' => 'Book Pages',
     'Save' => 'Save',
@@ -101,7 +101,7 @@ return [
     'Welcome Back !' => 'Welcome Back !',
     'Sign in to continue to ODT.' => 'Sign in to continue to ODT.',
     'Log In' => 'Log In',
-    'Enter password' =>'Enter password',
+    'Enter password' => 'Enter password',
     'Enter your email address' => 'Enter your email address',
     'Submit' => 'Submit',
     'Already Uploaded Images' => 'Already Uploaded Images',
@@ -109,9 +109,6 @@ return [
     'Processing' => 'Processing',
     'Ticket Reserved Successfully' => 'Ticket Reserved Successfully',
     'An Unknown Error Exist , Please try again' => 'An Unknown Error Exist , Please try again',
-    'Search all members' => 'Search all members' ,
+    'Search all members' => 'Search all members',
     'Total members' => 'Total members',
-    'Member Since' =>'Member Since',
-    'No Book Found' => 'No Book Found',
-    'No User Found' => 'No User Found'
 ];

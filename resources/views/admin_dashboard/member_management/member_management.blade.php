@@ -168,6 +168,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($user->count() > 0)
                             @foreach ($user as $u)
                             <tr>
                                 <td>
@@ -206,6 +207,11 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="7" class="text-center fw-bold">{{ __('translation.No User Found') }}</td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -233,7 +239,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('translation.Close')}}</button>
                         <button type="submit" class="btn btn-primary">{{ __('translation.Save')}}</button>
                     </div>
                 </form>

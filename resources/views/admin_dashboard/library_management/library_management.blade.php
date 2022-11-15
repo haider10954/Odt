@@ -165,6 +165,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($book->count() > 0)
                             @foreach ($book as $books)
                             <tr>
                                 <td>
@@ -180,7 +181,7 @@
                                             <div class="me-3">
                                                 <img class="ticket-img" src="{{ $books->bookImage()  }}" alt="Header Avatar">
                                             </div>
-                                            <div>
+                                            <div class="me-3">
                                                 <span class="span-text">{{ Str::limit($books->book_title, 40) }}</span> <br />
                                                 <span class="update">{{ Str::limit($books->description, 50) }}</span>
                                             </div>
@@ -200,6 +201,11 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="7" class="text-center fw-bold">{{ __('translation.No Book Found') }}</td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
