@@ -161,6 +161,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if ($user->count() > 0)
                         @foreach ($user as $r)
                         <tr>
                             <td>
@@ -198,6 +199,11 @@
                             </td>
                         </tr>
                         @endforeach
+                        @else
+                        <tr>
+                            <td colspan="7" class="text-center fw-bold">{{ __('translation.No Reservations Found') }}</td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
                 <!-- end table-responsive -->
