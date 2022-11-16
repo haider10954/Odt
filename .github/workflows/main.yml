@@ -14,7 +14,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: www.repilus.com
+          server: 183.111.100.198
           username: scinjae111
           password: ${{ secrets.FTP_PASSWORD }}
           timeout: 99999
