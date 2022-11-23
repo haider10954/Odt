@@ -9,6 +9,16 @@
         border-radius: 50%;
         border: none;
     }
+
+    .menu {
+        display: none;
+    }
+
+    @media only screen and (max-width: 992px) {
+        .menu {
+            display: block;
+        }
+    }
 </style>
 
 <header id="page-topbar">
@@ -26,7 +36,7 @@
                 </a>
             </div>
 
-            <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect d-none" id="vertical-menu-btn">
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect menu" id="vertical-menu-btn">
                 <i class="fa fa-fw fa-bars"></i>
             </button>
         </div>
